@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>So Bohème | Boutique & Accessoires</title>
-    
     <meta name="description" content="Découvrez So Bohème à Guebwiller : boutique de mode féminine & accessoires uniques">
     <link rel="icon" type="image/png" href="logo.png">
-    
     <link href="https://fonts.googleapis.com/css2?family=Caudex&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
     <script defer src="https://cloud.umami.is/script.js" data-website-id="b15c0f27-dac1-4c95-8fd6-ea56c27eb049"></script>
 </head>
 <body>
@@ -26,7 +23,9 @@
         <p class="desc">Boutique femme & accessoires.<br>✨ Mode Bohème & pièces uniques, relooking personnalisé ✨</p>
         
         <h2>La Boutique en mouvement 🎬</h2>
-        <div class="main-video"><video src="presentation.mp4" autoplay muted loop playsinline controls poster="photo1.jpg"></video></div>
+        <div class="main-video">
+            <video src="presentation.mp4" autoplay muted loop playsinline controls poster="photo1.jpg"></video>
+        </div>
         
         <h2>L'univers So Bohème 📸</h2>
     </div>
@@ -50,38 +49,38 @@
 
     <div class="container">
         <h2>Réseaux</h2>
-        <a href="https://instagram.com/boutique_so_boheme" class="link-card" target="_blank">Instagram <span>Looks Inspi & Nouveautés 📸</span></a>
-        <a href="https://tiktok.com/@boutique_so.boheme" class="link-card" target="_blank">TikTok <span>Le style Bohème s'anime 🎬</span></a>
-        <a href="https://www.facebook.com/profile.php?id=61584699270783" class="link-card" target="_blank">Facebook <span>Toute l'actu de la boutique 📰</span></a>
+        <div class="links-grid">
+            <a href="https://instagram.com/boutique_so_boheme" class="link-card" target="_blank">Instagram <span>Looks Inspi & Nouveautés 📸</span></a>
+            <a href="https://tiktok.com/@boutique_so.boheme" class="link-card" target="_blank">TikTok <span>Le style Bohème s'anime 🎬</span></a>
+            <a href="https://www.facebook.com/profile.php?id=61584699270783" class="link-card" target="_blank">Facebook <span>Toute l'actu de la boutique 📰</span></a>
+        </div>
 
         <h2>Contact</h2>
-        <div class="link-card" style="cursor:pointer" onclick="downloadVCard()">Enregistrer le contact 👤 <span>Ajouter So Bohème à votre répertoire</span></div>
-        <a href="mailto:boutique.soboheme@gmail.com" class="link-card">Nous écrire par E-mail ✉️ <span>boutique.soboheme@gmail.com</span></a>
+        <div class="links-grid">
+            <div class="link-card" style="cursor:pointer" onclick="downloadVCard()">Enregistrer le contact 👤 <span>Ajouter So Bohème à votre répertoire</span></div>
+            <a href="mailto:boutique.soboheme@gmail.com" class="link-card">Nous écrire par E-mail ✉️ <span>boutique.soboheme@gmail.com</span></a>
+        </div>
 
         <h2>Information</h2>
         <div class="info-box"><strong>Heures d'ouverture :</strong><br>Ouverture très bientôt ! Suivez-nous pour ne pas manquer la date.</div>
         
         <div class="map-wrapper">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2685.250493806782!2d7.2089476!3d47.9073682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791985c57b6819b%3A0xc39871583d8a87b8!2s56%20Rue%20de%20la%20R%C3%A9publique%2C%2068500%20Guebwiller!5e0!3m2!1sfr!2sfr!4v1710000000000!5m2!1sfr!2sfr" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2666.965935399564!2d7.208153476883234!3d47.9048386681028!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479199738f69e6b3%3A0x6b77293a525a9630!2s56%20Rue%20de%20la%20R%C3%A9publique%2C%2068500%20Guebwiller!5e0!3m2!1sfr!2sfr!4v1700000000000" 
+                allowfullscreen="" loading="lazy">
             </iframe>
         </div>
 
-       <span class="legal-toggle" onclick="toggleLegal()">Informations légales</span>
+        <span class="legal-toggle" onclick="toggleLegal()">Informations légales</span>
         <div id="legal-box" class="legal-content">
             <p><strong>Éditeur :</strong> Ce site est édité sous le nom commercial <strong>So Bohème</strong> par <strong>Solange Bohème</strong>.</p>
             <p><strong>Responsable :</strong> Solange BOULAHDID</p>
             <p><strong>Développement :</strong> <a href="https://sanobld.github.io/Web/" target="_blank" style="color: var(--txt); text-decoration: none; border-bottom: 1px solid var(--acc);">Noham BOULAHDID</a></p>
-            <p><strong>Hébergement :</strong> Ce site est hébergé par GitHub Inc. (88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA).</p>
-            <p><strong>Propriété :</strong> Les contenus multimédias (photos, vidéos) sont la propriété de Solange Bohème.</p>
+            <p><strong>Hébergement :</strong> GitHub Inc. Ce service est fourni conformément aux conditions d'utilisation de GitHub Pages.</p>
         </div>
     </div> 
 
     <footer><p>© Solange Bohème</p></footer>
-
     <script src="script.js"></script>
 </body>
 </html>
