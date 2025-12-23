@@ -21,7 +21,7 @@ Ce site a été conçu pour être léger, rapide et moderne :
 
 ## 👤 Contact
 * **Responsable** : Solange Bohème
-* **Développeur** : @SanoBld https://github.com/SanoBld
+* **Développeur** : SanoBld https://sanobld.github.io/Web/
 * **Email** : boutique.soboheme@gmail.com
 
 ---
