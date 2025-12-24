@@ -1,7 +1,3 @@
-Voici une version optimisée du fichier **`README.md`** pour ton dépôt GitHub. J'ai ajusté les descriptions pour qu'elles collent exactement aux fonctionnalités réelles du code (mode sombre manuel/auto, animations, lightbox).
-
----
-
 # 🌸 So Bohème — Boutique & Relooking
 
 Bienvenue sur le dépôt officiel du site **So Bohème**. Située au cœur de Guebwiller, la boutique propose un univers dédié à la femme, mêlant mode bohème et conseils personnalisés.
