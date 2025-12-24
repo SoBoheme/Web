@@ -28,7 +28,7 @@ Le site est une **Single Page Application (SPA)** statique, optimisée pour la p
 
 * **Adresse** : 56 Rue de la République, 68500 Guebwiller, France.
 * **Email** : `boutique.soboheme@gmail.com`
-* **Responsable** : Solange Boulahdid.
+* **Responsable** : Solange BOULAHDID.
 
 ## 🚀 Crédits
 
