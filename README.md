@@ -32,13 +32,9 @@ Le site est une **Single Page Application (SPA)** statique, optimisée pour la p
 
 ## 🚀 Crédits
 
-* **Développement** : [Noham.B (SanoBld)](https://sanobld.github.io/Web/)
+* **Développement** : [Noham BOULAHDID (SanoBld)](https://sanobld.github.io/Web/)
 * **Hébergement** : GitHub Pages.
 
 ---
 
-*© 2025 So Bohème — Tous droits réservés.*
-
----
-
-Souhaites-tu que je prépare également une version en anglais pour le dépôt ou que je modifie la section des technologies ?
+*© 2025 Solange Bohème — Tous droits réservés.*
