@@ -71,7 +71,7 @@ h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-b
 .main-video video { width: 100%; }
 
 .slider-container { width: 100%; overflow: hidden; background: var(--card); padding: 20px 0; border-top: 1px solid var(--acc); border-bottom: 1px solid var(--acc); position: relative; margin-bottom: 15px; }
-.slider-track { display: flex; width: max-content; animation: scroll 55s linear infinite; }
+.slider-track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
 .slider-container:hover .slider-track { animation-play-state: paused; }
 .slide { flex: 0 0 200px; height: 300px; margin: 0 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--acc); background: var(--bg); }
 .slide img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; transition: 0.3s; }
