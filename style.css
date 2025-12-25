@@ -12,7 +12,13 @@
     font-style: italic;
 }
 
-:root { --bg: #fdfaf7; --txt: #4a3f35; --acc: #cab8a6; --card: #ffffff; --overlay: rgba(0,0,0,0.3); }
+:root { 
+    --bg: #fdfaf7; 
+    --txt: #4a3f35; 
+    --acc: #cab8a6; 
+    --card: #ffffff; 
+    --overlay: rgba(0,0,0,0.3); 
+}
 
 /* Couleurs Mode Sombre */
 @media (prefers-color-scheme: dark) {
@@ -52,7 +58,6 @@ body {
 
 .container { padding: 20px; width: 100%; max-width: 550px; box-sizing: border-box; animation: fadeInUp 1s ease-out; }
 
-/* Adaptation PC */
 @media (min-width: 650px) {
     .container { max-width: 850px; }
     .links-grid { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
@@ -72,7 +77,6 @@ h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-b
 .slide img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; transition: 0.3s; }
 .slide img:hover { transform: scale(1.05); }
 
-/* Grille de liens */
 .links-grid { display: flex; flex-direction: column; width: 100%; }
 
 .link-card { 
@@ -88,23 +92,48 @@ h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-b
 .map-wrapper { width: 100%; border-radius: 15px; overflow: hidden; border: 1px solid var(--acc); margin-top: 15px; line-height: 0; }
 iframe { width: 100%; height: 300px; border: 0; }
 
-.legal-toggle { cursor: pointer; font-size: 0.7rem; opacity: 0.4; text-decoration: none; margin-top: 30px; display: inline-block; transition: 0.2s; }
-.legal-toggle:hover { opacity: 0.8; }
-.legal-content { display: none; text-align: left; font-size: 0.7rem; padding: 15px; background: var(--card); border: 1px solid var(--acc); border-radius: 10px; margin-top: 10px; line-height: 1.4; }
+/* --- SECTION LÉGALE --- */
+
+.legal-toggle { 
+    cursor: pointer; 
+    font-size: 0.7rem; 
+    color: var(--txt);
+    opacity: 0.5; 
+    text-decoration: none; 
+    margin-top: 30px; 
+    display: inline-block; 
+    transition: 0.3s;
+    border-bottom: 1px solid var(--acc); /* Surlignage couleur sable */
+}
+.legal-toggle:hover { opacity: 1; }
+
+.legal-content { 
+    display: none; 
+    text-align: left; 
+    font-size: 0.75rem; 
+    padding: 20px; 
+    background: var(--card); 
+    border: 1px solid var(--acc); 
+    border-radius: 15px; 
+    margin-top: 10px; 
+    line-height: 1.6; 
+}
+
+/* Surlignage des noms et liens internes */
+.owner-name {
+    border-bottom: 1px solid var(--acc);
+    font-weight: bold;
+}
+
+.legal-link {
+    color: var(--txt);
+    text-decoration: none;
+    border-bottom: 1px solid var(--acc);
+    transition: 0.3s;
+}
+.legal-link:hover {
+    background: var(--acc);
+    color: white;
+}
 
 footer { padding: 40px 20px; font-size: 0.8rem; opacity: 0.4; }
-
-/* Style pour le lien des mentions légales en bas de page */
-.legal-toggle {
-    text-decoration: none;
-    color: var(--txt);
-    border-bottom: 1px solid var(--acc); 
-    opacity: 0.6; 
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.legal-toggle:hover {
-    opacity: 1; 
-    background: transparent; 
-}
