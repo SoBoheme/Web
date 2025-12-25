@@ -86,7 +86,7 @@ h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-b
 .map-wrapper { width: 100%; border-radius: 15px; overflow: hidden; border: 1px solid var(--acc); margin-top: 15px; line-height: 0; }
 iframe { width: 100%; height: 300px; border: 0; }
 
-/* --- NOUVEAU STYLE MENTIONS (NON RÉACTIF) --- */
+/* --- STYLE DES CADRES MENTIONS --- */
 .legal-card-static {
     background: var(--card); 
     border: 1px solid var(--acc); 
