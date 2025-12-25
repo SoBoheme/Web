@@ -1,38 +1,33 @@
 # 🌸 So Bohème — Boutique & Relooking
 
-Bienvenue sur le dépôt officiel du site **So Bohème**. Située au cœur de Guebwiller, la boutique propose un univers dédié à la femme, mêlant mode bohème et conseils personnalisés.
+Bienvenue sur le dépôt officiel du site **So Bohème**. Située à Guebwiller, la boutique propose un univers dédié à la femme, mêlant mode bohème et conseils personnalisés.
 
-Ce site a été conçu comme une interface "Link-in-bio" haut de gamme, centralisant l'image de marque et facilitant la prise de contact.
+Ce site centralise l'image de marque et facilite l'accès aux différents réseaux et services de la boutique.
 
 ## ✨ L'Univers So Bohème
 
-* **Mode Bohème** : Des collections fluides et des pièces sélectionnées avec soin.
-* **Accessoires & Pièces Uniques** : Pour sublimer chaque tenue.
-* **Relooking Personnalisé** : Un accompagnement sur mesure par Solange Bohème pour révéler votre style.
+* **Mode & Accessoires** : Une sélection de pièces de style bohème.
+* **Conseil en Image** : Un accompagnement sur mesure par **Solange Bohème** pour révéler votre style.
 
-## 🛠️ Caractéristiques Techniques
+## 🛠️ Aperçu Technique
 
-Le site est une **Single Page Application (SPA)** statique, optimisée pour la performance et l'expérience utilisateur mobile :
+Le site est une interface moderne et légère, optimisée pour une consultation rapide sur mobile :
 
-* **Design Adaptatif** : Interface fluide développée en **HTML5** et **CSS3** avec la police élégante *Caudex*.
-* **Gestion du Thème** : Support natif du mode sombre (dark mode) avec basculement manuel via un bouton dédié.
-* **Interactivité Avancée** :
-* Carrousel d'images infini avec animation CSS fluide.
-* Système de **Lightbox** pour visualiser les photos de la boutique en plein écran.
-* Génération dynamique de **VCard** pour enregistrer le contact directement sur smartphone en un clic.
+* **Interface Élégante** : Développée en **HTML5** et **CSS3** avec la police *Playfair Display*.
+* **Expérience Utilisateur** : Support du mode sombre, galerie interactive et accès direct aux contacts.
+* **Respect de la vie privée** : Mesures d'audience anonymisées via **Umami Analytics**, sans cookies de traçage.
 
+## 📍 Informations Légales & Contact
 
-* **Analytics** : Intégration d'**Umami**, une alternative respectueuse de la vie privée.
-
-## 📍 Localisation & Contact
-
+* **Dénomination sociale** : Solange Bohème (Nom commercial : So Bohème).
+* **Responsable** : Solange BOULAHDID.
 * **Adresse** : 56 Rue de la République, 68500 Guebwiller, France.
 * **Email** : `boutique.soboheme@gmail.com`
-* **Responsable** : Solange BOULAHDID.
+* **SIRET** : En cours d'immatriculation.
 
 ## 🚀 Crédits
 
-* **Développement** : [Noham BOULAHDID (SanoBld)](https://sanobld.github.io/Web/)
+* **Développement** : [Noham BOULAHDID](https://sanobld.github.io/Web/)
 * **Hébergement** : GitHub Pages.
 
 ---
