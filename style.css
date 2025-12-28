@@ -1,4 +1,28 @@
-/* --- ANIMATION DU TITRE (Flottement doux) --- */
+/* Intégration de la police locale */
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+:root { --bg: #fdfaf7; --txt: #4a3f35; --acc: #cab8a6; --card: #ffffff; --overlay: rgba(0,0,0,0.4); }
+
+/* Couleurs Mode Sombre */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #12100e; --txt: #fdfaf7; --acc: #8e7d6d; --card: #1c1a17; --overlay: rgba(0,0,0,0.7); }
+}
+[data-theme="dark"] { --bg: #12100e; --txt: #fdfaf7; --acc: #8e7d6d; --card: #1c1a17; --overlay: rgba(0,0,0,0.7); }
+[data-theme="light"] { --bg: #fdfaf7; --txt: #4a3f35; --acc: #cab8a6; --card: #ffffff; --overlay: rgba(0,0,0,0.4); }
+
+body { 
+    margin: 0; background: var(--bg); color: var(--txt); 
+    font-family: 'Playfair Display', serif; 
+    text-align: center; display: flex; flex-direction: column; align-items: center; 
+    min-height: 100vh; overflow-x: hidden; transition: 0.4s;
+}
+
+/* --- ANIMATION DU TITRE --- */
 h1 { 
     font-size: 4rem; 
     text-transform: uppercase; 
@@ -20,7 +44,7 @@ h1 {
     50% { transform: translateY(-10px); } 
 }
 
-/* --- ANIMATION DE LA VAGUE (Pour la description) --- */
+/* --- ANIMATION DE LA VAGUE --- */
 .desc { 
     font-style: italic; 
     margin: 10px 0 0; 
@@ -33,19 +57,51 @@ h1 {
     display: block;
 }
 
-/* C'est ce style qui permet aux lettres de bouger séparément */
 .letter {
     display: inline-block;
-    white-space: pre; /* Garde les espaces entre les mots */
+    white-space: pre;
     transition: transform 0.3s ease;
 }
 
-/* Déclenchement de la vague sur chaque lettre quand la classe est active */
 .wave-active .letter {
-    animation: letterWave 0.8s ease-in-out;
+    animation: letterWave 1s ease-in-out;
 }
 
 @keyframes letterWave {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); } /* Hauteur de la vague */
+    50% { transform: translateY(-15px); }
 }
+
+/* --- RESTE DU SITE --- */
+.hero { 
+    width: 100%; height: 380px; 
+    background: linear-gradient(to bottom, var(--overlay) 0%, var(--bg) 100%), url('photo1.jpg'); 
+    background-size: cover; background-position: center;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;
+}
+
+.container { padding: 20px; width: 100%; max-width: 550px; box-sizing: border-box; }
+h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-bottom: 1px solid var(--acc); display: inline-block; padding-bottom: 5px; }
+
+.main-video { width: 100%; border-radius: 15px; overflow: hidden; border: 1px solid var(--acc); background: #000; margin-bottom: 25px; line-height: 0; }
+.main-video video { width: 100%; }
+
+.slider-container { width: 100%; overflow: hidden; background: var(--card); padding: 20px 0; border-top: 1px solid var(--acc); border-bottom: 1px solid var(--acc); margin-bottom: 15px; }
+.slider-track { display: flex; width: max-content; animation: scroll 55s linear infinite; }
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-33.33%); } }
+
+.slide { flex: 0 0 200px; height: 300px; margin: 0 10px; border-radius: 12px; overflow: hidden; border: 1px solid var(--acc); }
+.slide img { width: 100%; height: 100%; object-fit: cover; cursor: zoom-in; }
+
+.links-grid { display: flex; flex-direction: column; gap: 15px; }
+.link-card { background: var(--card); border: 1px solid var(--acc); padding: 18px; border-radius: 15px; text-decoration: none; color: var(--txt); font-weight: bold; }
+.link-card span { display: block; font-size: 0.85rem; font-weight: normal; opacity: 0.7; }
+
+.info-box { background: rgba(202, 184, 166, 0.1); padding: 20px; border-radius: 15px; border: 1px dashed var(--acc); }
+#theme-btn { position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; width: 44px; height: 44px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+#theme-btn svg { width: 22px; height: 22px; fill: white; }
+
+#lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; align-items: center; justify-content: center; }
+#lightbox img { max-width: 90%; max-height: 80%; }
+
+@media (max-width: 600px) { h1 { font-size: 2.5rem; letter-spacing: 4px; } .desc { font-size: 0.95rem; } }
