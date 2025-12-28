@@ -21,8 +21,9 @@
 [data-theme="dark"] { --bg: #12100e; --txt: #fdfaf7; --acc: #8e7d6d; --card: #1c1a17; --overlay: rgba(0,0,0,0.6); }
 [data-theme="light"] { --bg: #fdfaf7; --txt: #4a3f35; --acc: #cab8a6; --card: #ffffff; --overlay: rgba(0,0,0,0.3); }
 
-::selection { background-color: var(--acc); color: var(--txt); }
-::-moz-selection { background-color: var(--acc); color: var(--txt); }
+/* Style du surlignage */
+::selection { background-color: var(--acc); color: #ffffff; }
+::-moz-selection { background-color: var(--acc); color: #ffffff; }
 
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-5px); } 100% { transform: translateY(0px); } }
@@ -60,7 +61,31 @@ body {
     .links-grid { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
 }
 
-h1 { font-size: 2.5rem; text-transform: uppercase; letter-spacing: 3px; margin: 0; animation: float 4s ease-in-out infinite; }
+/* --- TITRE H1 RÉACTIF --- */
+h1 { 
+    font-size: 4rem; 
+    text-transform: uppercase; 
+    letter-spacing: 8px; 
+    margin: 0; 
+    animation: float 4s ease-in-out infinite; 
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.5); 
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+h1:hover {
+    transform: scale(1.05);
+    letter-spacing: 12px;
+}
+
+@media (max-width: 600px) {
+    h1 { 
+        font-size: 2.8rem; 
+        letter-spacing: 4px; 
+    }
+}
+/* ------------------------ */
+
 .desc { font-style: italic; margin: 15px 0; line-height: 1.5; opacity: 0.9; }
 h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-bottom: 1px solid var(--acc); display: inline-block; padding-bottom: 5px; }
 
@@ -89,7 +114,6 @@ h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-b
 .map-wrapper { width: 100%; border-radius: 15px; overflow: hidden; border: 1px solid var(--acc); margin-top: 15px; line-height: 0; }
 iframe { width: 100%; height: 300px; border: 0; }
 
-/* --- STYLE DES CADRES MENTIONS --- */
 .legal-card-static {
     background: var(--card); 
     border: 1px solid var(--acc); 
