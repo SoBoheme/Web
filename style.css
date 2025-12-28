@@ -42,7 +42,7 @@ body {
     border-radius: 50%; width: 44px; height: 44px; cursor: pointer;
     display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px);
 }
-#theme-btn svg { width: 22px; height: 22px; fill: white; }
+#theme-btn svg { width: 22px; height: 22px; fill: var(--txt); } /* Icône adaptée à la couleur du texte */
 
 #lightbox { display: none; position: fixed; z-index: 10000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; backdrop-filter: blur(5px); }
 #lightbox img { max-width: 90%; max-height: 80%; border-radius: 8px; }
@@ -51,7 +51,8 @@ body {
     width: 100%; height: 350px; 
     background: linear-gradient(to bottom, var(--overlay) 0%, var(--bg) 100%), url('photo1.jpg'); 
     background-size: cover; background-position: center;
-    display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;
+    display: flex; flex-direction: column; justify-content: center; align-items: center; 
+    color: var(--txt); /* Changement pour utiliser le marron du thème */
 }
 
 .container { padding: 20px; width: 100%; max-width: 550px; box-sizing: border-box; animation: fadeInUp 1s ease-out; }
@@ -68,19 +69,20 @@ h1 {
     letter-spacing: 8px; 
     margin: 0; 
     animation: float 4s ease-in-out infinite; 
-    text-shadow: 2px 2px 15px rgba(0,0,0,0.5); 
+    text-shadow: 1px 1px 10px rgba(255,255,255,0.8); /* Ombre claire pour détacher du fond sombre de l'image */
     transition: all 0.3s ease;
     cursor: default;
     display: inline-block;
     border-bottom: 3px solid var(--acc);
     padding-bottom: 5px;
     margin-bottom: 15px;
+    color: var(--txt);
 }
 
 h1:hover {
     transform: scale(1.05);
     letter-spacing: 12px;
-    border-bottom-color: white;
+    border-bottom-color: var(--txt);
 }
 
 /* --- DESCRIPTION RÉACTIVE --- */
@@ -88,17 +90,16 @@ h1:hover {
     font-style: italic; 
     margin: 10px 0 0; 
     line-height: 1.6; 
-    opacity: 0.9; 
+    opacity: 1; 
     font-size: 1.1rem;
-    color: white;
-    text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+    color: var(--txt); /* Marron pour la lisibilité */
+    text-shadow: 1px 1px 5px rgba(255,255,255,0.5);
     transition: all 0.3s ease;
     cursor: pointer;
 }
 .desc:hover { 
     transform: translateY(-3px);
     color: var(--acc); 
-    opacity: 1;
 }
 
 @media (max-width: 600px) {
