@@ -61,7 +61,7 @@ body {
     .links-grid { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
 }
 
-/* --- TITRE H1 RÉACTIF --- */
+/* --- TITRE H1 RÉACTIF AVEC SOULIGNAGE --- */
 h1 { 
     font-size: 4rem; 
     text-transform: uppercase; 
@@ -71,20 +71,26 @@ h1 {
     text-shadow: 2px 2px 15px rgba(0,0,0,0.5); 
     transition: all 0.3s ease;
     cursor: default;
+    /* Ajout du soulignage */
+    text-decoration: underline;
+    text-underline-offset: 10px; /* Espace entre le texte et le trait */
+    text-decoration-thickness: 2px; /* Épaisseur du trait */
 }
 
 h1:hover {
     transform: scale(1.05);
     letter-spacing: 12px;
+    text-decoration-color: var(--acc); /* Le trait change de couleur au survol */
 }
 
 @media (max-width: 600px) {
     h1 { 
         font-size: 2.8rem; 
         letter-spacing: 4px; 
+        text-underline-offset: 6px;
     }
 }
-/* ------------------------ */
+/* ---------------------------------------- */
 
 .desc { font-style: italic; margin: 15px 0; line-height: 1.5; opacity: 0.9; }
 h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-bottom: 1px solid var(--acc); display: inline-block; padding-bottom: 5px; }
