@@ -1,4 +1,4 @@
-/* --- TITRE H1 (Retour de l'animation de flottement) --- */
+/* --- ANIMATION DU TITRE (Flottement doux) --- */
 h1 { 
     font-size: 4rem; 
     text-transform: uppercase; 
@@ -15,7 +15,12 @@ h1 {
     color: white;
 }
 
-/* --- DESCRIPTION (Vague par lettre) --- */
+@keyframes float { 
+    0%, 100% { transform: translateY(0px); } 
+    50% { transform: translateY(-10px); } 
+}
+
+/* --- ANIMATION DE LA VAGUE (Pour la description) --- */
 .desc { 
     font-style: italic; 
     margin: 10px 0 0; 
@@ -28,30 +33,19 @@ h1 {
     display: block;
 }
 
-/* Style pour chaque lettre animée */
+/* C'est ce style qui permet aux lettres de bouger séparément */
 .letter {
     display: inline-block;
+    white-space: pre; /* Garde les espaces entre les mots */
     transition: transform 0.3s ease;
 }
 
-/* Animation de la vague au clic */
+/* Déclenchement de la vague sur chaque lettre quand la classe est active */
 .wave-active .letter {
-    animation: letterWave 1s ease-in-out;
+    animation: letterWave 0.8s ease-in-out;
 }
 
 @keyframes letterWave {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-}
-
-@keyframes float { 
-    0% { transform: translateY(0px); } 
-    50% { transform: translateY(-10px); } 
-    100% { transform: translateY(0px); } 
-}
-
-/* Adaptation Mobile */
-@media (max-width: 600px) {
-    h1 { font-size: 2.5rem; letter-spacing: 4px; }
-    .desc { font-size: 0.95rem; }
+    50% { transform: translateY(-15px); } /* Hauteur de la vague */
 }
