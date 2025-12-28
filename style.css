@@ -48,7 +48,7 @@ body {
 #lightbox img { max-width: 90%; max-height: 80%; border-radius: 8px; }
 
 .hero { 
-    width: 100%; height: 280px; 
+    width: 100%; height: 320px; 
     background: linear-gradient(to bottom, var(--overlay) 0%, var(--bg) 100%), url('photo1.jpg'); 
     background-size: cover; background-position: center;
     display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;
@@ -72,21 +72,32 @@ h1 {
     transition: all 0.3s ease;
     cursor: default;
 }
+h1:hover { transform: scale(1.05); letter-spacing: 12px; }
 
-h1:hover {
-    transform: scale(1.05);
-    letter-spacing: 12px;
+/* --- DESCRIPTION RÉACTIVE --- */
+.desc { 
+    font-style: italic; 
+    margin: 10px 0 0; 
+    line-height: 1.6; 
+    opacity: 0.9; 
+    font-size: 1.1rem;
+    color: white;
+    text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    max-width: 80%;
+}
+.desc:hover { 
+    transform: translateY(-3px);
+    color: var(--acc); 
+    opacity: 1;
 }
 
 @media (max-width: 600px) {
-    h1 { 
-        font-size: 2.8rem; 
-        letter-spacing: 4px; 
-    }
+    h1 { font-size: 2.8rem; letter-spacing: 4px; }
+    .desc { font-size: 0.95rem; }
 }
-/* ------------------------ */
 
-.desc { font-style: italic; margin: 15px 0; line-height: 1.5; opacity: 0.9; }
 h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-bottom: 1px solid var(--acc); display: inline-block; padding-bottom: 5px; }
 
 .main-video { width: 100%; border-radius: 15px; overflow: hidden; border: 1px solid var(--acc); background: #000; margin-bottom: 25px; line-height: 0; }
