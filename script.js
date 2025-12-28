@@ -22,11 +22,13 @@ function toggleTheme() {
 }
 
 /**
- * Affiche/Masque les mentions légales
+ * Affiche/Masque les mentions légales (si utilisé)
  */
 function toggleLegal() {
     const box = document.getElementById('legal-box');
-    box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+    if (box) {
+        box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+    }
 }
 
 /**
