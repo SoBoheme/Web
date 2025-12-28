@@ -71,23 +71,26 @@ h1 {
     text-shadow: 2px 2px 15px rgba(0,0,0,0.5); 
     transition: all 0.3s ease;
     cursor: default;
-    /* Ajout du soulignage */
+    
+    /* Style du soulignage */
     text-decoration: underline;
-    text-underline-offset: 10px; /* Espace entre le texte et le trait */
-    text-decoration-thickness: 2px; /* Épaisseur du trait */
+    text-underline-offset: 12px;
+    text-decoration-thickness: 3px; 
+    text-decoration-color: var(--acc); /* Couleur d'accentuation par défaut */
 }
 
 h1:hover {
     transform: scale(1.05);
     letter-spacing: 12px;
-    text-decoration-color: var(--acc); /* Le trait change de couleur au survol */
+    text-decoration-color: #ffffff; /* Devient blanc au survol pour ressortir */
 }
 
 @media (max-width: 600px) {
     h1 { 
         font-size: 2.8rem; 
         letter-spacing: 4px; 
-        text-underline-offset: 6px;
+        text-underline-offset: 8px;
+        text-decoration-thickness: 2.5px;
     }
 }
 /* ---------------------------------------- */
