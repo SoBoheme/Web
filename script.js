@@ -7,7 +7,8 @@ const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></pa
 function updateIcon() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
                    (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    document.getElementById('theme-icon').innerHTML = isDark ? moonPath : sunPath;
+    const icon = document.getElementById('theme-icon');
+    if (icon) icon.innerHTML = isDark ? moonPath : sunPath;
 }
 
 /**
@@ -26,7 +27,7 @@ function toggleTheme() {
  */
 function toggleLegal() {
     const box = document.getElementById('legal-box');
-    box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+    if (box) box.style.display = (box.style.display === 'block') ? 'none' : 'block';
 }
 
 /**
@@ -53,6 +54,30 @@ function downloadVCard() {
     a.click();
 }
 
-// Initialisation
+/**
+ * Initialisation de l'effet de vague sur la description
+ */
+const waveText = document.querySelector('.desc');
+if (waveText) {
+    const content = waveText.innerText;
+    // On découpe le texte en lettres isolées pour pouvoir les animer
+    waveText.innerHTML = content.split('').map((letter, index) => {
+        return letter === ' ' ? ' ' : `<span class="letter" style="animation-delay: ${index * 0.05}s">${letter}</span>`;
+    }).join('');
+
+    // Déclenchement de l'animation au clic
+    waveText.addEventListener('click', () => {
+        waveText.classList.remove('wave-active');
+        void waveText.offsetWidth; // "Re-flow" pour relancer l'animation
+        waveText.classList.add('wave-active');
+        
+        // On retire la classe après 2 secondes pour pouvoir recliquer
+        setTimeout(() => {
+            waveText.classList.remove('wave-active');
+        }, 2000);
+    });
+}
+
+// Initialisation au chargement
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateIcon);
-updateIcon();
+document.addEventListener('DOMContentLoaded', updateIcon);
