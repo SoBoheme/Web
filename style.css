@@ -48,7 +48,7 @@ body {
 #lightbox img { max-width: 90%; max-height: 80%; border-radius: 8px; }
 
 .hero { 
-    width: 100%; height: 320px; 
+    width: 100%; height: 350px; 
     background: linear-gradient(to bottom, var(--overlay) 0%, var(--bg) 100%), url('photo1.jpg'); 
     background-size: cover; background-position: center;
     display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;
@@ -61,7 +61,7 @@ body {
     .links-grid { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; }
 }
 
-/* --- TITRE H1 RÉACTIF --- */
+/* --- TITRE H1 SOULIGNÉ --- */
 h1 { 
     font-size: 4rem; 
     text-transform: uppercase; 
@@ -71,8 +71,17 @@ h1 {
     text-shadow: 2px 2px 15px rgba(0,0,0,0.5); 
     transition: all 0.3s ease;
     cursor: default;
+    display: inline-block;
+    border-bottom: 3px solid var(--acc);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
 }
-h1:hover { transform: scale(1.05); letter-spacing: 12px; }
+
+h1:hover {
+    transform: scale(1.05);
+    letter-spacing: 12px;
+    border-bottom-color: white;
+}
 
 /* --- DESCRIPTION RÉACTIVE --- */
 .desc { 
@@ -85,7 +94,6 @@ h1:hover { transform: scale(1.05); letter-spacing: 12px; }
     text-shadow: 1px 1px 8px rgba(0,0,0,0.5);
     transition: all 0.3s ease;
     cursor: pointer;
-    max-width: 80%;
 }
 .desc:hover { 
     transform: translateY(-3px);
@@ -94,8 +102,12 @@ h1:hover { transform: scale(1.05); letter-spacing: 12px; }
 }
 
 @media (max-width: 600px) {
-    h1 { font-size: 2.8rem; letter-spacing: 4px; }
-    .desc { font-size: 0.95rem; }
+    h1 { 
+        font-size: 2.5rem; 
+        letter-spacing: 4px; 
+        border-bottom-width: 2px;
+    }
+    .desc { font-size: 0.95rem; max-width: 90%; }
 }
 
 h2 { font-size: 1.3rem; margin: 35px 0 15px; text-transform: uppercase; border-bottom: 1px solid var(--acc); display: inline-block; padding-bottom: 5px; }
