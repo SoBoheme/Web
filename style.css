@@ -21,7 +21,7 @@
 [data-theme="dark"] { --bg: #12100e; --txt: #fdfaf7; --acc: #8e7d6d; --card: #1c1a17; --overlay: rgba(0,0,0,0.6); }
 [data-theme="light"] { --bg: #fdfaf7; --txt: #4a3f35; --acc: #cab8a6; --card: #ffffff; --overlay: rgba(0,0,0,0.3); }
 
-/* Style du surlignage */
+/* Style surlignage */
 ::selection { background-color: var(--acc); color: #ffffff; }
 ::-moz-selection { background-color: var(--acc); color: #ffffff; }
 
@@ -166,4 +166,5 @@ footer { padding: 40px 20px; font-size: 0.8rem; opacity: 0.4; }
 
 .map-wrapper iframe {
     transition: filter 0.4s ease;
+
 }
