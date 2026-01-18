@@ -43,7 +43,7 @@ L'ensemble du contenu (structure, textes, logos, photos et vidéos) est la propr
 
 ## 🚀 Crédits
 
-* **Développement** : [Noham BOULAHDID](https://sanobld.github.io/Web/)
+* **Développement** : [Sano Bld](https://sanobld.github.io/Web/)
 
 ---
 
