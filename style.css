@@ -168,3 +168,86 @@ footer { padding: 40px 20px; font-size: 0.8rem; opacity: 0.4; }
     transition: filter 0.4s ease;
 
 }
+
+/* --- SECTION HORAIRES --- */
+.schedule {
+    margin-top: 25px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.day-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px; /* Plus d'espace pour la respiration */
+    border-bottom: 1px solid rgba(202, 184, 166, 0.2);
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.day-row:last-child {
+    border-bottom: none;
+}
+
+/* Nom du jour */
+.day-name {
+    font-weight: 600;
+    color: var(--acc);
+    text-align: left;
+    flex: 1;
+}
+
+/* Horaires */
+.day-hours {
+    text-align: right;
+    flex: 2;
+    font-variant-numeric: tabular-nums; /* Alignement parfait des chiffres */
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+/* --- INDICATEUR JOUR ACTUEL --- */
+.day-row.is-today {
+    background: rgba(202, 184, 166, 0.05); /* Légère mise en avant du fond */
+    border-radius: 8px;
+}
+
+.day-row.is-today::before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    width: 8px;
+    height: 8px;
+    background-color: var(--acc);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--acc);
+    animation: pulsePoint 2s infinite;
+}
+
+.day-row.is-today .day-name {
+    color: var(--txt);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
+/* Animation du point */
+@keyframes pulsePoint {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.5); opacity: 0.6; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Style pour le dimanche ou jours fermés */
+.highlight-closed {
+    opacity: 0.5;
+    font-style: italic;
+}
+
+/* Adaptation mobile pour éviter que le point ne sorte de l'écran */
+@media (max-width: 500px) {
+    .day-row.is-today::before {
+        left: -12px;
+    }
+}

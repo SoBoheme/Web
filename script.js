@@ -56,3 +56,17 @@ function downloadVCard() {
 // Initialisation
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateIcon);
 updateIcon();
+
+/**
+ * Marque le jour actuel dans le tableau des horaires
+ */
+function markCurrentDay() {
+    const today = new Date().getDay(); // Retourne 0 pour Dimanche, 1 pour Lundi, etc.
+    const activeRow = document.getElementById(`day-${today}`);
+    if (activeRow) {
+        activeRow.classList.add('is-today');
+    }
+}
+
+// Appeler la fonction au chargement
+window.addEventListener('DOMContentLoaded', markCurrentDay);
