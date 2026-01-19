@@ -507,9 +507,81 @@ footer {
 }
 
 
-/* --- NOUVELLE BARRE DE NAVIGATION --- */
+/* --- BARRE DE NAVIGATION OPTIMISÉE --- */
 .nav-container {
     position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 95%; /* Prend presque toute la largeur sur mobile */
+    max-width: fit-content; /* S'adapte au contenu sur grand écran */
+    justify-content: center;
+}
+
+.pill-nav {
+    background: var(--nav-bg); 
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--nav-border);
+    padding: 5px;
+    border-radius: 50px;
+    display: flex;
+    gap: 2px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: background 0.4s, border-color 0.4s;
+    overflow-x: auto; /* Permet le défilement horizontal si l'écran est minuscule */
+    scrollbar-width: none; /* Cache la barre de scroll (Firefox) */
+}
+
+.pill-nav::-webkit-scrollbar {
+    display: none; /* Cache la barre de scroll (Chrome/Safari) */
+}
+
+.pill-nav a {
+    text-decoration: none;
+    color: var(--nav-text);
+    padding: 8px 12px;
+    border-radius: 25px;
+    font-size: 0.8rem; /* Taille de base adaptée */
+    font-weight: bold;
+    transition: 0.3s;
+    white-space: nowrap; /* Empêche le texte de revenir à la ligne */
+}
+
+.pill-nav a:hover {
+    background: var(--acc);
+    color: white;
+}
+
+/* Ajustements spécifiques pour mobiles étroits */
+@media (max-width: 400px) {
+    .pill-nav a {
+        padding: 6px 8px;
+        font-size: 0.7rem;
+    }
+    
+    .nav-container {
+        top: 10px;
+    }
+}
+
+/* Ajustements pour écrans larges */
+@media (min-width: 800px) {
+    .pill-nav a {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    .pill-nav {
+        gap: 8px;
+    }
+}
+
+/* --- NAVIGATION INTELLIGENTE FLUIDE --- */
+.nav-container {
+    position: fixed; /* Toujours fixe pour éviter le saut de layout */
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -517,40 +589,29 @@ footer {
     display: flex;
     align-items: center;
     gap: 10px;
-    width: auto;
-    max-width: 95%;
+    width: 95%;
+    max-width: fit-content;
+    transition: 
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        opacity 0.4s ease, 
+        top 0.5s ease;
+    will-change: transform, opacity; /* Optimisation performance */
 }
 
-.pill-nav {
-    background: var(--nav-bg); 
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--nav-border); /* Bordure variable */
-    padding: 5px;
-    border-radius: 50px;
-    display: flex;
-    gap: 5px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: background 0.4s, border-color 0.4s;
+/* État : On descend (la barre s'efface doucement vers le haut) */
+.nav-container.hidden {
+    transform: translate(-50%, -120%);
+    opacity: 0;
 }
 
-.pill-nav a {
-    text-decoration: none;
-    color: var(--nav-text); /* Le texte change dynamiquement */
-    padding: 8px 15px;
-    border-radius: 25px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    transition: 0.3s;
-}
-.pill-nav a:hover {
-    background: var(--acc);
-    color: white;
+/* État : On remonte ou on est en haut (la barre est visible) */
+.nav-container.visible {
+    transform: translate(-50%, 0);
+    opacity: 1;
 }
 
-
-@media (max-width: 500px) {
-    .pill-nav a {
-        padding: 6px 10px;
-        font-size: 0.75rem;
-    }
+/* Optionnel : Ajuster la pilule quand elle est détachée */
+.nav-container.detached .pill-nav {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-color: var(--acc);
 }

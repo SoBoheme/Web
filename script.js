@@ -70,3 +70,45 @@ function markCurrentDay() {
 
 // Appeler la fonction au chargement
 window.addEventListener('DOMContentLoaded', markCurrentDay);
+
+let lastScrollY = window.scrollY;
+let isNavVisible = true;
+
+function handleSmartNav() {
+    const nav = document.querySelector('.nav-container');
+    const currentScrollY = window.scrollY;
+
+    // 1. Gestion du détachement (style de la pilule)
+    if (currentScrollY > 20) {
+        nav.classList.add('detached');
+    } else {
+        nav.classList.remove('detached');
+    }
+
+    // 2. Gestion de la visibilité (Cache au scroll bas, montre au scroll haut)
+    if (currentScrollY <= 50) {
+        // Toujours visible tout en haut
+        nav.classList.remove('hidden');
+        nav.classList.add('visible');
+    } 
+    else if (currentScrollY > lastScrollY && currentScrollY > 150) {
+        // On descend : on cache
+        nav.classList.remove('visible');
+        nav.classList.add('hidden');
+    } 
+    else if (currentScrollY < lastScrollY) {
+        // On remonte : on montre
+        nav.classList.remove('hidden');
+        nav.classList.add('visible');
+    }
+
+    lastScrollY = currentScrollY;
+}
+
+// Utilisation d'un throttle léger pour la fluidité
+window.addEventListener('scroll', () => {
+    window.requestAnimationFrame(handleSmartNav);
+});
+
+// Init au chargement
+window.addEventListener('DOMContentLoaded', handleSmartNav);
