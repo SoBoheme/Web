@@ -12,8 +12,17 @@
     
     <script defer src="https://cloud.umami.is/script.js" data-website-id="b15c0f27-dac1-4c95-8fd6-ea56c27eb049"></script>
     <meta name="google-site-verification" content="hI20K7t6AEgA0LttGf3nZ2HNfAhfEIwBBQHkCGrkGzQ" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 </head>
 <body>
+    <div class="custom-cursor"></div>
+    
+    <div id="final-countdown-overlay" class="final-overlay">
+        <div id="final-number"></div>
+    </div>
 
     <nav class="nav-container">
         <div class="pill-nav">
@@ -35,39 +44,93 @@
     </div>
 
     <div class="container">
-        <p class="desc">Boutique femme & accessoires.<br>✨ Mode Bohème & pièces uniques, relooking personnalisé ✨</p>
+        <p class="desc reveal">Boutique femme & accessoires.<br>✨ Mode Bohème & pièces uniques, relooking personnalisé ✨</p>
         
-        <h2>La Boutique en mouvement</h2>
-        <div class="main-video">
-            <video src="images/presentation.mp4" autoplay muted loop playsinline poster="images/photo1.jpg"></video>
+        <div id="promo-countdown" class="countdown-box" style="display:none;">
+            <p class="countdown-title">Ouverture de la collection dans :</p>
+            <div class="timer-display">
+                <div class="time-unit">
+                    <div class="digit-pair">
+                        <div class="digit-wrapper"><span id="d1">0</span></div>
+                        <div class="digit-wrapper"><span id="d2">0</span></div>
+                    </div>
+                    <small>Jours</small>
+                </div>
+                <div class="sep">:</div>
+                <div class="time-unit">
+                    <div class="digit-pair">
+                        <div class="digit-wrapper"><span id="h1">0</span></div>
+                        <div class="digit-wrapper"><span id="h2">0</span></div>
+                    </div>
+                    <small>Heures</small>
+                </div>
+                <div class="sep">:</div>
+                <div class="time-unit">
+                    <div class="digit-pair">
+                        <div class="digit-wrapper"><span id="m1">0</span></div>
+                        <div class="digit-wrapper"><span id="m2">0</span></div>
+                    </div>
+                    <small>Min</small>
+                </div>
+                <div class="sep">:</div>
+                <div class="time-unit">
+                    <div class="digit-pair">
+                        <div class="digit-wrapper"><span id="s1">0</span></div>
+                        <div class="digit-wrapper"><span id="s2">0</span></div>
+                    </div>
+                    <small>Sec</small>
+                </div>
+            </div>
         </div>
 
-        <h2 id="univers">L'univers SO'BÔHÈME</h2>
-    </div>
+        <div class="showcase-grid reveal" id="univers">
+            
+            <div class="showcase-column">
+                <h2>La Boutique en mouvement</h2>
+                
+                <div class="media-unified video-container skeleton">
+                    <video id="hero-video" src="images/presentation.mp4" playsinline autoplay muted loop poster="images/photo1.jpg"></video>
+                </div>
 
-    <div class="slider-container">
-        <div class="slider-track">
-            <div class="slide" onclick="openFull(this)"><img src="images/photo1.jpg" loading="lazy"></div>
-            <div class="slide" onclick="openFull(this)"><img src="images/photo2.jpg" loading="lazy"></div>
-            <div class="slide" onclick="openFull(this)"><img src="images/photo3.jpg" loading="lazy"></div>
-            <div class="slide" onclick="openFull(this)"><img src="images/photo4.jpg" loading="lazy"></div>
-            <div class="slide" onclick="openFull(this)"><img src="images/photo5.jpg" loading="lazy"></div>
-            <div class="slide" onclick="openFull(this)"><img src="images/photo1.jpg" loading="lazy"></div>
-            <div class="slide" onclick="openFull(this)"><img src="images/photo2.jpg" loading="lazy"></div>
-            <div class="slide" onclick="openFull(this)"><img src="images/photo3.jpg" loading="lazy"></div>
-        </div>
+                <div class="progress-track-container">
+                    <div class="progress-bar" id="video-progress"></div>
+                </div>
+            </div>
+
+            <div class="showcase-column">
+                <h2>L'univers SO'BÔHÈME</h2>
+                <div class="media-unified slider-container-fade">
+                    <button class="slider-arrow prev" onclick="moveSlide(-1)">❮</button>
+                    <button class="slider-arrow next" onclick="moveSlide(1)">❯</button>
+                    
+                    <img src="images/photo1.jpg" class="fade-slide active viewable">
+                    <img src="images/photo2.jpg" class="fade-slide viewable">
+                    <img src="images/photo3.jpg" class="fade-slide viewable">
+                    <img src="images/photo4.jpg" class="fade-slide viewable">
+                    <img src="images/photo5.jpg" class="fade-slide viewable">
+                    <img src="images/photo6.jpg" class="fade-slide viewable">
+                </div>
+                
+                <div class="slider-nav" id="sliderNav"></div>
+            </div>
+
+        </div> 
+    </div> 
+
+    <div id="imagePreview" class="modal" onclick="this.style.display='none'">
+        <img class="modal-content" id="fullImg">
     </div>
 
     <div class="container">
         <h2 id="reseaux">Réseaux</h2>
-        <div class="links-grid">
+        <div class="links-grid reveal">
             <a href="https://instagram.com/boutique_so_boheme" class="link-card" target="_blank">Instagram 📸<span>Looks Inspi & Nouveautés</span></a>
             <a href="https://tiktok.com/@boutique_so.boheme" class="link-card" target="_blank">TikTok 🎬<span>Le style Bohème s'anime</span></a>
             <a href="https://www.facebook.com/profile.php?id=61584699270783" class="link-card" target="_blank">Facebook 📰<span>Toute l'actu de la boutique</span></a>
         </div>
 
         <h2 id="contact">Contact</h2>
-        <div class="links-grid">
+        <div class="links-grid reveal">
             <div class="link-card" style="cursor:pointer" onclick="downloadVCard()">
                 Enregistrer le contact 👤 
                 <span>Ajouter So Bohème à votre répertoire</span>
@@ -78,63 +141,81 @@
                 <span>boutique.soboheme@gmail.com</span>
             </a>
 
-            <a href="tel:+33389000000" class="link-card">
+            <a href="tel:+33956918541" class="link-card">
                 Téléphone 📞 
-                <span>Affichage prochainement</span>
+                <span>09 56 91 85 41</span>
             </a>
         </div>
 
         <h2 id="infos">Information</h2>
-        <div class="info-box">
-            <strong>Heures d'ouverture</strong>
-            <div class="schedule">
-                <div class="day-row" id="day-1">
-                    <span class="day-name">Lundi</span>
-                    <span class="day-hours">Fermé / 14h00 - 19h00</span>
+        <div class="reveal">
+            <div class="info-grid">
+                
+                <div class="info-box">
+                    <strong>Heures d'ouverture</strong>
+                    <div class="schedule">
+                        <div class="day-row" id="day-1">
+                            <span class="day-name">Lundi</span>
+                            <span class="day-hours">Fermé / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-2">
+                            <span class="day-name">Mardi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-3">
+                            <span class="day-name">Mercredi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-4">
+                            <span class="day-name">Jeudi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-5">
+                            <span class="day-name">Vendredi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-6">
+                            <span class="day-name">Samedi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 18h00</span>
+                        </div>
+                        <div class="day-row highlight-closed" id="day-0">
+                            <span class="day-name">Dimanche</span>
+                            <span class="day-hours">Fermé</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="day-row" id="day-2">
-                    <span class="day-name">Mardi</span>
-                    <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+
+                <div class="info-box content-centered">
+                    <strong>Le saviez-vous ?</strong>
+                    <div class="info-content">
+                        <p>Plus d'infos ici bientôt... Restez connectés !</p>
+                        <br>
+                        <p>✨✨✨</p>
+                    </div>
                 </div>
-                <div class="day-row" id="day-3">
-                    <span class="day-name">Mercredi</span>
-                    <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                </div>
-                <div class="day-row" id="day-4">
-                    <span class="day-name">Jeudi</span>
-                    <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                </div>
-                <div class="day-row" id="day-5">
-                    <span class="day-name">Vendredi</span>
-                    <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                </div>
-                <div class="day-row" id="day-6">
-                    <span class="day-name">Samedi</span>
-                    <span class="day-hours">09h00 - 12h00 / 14h00 - 18h00</span>
-                </div>
-                <div class="day-row highlight-closed" id="day-0">
-                    <span class="day-name">Dimanche</span>
-                    <span class="day-hours">Fermé</span>
-                </div>
+
+            </div>
+
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.5300663212092!2d7.206812574984141!3d47.9067802672026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47917ee98bafe583%3A0xa96492442e69a658!2zU08nQsOUSMOITUU!5e0!3m2!1sfr!2sfr!4v1769370691475!5m2!1sfr!2sfr"
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
+
+        <div class="legal-notice-wrapper" style="margin-top: 30px;">
+            <a href="legalnotice.html" class="link-card">
+                Informations Légales & CGV 
+                <span>Éditeur, Hébergement & Conditions de vente</span>
+            </a>
+        </div>
+    </div>
         
-        <div class="map-wrapper">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2681.4243681427187!2d7.2111111!3d47.9077778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47919965077227d3%3A0x6733221975e11f12!2s56%20Rue%20de%20la%20R%C3%A9publique%2C%2068500%20Guebwiller!5e0!3m2!1sfr!2sfr!4v1700000000000"
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-
-        <div style="margin-top: 30px;">
-            <a href="legalnotice.html" class="link-card">Informations Légales & CGV <span>Éditeur, Hébergement & Conditions de vente</span></a>
-        </div>
-    </div> 
-
     <footer><p>© SOLANGE BOHEME</p></footer>
 
     <script src="script.js"></script>

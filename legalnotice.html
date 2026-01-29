@@ -7,12 +7,33 @@
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <script defer src="https://cloud.umami.is/script.js" data-website-id="b15c0f27-dac1-4c95-8fd6-ea56c27eb049"></script>
+    <style>
+        /* Styles spécifiques pour les liens et titres de cette page */
+        .legal-link {
+            color: var(--acc);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .legal-link:hover {
+            text-decoration: underline;
+            opacity: 0.8;
+        }
+        .legal-title {
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            margin-bottom: 15px;
+            border: none;
+            padding: 0;
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
 </head>
 <body>
 
     <nav class="nav-container">
         <div class="pill-nav">
-            <a href="/Web/">Boutique</a>
+            <a href="index.html">Boutique</a>
         </div>
         <button id="theme-btn" onclick="toggleTheme()">
             <svg id="theme-icon" viewBox="0 0 24 24"></svg>
@@ -25,71 +46,75 @@
 
     <div class="container">
         
-        <div class="legal-card-static">
-            <h3>1. Éditeur & Hébergement</h3>
-            <p>
-                <strong>Dénomination sociale :</strong> <span class="owner-name">SOLANGE BOHEME (Nom commercial : SO'BÔHÈME)</span><br>
-                <strong>Responsable :</strong> <span class="owner-name">Solange BOULAHDID</span><br>
-                <strong>Siège social :</strong> 56 rue de la République, 68500 Guebwiller<br>
-                <strong>E-mail :</strong> <a href="mailto:boutique.soboheme@gmail.com" class="legal-link">boutique.soboheme@gmail.com</a><br>
-                <strong>SIRET :</strong> 999 536 295 00010
-            </p>
-            
-            <p style="margin-top: 15px;">
-                <strong>Hébergement :</strong> Site hébergé par <span class="owner-name">GitHub Inc.</span>, 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA.<br>
-                <strong>Site Web : </strong> <a href="https://www.github.com" target="_blank" class="legal-link">www.github.com</a>
-            </p>
-            
-            <p style="margin-top: 15px;">
-                <strong>Développement :</strong> Site réalisé par <a href="https://sanobld.github.io/Web/" target="_blank" class="legal-link">Sano Bld</a>.
-            </p>
+        <div class="info-box active" style="text-align: left; display: block; padding: 25px; margin-bottom: 20px;">
+            <h3 class="legal-title">1. Éditeur & Hébergement</h3>
+            <div class="info-content" style="display: block;">
+                <p>
+                    <b style="font-weight: 700;">Dénomination sociale :</b> <span class="owner-name">SOLANGE BOHEME (Nom commercial : SO'BÔHÈME)</span><br>
+                    <b style="font-weight: 700;">Responsable :</b> <span class="owner-name">Solange BOULAHDID</span><br>
+                    <b style="font-weight: 700;">Siège social :</b> 56 rue de la République, 68500 Guebwiller<br>
+                    <b style="font-weight: 700;">E-mail :</b> <a href="mailto:boutique.soboheme@gmail.com" class="legal-link">boutique.soboheme@gmail.com</a><br>
+                    <b style="font-weight: 700;">SIRET :</b> 999 536 295 00010
+                </p>
+                
+                <p style="margin-top: 15px;">
+                    <b style="font-weight: 700;">Hébergement :</b> Site hébergé par <span class="owner-name">GitHub Inc.</span>, 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA.<br>
+                    <b style="font-weight: 700;">Site Web : </b> <a href="https://www.github.com" target="_blank" class="legal-link">www.github.com</a>
+                </p>
+                
+                <p style="margin-top: 15px;">
+                    <b style="font-weight: 700;">Développement :</b> Site réalisé par <a href="https://sanobld.github.io/Web/" target="_blank" class="legal-link">Sano Bld</a>.
+                </p>
+            </div>
         </div>
 
-        <div class="legal-card-static">
-            <h3>2. Conditions de Vente & Paiement</h3>
-            <p>
-                <strong>Nature du site :</strong> Ce site est une vitrine en ligne. Les achats et transactions s'effectuent exclusivement au point de vente physique situé à Guebwiller. 
-            </p>
-            
-            <p>
-                <strong>Moyens de paiement acceptés :</strong> Cartes bancaires (Visa, Mastercard...), Espèces
-            </p>
-            
-            <p>
-                <strong>Prix :</strong> Les prix affichés en boutique sont indiqués en Euros (€) toutes taxes comprises (TTC). 
-            </p>
+        <div class="info-box active" style="text-align: left; display: block; padding: 25px; margin-bottom: 20px;">
+            <h3 class="legal-title">2. Conditions de Vente & Paiement</h3>
+            <div class="info-content" style="display: block;">
+                <p>
+                    <b style="font-weight: 700;">Nature du site :</b> Ce site est une vitrine en ligne. Les achats et transactions s'effectuent exclusivement au point de vente physique situé à Guebwiller. 
+                </p>
+                <p style="margin-top: 10px;">
+                    <b style="font-weight: 700;">Moyens de paiement acceptés :</b> Cartes bancaires (Visa, Mastercard...), Espèces
+                </p>
+                <p style="margin-top: 10px;">
+                    <b style="font-weight: 700;">Prix :</b> Les prix affichés en boutique sont indiqués en Euros (€) toutes taxes comprises (TTC). 
+                </p>
+            </div>
         </div>
 
-        <div class="legal-card-static">
-            <h3>3. Retraits, Retours & Litiges</h3>
-            <p>
-                <strong>Retrait des commandes :</strong> Aucune expédition n'est assurée par le site. Tous les articles présentés doivent être achetés ou retirés directement en boutique.
-            </p>
-            
-            <p>
-                <strong>Politique de retours :</strong> Les échanges ou remboursements sont soumis aux conditions affichées en caisse au moment de l'achat. Le droit de rétractation légal de 14 jours ne s'applique pas aux achats effectués directement en magasin physique.
-            </p>
-            
-            <p>
-                <strong>Médiation :</strong> En cas de litige, le client peut recourir à une médiation conventionnelle, conformément aux articles L.616-1 et R.616-1 du code de la consommation.
-            </p>
+        <div class="info-box active" style="text-align: left; display: block; padding: 25px; margin-bottom: 20px;">
+            <h3 class="legal-title">3. Retraits, Retours & Litiges</h3>
+            <div class="info-content" style="display: block;">
+                <p>
+                    <b style="font-weight: 700;">Retrait des commandes :</b> Aucune expédition n'est assurée par le site. Tous les articles présentés doivent être achetés ou retirés directement en boutique.
+                </p>
+                <p style="margin-top: 10px;">
+                    <b style="font-weight: 700;">Politique de retours :</b> Les échanges ou remboursements sont soumis aux conditions affichées en caisse au moment de l'achat. Le droit de rétractation légal de 14 jours ne s'applique pas aux achats effectués directement en magasin physique.
+                </p>
+                <p style="margin-top: 10px;">
+                    <b style="font-weight: 700;">Médiation :</b> En cas de litige, le client peut recourir à une médiation conventionnelle, conformément aux articles L.616-1 et R.616-1 du code de la consommation.
+                </p>
+            </div>
         </div>
 
-        <div class="legal-card-static">
-            <h3>4. Propriété Intellectuelle & Données</h3>
-            <p>
-                <strong>Propriété intellectuelle :</strong> L'ensemble de ce site (structure, textes, logos, photographies et vidéos) est la propriété exclusive de <span class="owner-name">SOLANGE BOHEME</span>. Toute reproduction est interdite sans autorisation préalable.
-            </p>
-            
-            <p style="margin-top: 15px;">
-                <strong>Données personnelles (RGPD) :</strong> Ce site respecte votre vie privée. Nous n'utilisons aucun cookie de traçage publicitaire. Les mesures d'audience sont réalisées via <span class="owner-name">Umami</span> de manière anonyme.
-            </p>
+        <div class="info-box active" style="text-align: left; display: block; padding: 25px; margin-bottom: 20px;">
+            <h3 class="legal-title">4. Propriété Intellectuelle & Données</h3>
+            <div class="info-content" style="display: block;">
+                <p>
+                    <b style="font-weight: 700;">Propriété intellectuelle :</b> L'ensemble de ce site (structure, textes, logos, photographies et vidéos) est la propriété exclusive de <span class="owner-name">SOLANGE BOHEME</span>. Toute reproduction est interdite sans autorisation préalable.
+                </p>
+                <p style="margin-top: 15px;">
+                    <b style="font-weight: 700;">Données personnelles (RGPD) :</b> Ce site respecte votre vie privée. Nous n'utilisons aucun cookie de traçage publicitaire. Les mesures d'audience sont réalisées via <span class="owner-name">Umami</span> de manière anonyme.
+                </p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a href="index.html" class="link-card" style="display: inline-block; width: auto; padding: 12px 30px;">⬅ Retour à la boutique</a>
         </div>
 
     </div>
-
-            <a href="/Web/" class="link-card" style="margin-bottom: 30px; text-align: center;">⬅ Retour à la boutique</a>
-
 
     <footer><p>© SOLANGE BOHEME</p></footer>
 
