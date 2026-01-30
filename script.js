@@ -3,7 +3,7 @@
    ========================================================== */
 const sunPath = '<circle cx="12" cy="12" r="6"></circle>';
 const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-const targetDate = new Date("2026-02-07T09:09:00").getTime();
+const targetDate = new Date("2026-02-06T09:00:00").getTime();
 
 let currentSlideIndex = 0;
 let slideInterval;
@@ -331,6 +331,9 @@ function lancerFete() {
 /**
  * Calcule et affiche le temps restant jusqu'à l'événement cible
  */
+/**
+ * Calcule et affiche le temps restant jusqu'à l'événement cible
+ */
 function updateCountdown() {
     const box = document.getElementById('promo-countdown');
     const overlay = document.getElementById('final-countdown-overlay');
@@ -340,20 +343,70 @@ function updateCountdown() {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
-    // Si le temps est écoulé
+    // --- AFFICHAGE INITIAL ---
+    // Si la date est dans le futur, on s'assure que le bloc est visible
+    if (distance > 0) {
+        box.style.display = 'block'; 
+    }
+
+    // --- GESTION DE LA FIN ---
     if (distance <= 0) {
         if (overlay) overlay.style.display = 'none';
+        
+        // On vérifie si on a déjà déclenché l'animation de fin
         if (!box.classList.contains('timer-finish')) {
             box.classList.add('timer-finish');
             lancerFete(); 
+            
+            // Disparition progressive après 5 secondes de célébration
             setTimeout(() => {
+                box.style.transition = "opacity 1s ease";
                 box.style.opacity = "0";
-                setTimeout(() => box.style.display = "none", 1000);
+                setTimeout(() => {
+                    box.style.display = "none";
+                }, 1000);
             }, 5000);
         }
         return;
     }
 
+    // --- GESTION DE L'OVERLAY  ---
+    const secondsTotal = Math.floor(distance / 1000);
+    if (secondsTotal <= 10 && secondsTotal > 0) {
+        if (overlay) {
+            overlay.style.display = 'flex';
+            if (finalNumber && finalNumber.innerText !== secondsTotal.toString()) {
+                finalNumber.innerText = secondsTotal;
+                finalNumber.classList.remove('digit-pop');
+                void finalNumber.offsetWidth; 
+                finalNumber.classList.add('digit-pop');
+            }
+        }
+    } else if (overlay) {
+        overlay.style.display = 'none';
+    }
+
+    // --- CALCUL ET MISE À JOUR DES CHIFFRES ---
+    const vals = {
+        d: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        h: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        m: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        s: Math.floor((distance % (1000 * 60)) / 1000)
+    };
+
+    for (const [unit, value] of Object.entries(vals)) {
+        const strValue = value.toString().padStart(2, '0');
+        for (let i = 0; i < 2; i++) {
+            const element = document.getElementById(unit + (i + 1));
+            if (element && element.innerText !== strValue[i]) {
+                element.innerText = strValue[i];
+                element.classList.remove('slide-digit');
+                void element.offsetWidth; 
+                element.classList.add('slide-digit');
+            }
+        }
+    }
+}
     // Gestion de l'overlay des 10 dernières secondes
     const secondsTotal = Math.floor(distance / 1000);
     if (secondsTotal <= 10 && secondsTotal > 0) {
@@ -391,4 +444,3 @@ function updateCountdown() {
             }
         }
     }
-}
