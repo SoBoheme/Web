@@ -285,8 +285,11 @@ h2 {
 }
 
 @media (min-width: 900px) {
-    .media-unified {
-        height: 500px; /* Hauteur PC identique pour Vidéo et Slider */
+    .showcase-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Aligne le titre en haut et la description en bas */
+        height: 100%; 
     }
 }
 
@@ -468,8 +471,7 @@ h2 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
-    width: 100%;
-    margin-bottom: 20px;
+    align-items: stretch;
 }
 
 @media (min-width: 768px) {
