@@ -84,38 +84,46 @@
         </div>
 
         <div class="showcase-grid reveal" id="univers">
+    <div class="showcase-column">
+        <h2>La Boutique en mouvement</h2>
+        
+        <div class="media-unified video-container skeleton" onclick="toggleVideoControl()">
+            <video id="hero-video" src="images/presentation.mp4" playsinline autoplay muted loop poster="images/photo1.jpg"></video>
+            <div id="video-status-icon"></div>
+        </div>
+
+        <div class="progress-track-container">
+            <div class="progress-bar" id="video-progress"></div>
+        </div>
+        
+        <p class="media-description">
+            Plongez dans l'ambiance de notre boutique à travers cette présentation vidéo. 
+            Découvrez nos nouveaux arrivages et l'agencement soigné de notre espace.
+        </p>
+    </div>
+
+    <div class="showcase-column">
+        <h2>L'univers SO'BÔHÈME</h2>
+        <div class="media-unified slider-container-fade">
+            <button class="slider-arrow prev" onclick="moveSlide(-1)">❮</button>
+            <button class="slider-arrow next" onclick="moveSlide(1)">❯</button>
             
-            <div class="showcase-column">
-                <h2>La Boutique en mouvement</h2>
-                
-                <div class="media-unified video-container skeleton">
-                    <video id="hero-video" src="images/presentation.mp4" playsinline autoplay muted loop poster="images/photo1.jpg"></video>
-                </div>
-
-                <div class="progress-track-container">
-                    <div class="progress-bar" id="video-progress"></div>
-                </div>
-            </div>
-
-            <div class="showcase-column">
-                <h2>L'univers SO'BÔHÈME</h2>
-                <div class="media-unified slider-container-fade">
-                    <button class="slider-arrow prev" onclick="moveSlide(-1)">❮</button>
-                    <button class="slider-arrow next" onclick="moveSlide(1)">❯</button>
-                    
-                    <img src="images/photo1.jpg" class="fade-slide active viewable">
-                    <img src="images/photo2.jpg" class="fade-slide viewable">
-                    <img src="images/photo3.jpg" class="fade-slide viewable">
-                    <img src="images/photo4.jpg" class="fade-slide viewable">
-                    <img src="images/photo5.jpg" class="fade-slide viewable">
-                    <img src="images/photo6.jpg" class="fade-slide viewable">
-                </div>
-                
-                <div class="slider-nav" id="sliderNav"></div>
-            </div>
-
-        </div> 
-    </div> 
+            <img src="images/photo1.jpg" class="fade-slide active viewable">
+            <img src="images/photo2.jpg" class="fade-slide viewable">
+            <img src="images/photo3.jpg" class="fade-slide viewable">
+            <img src="images/photo4.jpg" class="fade-slide viewable">
+            <img src="images/photo5.jpg" class="fade-slide viewable">
+            <img src="images/photo6.jpg" class="fade-slide viewable">
+        </div>
+        
+        <div class="slider-nav" id="sliderNav"></div>
+        
+        <p class="media-description">
+            Une sélection de nos plus belles pièces : matières naturelles, coupes fluides 
+            et accessoires uniques pour affirmer votre style bohème chic.
+        </p>
+    </div>
+</div>
 
     <div id="imagePreview" class="modal" onclick="this.style.display='none'">
         <img class="modal-content" id="fullImg">

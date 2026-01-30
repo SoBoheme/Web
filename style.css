@@ -267,10 +267,10 @@ h2 {
     }
 }
 
-/* CLASSE UNIFIÉE POUR LE CADRE */
+/* --- CADRE MÉDIA HARMONISÉ --- */
 .media-unified {
     width: 100%;
-    height: 60vh; /* Hauteur mobile */
+    height: 400px; /* Hauteur mobile par défaut */
     min-height: 350px;
     border: 3px solid var(--acc); 
     border-radius: 30px; 
@@ -278,84 +278,49 @@ h2 {
     position: relative;
     background: #000;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
 
 @media (min-width: 900px) {
     .media-unified {
-        height: 500px; /* Hauteur PC */
+        height: 500px; /* Hauteur PC identique pour Vidéo et Slider */
     }
 }
 
-
-/* --- SLIDER SPÉCIFIQUE (MODE FONDU) --- */
-.slider-container-fade {
-    position: relative;
-    width: 100%;
-    height: 100%; /* Important pour que les images absolute s'adaptent */
+/* --- DESCRIPTIONS SOUS LES MÉDIAS --- */
+.media-description {
+    margin-top: 15px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--txt);
+    opacity: 0.9;
+    font-style: italic;
+    padding: 0 15px;
+    text-align: center;
 }
-
-.fade-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0; /* Caché par défaut */
-    transition: opacity 1s ease-in-out; /* Effet de fondu doux */
-    z-index: 1;
-    cursor: pointer;
-}
-
-.fade-slide.active {
-    opacity: 1; /* Visible si actif */
-    z-index: 2;
-}
-
-.slider-nav {
-    display: flex;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-.nav-dot {
-    width: 12px;
-    height: 12px;
-    background: transparent;
-    border: 2px solid var(--txt);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.nav-dot.active {
-    background: var(--txt);
-}
-
 
 /* --- VIDÉO SPÉCIFIQUE --- */
 .video-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: black;
 }
 
 .video-container video { 
     width: 100%; 
     height: 100%;
     object-fit: cover;
+    cursor: pointer; /* Indique que la vidéo est cliquable pour pause/lecture */
 }
 
-/* Barre de progression (Extérieure) */
+/* Barre de progression vidéo */
 .progress-track-container {
     width: 100%;
     height: 6px;
     background: rgba(202, 184, 166, 0.2);
-    margin-top: 15px; /* Espace sous la vidéo */
+    margin-top: 12px;
     border-radius: 10px;
     overflow: hidden;
-    position: relative;
 }
 
 .progress-bar {
@@ -365,6 +330,86 @@ h2 {
     transition: width 0.1s linear;
 }
 
+/* --- SLIDER FONDU (FADE) --- */
+.slider-container-fade {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.fade-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.fade-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Points de navigation sous le slider */
+.slider-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.nav-dot {
+    width: 10px;
+    height: 10px;
+    background: transparent;
+    border: 2px solid var(--acc);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.nav-dot.active {
+    background: var(--acc);
+    transform: scale(1.2);
+}
+
+/* --- FLÈCHES DE NAVIGATION --- */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.2rem;
+    backdrop-filter: blur(4px);
+    transition: 0.3s;
+}
+
+.slider-arrow:hover {
+    background: var(--acc);
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+/* Masquer les flèches sur mobile si besoin */
+@media (max-width: 600px) {
+    .slider-arrow {
+        width: 35px;
+        height: 35px;
+    }
+}
 
 /* --- MODAL APERÇU --- */
 .modal {
