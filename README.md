@@ -1,50 +1,54 @@
-# 🌸 So Bohème — Boutique & Relooking
+# 🌸 SO'BÔHÈME — Boutique & Accessoires.
 
-Bienvenue sur le dépôt officiel du site **So Bohème**. Située à Guebwiller, la boutique propose un univers dédié à la femme, mêlant mode bohème et conseils personnalisés.
+Bienvenue sur le site officiel de **SO'BÔHÈME**. Située au cœur de Guebwiller, notre boutique est un écrin dédié à la femme, alliant la douceur du style bohème à l'expertise du relooking personnalisé.
 
-Ce site sert de vitrine numérique pour l'image de marque et facilite l'accès aux services physiques de la boutique.
-
-## ✨ L'Univers So Bohème
-
-* **Mode & Accessoires** : Une sélection de pièces de style bohème.
-* **Conseil en Image** : Un accompagnement sur mesure par **Solange Bohème** pour révéler votre style.
-
-## 🛍️ Fonctionnement & Vente
-
-Le site **So Bohème** est une **vitrine en ligne**. Il ne permet pas la transaction directe.
-* **Achat** : Les transactions s'effectuent exclusivement au point de vente physique à Guebwiller.
-* **Paiement** : Cartes bancaires (Visa, Mastercard, etc.) et espèces acceptées en boutique.
-* **Prix** : Les tarifs sont indiqués en Euros (€) toutes taxes comprises (TTC).
-* **Retrait & Livraison** : Aucune expédition n'est assurée. Les articles doivent être achetés ou retirés directement en magasin.
-
-## 🛠️ Aperçu Technique
-
-L'interface est conçue pour être moderne, légère et respectueuse de l'utilisateur :
-* **Technologies** : HTML5, CSS3 (Police *Playfair Display*).
-* **Expérience** : Support du mode sombre, galerie interactive et optimisation mobile.
-* **Confidentialité** : Mesures d'audience anonymisées via **Umami**, sans cookies de traçage publicitaire (Conformité RGPD).
-
-## 📍 Mentions Légales
-
-### 1. Éditeur & Hébergement
-* **Dénomination sociale** : Solange Bohème (Nom commercial : So Bohème).
-* **Responsable** : Solange BOULAHDID.
-* **Siège social** : 56 rue de la République, 68500 Guebwiller, France.
-* **E-mail** : `boutique.soboheme@gmail.com`
-* **SIRET** : En cours d'immatriculation.
-* **Hébergement** : GitHub Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA ([www.github.com](https://www.github.com)).
-
-### 2. Retours & Litiges
-* **Politique de retours** : Les échanges ou remboursements sont soumis aux conditions affichées en caisse au moment de l'achat. Le droit de rétractation de 14 jours ne s'applique pas aux achats effectués en magasin physique.
-* **Médiation** : En cas de litige, le client peut recourir à une médiation conventionnelle (Art. L.616-1 et R.616-1 du Code de la consommation).
-
-### 3. Propriété Intellectuelle
-L'ensemble du contenu (structure, textes, logos, photos et vidéos) est la propriété exclusive de **Solange Bohème**. Toute reproduction est interdite sans autorisation préalable.
-
-## 🚀 Crédits
-
-* **Développement** : [Sano Bld](https://sanobld.github.io/Web/)
+Ce site est une vitrine numérique conçue pour refléter notre univers et faciliter votre venue en boutique.
 
 ---
 
-*© 2025 Solange Bohème — Tous droits réservés.*
+## ✨ L'Univers SO'BÔHÈME
+
+* **Mode & Accessoires** : Une sélection rigoureuse de pièces fluides, de matières naturelles et d'accessoires uniques.
+
+---
+
+## 🛍️ Fonctionnement & Vente
+
+Le site **SO'BÔHÈME** est une **vitrine**. Aucune transaction ne s'effectue en ligne.
+
+* **Achat & Paiement** : Les ventes se font exclusivement en boutique à Guebwiller. Nous acceptons les cartes bancaires (Visa, Mastercard) et les espèces.
+* **Prix** : Les tarifs sont affichés en Euros (€) toutes taxes comprises (TTC).
+* **Logistique** : Nous n'assurons aucune livraison. Le retrait des articles s'effectue uniquement sur place.
+
+---
+
+## 🛠️ Aperçu Technique
+
+Une interface moderne, fluide et optimisée pour tous les écrans :
+
+* **Technologies** : HTML5 pur, CSS3 (Typographie *Playfair Display*).
+* **Fonctionnalités** : Mode sombre (Dark Mode), galerie interactive, compte à rebours et animations fluides.
+* **Confidentialité** : Mesure d'audience anonyme via **Umami** (sans cookies tiers), dans le respect total du RGPD.
+
+---
+
+## 📍 Mentions Légales
+
+### 1. Édition & Hébergement
+* **Dénomination sociale** : Solange Bohème (Nom commercial : **SO'BÔHÈME**).
+* **Responsable de publication** : Solange BOULAHDID.
+* **Siège social** : 56 rue de la République, 68500 Guebwiller, France.
+* **Contact** : `boutique.soboheme@gmail.com` | 09 56 91 85 41
+* **SIRET** : 999 536 295 00010
+* **Hébergement** : GitHub Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA.
+
+### 2. Propriété Intellectuelle
+Tous les contenus (textes, logos, photos, vidéos et structure du site) sont la propriété exclusive de **Solange Bohème**. Toute reproduction ou utilisation sans accord écrit est interdite.
+
+---
+
+## 🚀 Crédits
+
+* **Développement & Design** : [Sano Bld](https://sanobld.github.io/Web/)
+
+*© 2026 SO'BÔHÈME — Tous droits réservés.*
