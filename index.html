@@ -75,7 +75,6 @@
                 <div class="sep">:</div>
                 <div class="time-unit">
                     <div class="digit-pair">
-                        <div class="digit-pair">
                         <div class="digit-wrapper"><span id="s1">0</span></div>
                         <div class="digit-wrapper"><span id="s2">0</span></div>
                     </div>
@@ -85,149 +84,148 @@
         </div>
 
         <div class="showcase-grid reveal" id="univers">
-            <div class="showcase-column">
-                <h2>La Boutique en mouvement</h2>
-                
-                <div class="media-unified video-container skeleton" onclick="toggleVideoControl()">
-    <video id="hero-video" playsinline autoplay muted loop poster="images/photo1.webp">
-        <source src="images/presentation.webm" type="video/webm">
-        <source src="images/presentation.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas la vidéo.
-    </video>
-    <div id="video-status-icon"></div>
+    <div class="showcase-column">
+        <h2>La Boutique en mouvement</h2>
+        
+        <div class="media-unified video-container skeleton" onclick="toggleVideoControl()">
+            <video id="hero-video" playsinline autoplay muted loop poster="images/photo1.webp">
+                <source src="images/presentation.webm" type="video/webm">
+                <source src="images/presentation.mp4" type="video/mp4">
+            </video>
+            <div id="video-status-icon"></div>
+        </div>
+
+        <div class="progress-track-container">
+            <div class="progress-bar" id="video-progress"></div>
+        </div>
+        
+        <p class="media-description">
+            Plongez dans l'ambiance de notre boutique à travers cette présentation vidéo. 
+            Découvrez nos nouveaux arrivages et l'agencement soigné de notre espace.
+        </p>
+    </div>
+
+    <div class="showcase-column">
+        <h2>L'univers SO'BÔHÈME</h2>
+        <div class="media-unified slider-container-fade">
+            <button class="slider-arrow prev" onclick="moveSlide(-1)">❮</button>
+            <button class="slider-arrow next" onclick="moveSlide(1)">❯</button>
+            
+            <img src="images/photo1.webp" class="fade-slide active viewable">
+            <img src="images/photo2.webp" class="fade-slide viewable">
+            <img src="images/photo3.webp" class="fade-slide viewable">
+            <img src="images/photo4.webp" class="fade-slide viewable">
+            <img src="images/photo5.webp" class="fade-slide viewable">
+            <img src="images/photo6.webp" class="fade-slide viewable">
+        </div>
+        
+        <div class="slider-nav" id="sliderNav"></div>
+        
+        <p class="media-description">
+            Une sélection de nos plus belles pièces : matières naturelles, coupes fluides 
+            et accessoires uniques pour affirmer votre style bohème chic.
+        </p>
+    </div>
 </div>
 
-                <div class="progress-track-container">
-                    <div class="progress-bar" id="video-progress"></div>
-                </div>
-                
-                <p class="media-description">
-                    Plongez dans l'ambiance de notre boutique à travers cette présentation vidéo. 
-                    Découvrez nos nouveaux arrivages et l'agencement soigné de notre espace.
-                </p>
-            </div>
+    <div id="imagePreview" class="modal" onclick="this.style.display='none'">
+        <img class="modal-content" id="fullImg">
+    </div>
 
-            <div class="showcase-column">
-                <h2>L'univers SO'BÔHÈME</h2>
-                <div class="media-unified slider-container-fade">
-                    <button class="slider-arrow prev" onclick="moveSlide(-1)">❮</button>
-                    <button class="slider-arrow next" onclick="moveSlide(1)">❯</button>
-                    
-                    <img src="images/photo1.webp" class="fade-slide active viewable">
-<img src="images/photo2.webp" class="fade-slide viewable" loading="lazy">
-<img src="images/photo3.webp" class="fade-slide viewable" loading="lazy">
-<img src="images/photo4.webp" class="fade-slide viewable" loading="lazy">
-<img src="images/photo5.webp" class="fade-slide viewable" loading="lazy">
-<img src="images/photo6.webp" class="fade-slide viewable" loading="lazy">
-                </div>
-                
-                <div class="slider-nav" id="sliderNav"></div>
-                
-                <p class="media-description">
-                    Une sélection de nos plus belles pièces : matières naturelles, coupes fluides 
-                    et accessoires uniques pour affirmer votre style bohème chic.
-                </p>
-            </div>
+    <div class="container">
+        <h2 id="reseaux">Réseaux</h2>
+        <div class="links-grid reveal">
+            <a href="https://instagram.com/boutique_so_boheme" class="link-card" target="_blank">Instagram 📸<span>Looks Inspi & Nouveautés</span></a>
+            <a href="https://tiktok.com/@boutique_so.boheme" class="link-card" target="_blank">TikTok 🎬<span>Le style Bohème s'anime</span></a>
+            <a href="https://www.facebook.com/profile.php?id=61584699270783" class="link-card" target="_blank">Facebook 📰<span>Toute l'actu de la boutique</span></a>
         </div>
 
-        <div id="imagePreview" class="modal" onclick="this.style.display='none'">
-            <img class="modal-content" id="fullImg">
+        <h2 id="contact">Contact</h2>
+        <div class="links-grid reveal">
+            <div class="link-card" style="cursor:pointer" onclick="downloadVCard()">
+                Enregistrer le contact 👤 
+                <span>Ajouter So Bohème à votre répertoire</span>
+            </div>
+            
+            <a href="mailto:boutique.soboheme@gmail.com" class="link-card">
+                Nous écrire par E-mail ✉️ 
+                <span>boutique.soboheme@gmail.com</span>
+            </a>
+
+            <a href="tel:+33956918541" class="link-card">
+                Téléphone 📞 
+                <span>09 56 91 85 41</span>
+            </a>
         </div>
 
-        <div class="container">
-            <h2 id="reseaux">Réseaux</h2>
-            <div class="links-grid reveal">
-                <a href="https://instagram.com/boutique_so_boheme" class="link-card" target="_blank">Instagram 📸<span>Looks Inspi & Nouveautés</span></a>
-                <a href="https://tiktok.com/@boutique_so.boheme" class="link-card" target="_blank">TikTok 🎬<span>Le style Bohème s'anime</span></a>
-                <a href="https://www.facebook.com/profile.php?id=61584699270783" class="link-card" target="_blank">Facebook 📰<span>Toute l'actu de la boutique</span></a>
-            </div>
-
-            <h2 id="contact">Contact</h2>
-            <div class="links-grid reveal">
-                <div class="link-card" style="cursor:pointer" onclick="downloadVCard()">
-                    Enregistrer le contact 👤 
-                    <span>Ajouter So Bohème à votre répertoire</span>
-                </div>
+        <h2 id="infos">Information</h2>
+        <div class="reveal">
+            <div class="info-grid">
                 
-                <a href="mailto:boutique.soboheme@gmail.com" class="link-card">
-                    Nous écrire par E-mail ✉️ 
-                    <span>boutique.soboheme@gmail.com</span>
-                </a>
-
-                <a href="tel:+33956918541" class="link-card">
-                    Téléphone 📞 
-                    <span>09 56 91 85 41</span>
-                </a>
-            </div>
-
-            <h2 id="infos">Information</h2>
-            <div class="reveal">
-                <div class="info-grid">
-                    
-                    <div class="info-box">
-                        <strong>Heures d'ouverture</strong>
-                        <div class="schedule">
-                            <div class="day-row" id="day-1">
-                                <span class="day-name">Lundi</span>
-                                <span class="day-hours">Fermé / 14h00 - 19h00</span>
-                            </div>
-                            <div class="day-row" id="day-2">
-                                <span class="day-name">Mardi</span>
-                                <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                            </div>
-                            <div class="day-row" id="day-3">
-                                <span class="day-name">Mercredi</span>
-                                <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                            </div>
-                            <div class="day-row" id="day-4">
-                                <span class="day-name">Jeudi</span>
-                                <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                            </div>
-                            <div class="day-row" id="day-5">
-                                <span class="day-name">Vendredi</span>
-                                <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                            </div>
-                            <div class="day-row" id="day-6">
-                                <span class="day-name">Samedi</span>
-                                <span class="day-hours">09h00 - 12h00 / 14h00 - 18h00</span>
-                            </div>
-                            <div class="day-row highlight-closed" id="day-0">
-                                <span class="day-name">Dimanche</span>
-                                <span class="day-hours">Fermé</span>
-                            </div>
+                <div class="info-box">
+                    <strong>Heures d'ouverture</strong>
+                    <div class="schedule">
+                        <div class="day-row" id="day-1">
+                            <span class="day-name">Lundi</span>
+                            <span class="day-hours">Fermé / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-2">
+                            <span class="day-name">Mardi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-3">
+                            <span class="day-name">Mercredi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-4">
+                            <span class="day-name">Jeudi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-5">
+                            <span class="day-name">Vendredi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+                        </div>
+                        <div class="day-row" id="day-6">
+                            <span class="day-name">Samedi</span>
+                            <span class="day-hours">09h00 - 12h00 / 14h00 - 18h00</span>
+                        </div>
+                        <div class="day-row highlight-closed" id="day-0">
+                            <span class="day-name">Dimanche</span>
+                            <span class="day-hours">Fermé</span>
                         </div>
                     </div>
+                </div>
 
-                    <div class="info-box content-centered">
-                        <strong>Le saviez-vous ?</strong>
-                        <div class="info-content">
-                            <p>Plus d'infos ici bientôt... Restez connectés !</p>
-                            <br>
-                            <p>✨✨✨</p>
-                        </div>
+                <div class="info-box content-centered">
+                    <strong>Le saviez-vous ?</strong>
+                    <div class="info-content">
+                        <p>Plus d'infos ici bientôt... Restez connectés !</p>
+                        <br>
+                        <p>✨✨✨</p>
                     </div>
-
                 </div>
 
-                <div class="map-wrapper">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2668.618684346765!2d7.208191976868661!3d47.90509636659799!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4791986427305987%3A0x6a02b3765e10086c!2s56%20Rue%20de%20la%20R%C3%A9publique%2C%2068500%20Guebwiller!5e0!3m2!1sfr!2sfr!4v1715850000000!5m2!1sfr!2sfr"
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
             </div>
 
-            <div class="legal-notice-wrapper" style="margin-top: 30px;">
-                <a href="legalnotice.html" class="link-card">
-                    Informations Légales & CGV 
-                    <span>Éditeur, Hébergement & Conditions de vente</span>
-                </a>
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.5300663212092!2d7.206812574984141!3d47.9067802672026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47917ee98bafe583%3A0xa96492442e69a658!2zU08nQsOUSMOITUU!5e0!3m2!1sfr!2sfr!4v1769370691475!5m2!1sfr!2sfr"
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
+
+        <div class="legal-notice-wrapper" style="margin-top: 30px;">
+            <a href="legalnotice.html" class="link-card">
+                Informations Légales & CGV 
+                <span>Éditeur, Hébergement & Conditions de vente</span>
+            </a>
+        </div>
+    </div>
     </div>
         
     <footer><p>© SOLANGE BOHEME</p></footer>
