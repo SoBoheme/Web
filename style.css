@@ -161,8 +161,8 @@ body {
         linear-gradient(to bottom, transparent 85%, var(--bg) 100%), 
         url('images/photo1.webp'); 
     background-size: cover; 
-    background-position: center 50%; /* Centre l'image verticalement */
-    background-attachment: scroll; /* On enlève le 'fixed' pour que le centrage soit parfait */
+    background-position: center 50%; 
+    background-attachment: scroll; 
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
