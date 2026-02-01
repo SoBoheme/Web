@@ -158,7 +158,11 @@ body {
     width: 100%; 
     height: 300px; 
     background: 
+        /* 1. Ton dégradé existant vers le bas */
         linear-gradient(to bottom, transparent 85%, var(--bg) 100%), 
+        /* 2. Nouveau calque d'assombrissement (0.4 = 40% d'opacité) */
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        /* 3. Ton image de fond */
         url('images/photo1.webp'); 
     background-size: cover; 
     background-position: center 50%; 

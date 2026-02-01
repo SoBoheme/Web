@@ -3,7 +3,7 @@
    ========================================================== */
 const sunPath = '<circle cx="12" cy="12" r="6"></circle>';
 const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-const targetDate = new Date("2026-02-06T09:00:00").getTime();
+const targetDate = new Date("2026-02-01T11:13:00").getTime();
 
 let currentSlideIndex = 0;
 let slideInterval;
@@ -240,7 +240,15 @@ async function downloadVCard() {
 function lancerFete() {
     if (typeof confetti === "function") {
         const colors = ['#cab8a6', '#4a3f35', '#ffffff']; 
-        confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: colors });
+        confetti({ 
+            particleCount: 400, // Augmenté de 150 à 400
+            spread: 100, 
+            origin: { y: 0.6 }, 
+            colors: colors 
+        });
+        
+        confetti({ particleCount: 150, spread: 60, origin: { x: 0.2, y: 0.7 }, colors: colors });
+        confetti({ particleCount: 150, spread: 60, origin: { x: 0.8, y: 0.7 }, colors: colors });
     }
 }
 
@@ -272,19 +280,32 @@ function updateCountdown() {
     }
 
     const secondsTotal = Math.floor(distance / 1000);
-    if (secondsTotal <= 10 && secondsTotal > 0) {
-        if (overlay) {
-            overlay.style.display = 'flex';
-            if (finalNumber && finalNumber.innerText !== secondsTotal.toString()) {
-                finalNumber.innerText = secondsTotal;
-                finalNumber.classList.remove('digit-pop');
-                void finalNumber.offsetWidth; 
-                finalNumber.classList.add('digit-pop');
-            }
+
+if (secondsTotal <= 300 && secondsTotal > 0) {
+    if (overlay) {
+        overlay.style.display = 'flex';
+        
+        let timeString;
+
+        if (secondsTotal >= 60) {
+            const mins = Math.floor(secondsTotal / 60);
+            const secs = secondsTotal % 60;
+            timeString = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        } else {
+            timeString = secondsTotal.toString();
         }
-    } else if (overlay) {
-        overlay.style.display = 'none';
+
+        if (finalNumber && finalNumber.innerText !== timeString) {
+            finalNumber.innerText = timeString;
+            
+            finalNumber.classList.remove('digit-pop');
+            void finalNumber.offsetWidth; 
+            finalNumber.classList.add('digit-pop');
+        }
     }
+} else if (overlay) {
+    overlay.style.display = 'none';
+}
 
     const vals = {
         d: Math.floor(distance / (1000 * 60 * 60 * 24)),
