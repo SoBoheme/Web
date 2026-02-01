@@ -216,7 +216,7 @@ async function downloadVCard() {
         "BEGIN:VCARD",
         "VERSION:3.0",
         "FN:SO'BÔHÈME",
-        "TEL;TYPE=WORK,VOICE:+33956918541",
+        "TEL;TYPE=WORK,VOICE:+33622411978",
         "EMAIL:boutique.soboheme@gmail.com",
         "ADR;TYPE=WORK:;;56 RUE DE LA REPUBLIQUE;Guebwiller;68500;France",
         "URL:https://soboheme.github.io/Web/",
