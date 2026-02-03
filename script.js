@@ -366,8 +366,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Manually loop the video for broader compatibility
+        video.addEventListener('ended', () => {
+            video.currentTime = 0;
+            video.play();
+        });
+
         video.play().catch(() => {
-            document.body.addEventListener('click', () => video.play(), { once: true });
+            // Autoplay was prevented. The user can click the video to play it.
         });
     }
 
