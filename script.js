@@ -3,7 +3,6 @@
    ========================================================== */
 const sunPath = '<circle cx="12" cy="12" r="6"></circle>';
 const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-const targetDate = new Date("2026-02-06T09:00:00").getTime();
 
 let currentSlideIndex = 0;
 let slideInterval;
@@ -231,101 +230,6 @@ async function downloadVCard() {
     a.download = "So_Boheme.vcf";
     a.click();
     window.URL.revokeObjectURL(url);
-}
-
-/* ==========================================================
-   8. COMPTE À REBOURS & CONFETTI
-   ========================================================== */
-
-function lancerFete() {
-    if (typeof confetti === "function") {
-        const colors = ['#cab8a6', '#4a3f35', '#ffffff']; 
-        confetti({ 
-            particleCount: 400, // Augmenté de 150 à 400
-            spread: 100, 
-            origin: { y: 0.6 }, 
-            colors: colors 
-        });
-        
-        confetti({ particleCount: 150, spread: 60, origin: { x: 0.2, y: 0.7 }, colors: colors });
-        confetti({ particleCount: 150, spread: 60, origin: { x: 0.8, y: 0.7 }, colors: colors });
-    }
-}
-
-function updateCountdown() {
-    const box = document.getElementById('promo-countdown');
-    const overlay = document.getElementById('final-countdown-overlay');
-    const finalNumber = document.getElementById('final-number');
-    if (!box) return;
-
-    const now = new Date().getTime();
-    const distance = targetDate - now;
-
-    if (distance > 0) {
-        box.style.display = 'block'; 
-    }
-
-    if (distance <= 0) {
-        if (overlay) overlay.style.display = 'none';
-        if (!box.classList.contains('timer-finish')) {
-            box.classList.add('timer-finish');
-            lancerFete(); 
-            setTimeout(() => {
-                box.style.transition = "opacity 1s ease";
-                box.style.opacity = "0";
-                setTimeout(() => box.style.display = "none", 1000);
-            }, 5000);
-        }
-        return;
-    }
-
-    const secondsTotal = Math.floor(distance / 1000);
-
-if (secondsTotal <= 300 && secondsTotal > 0) {
-    if (overlay) {
-        overlay.style.display = 'flex';
-        
-        let timeString;
-
-        if (secondsTotal >= 60) {
-            const mins = Math.floor(secondsTotal / 60);
-            const secs = secondsTotal % 60;
-            timeString = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-        } else {
-            timeString = secondsTotal.toString();
-        }
-
-        if (finalNumber && finalNumber.innerText !== timeString) {
-            finalNumber.innerText = timeString;
-            
-            finalNumber.classList.remove('digit-pop');
-            void finalNumber.offsetWidth; 
-            finalNumber.classList.add('digit-pop');
-        }
-    }
-} else if (overlay) {
-    overlay.style.display = 'none';
-}
-
-    const vals = {
-        d: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        h: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        m: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        s: Math.floor((distance % (1000 * 60)) / 1000)
-    };
-
-    for (const [unit, value] of Object.entries(vals)) {
-        const strValue = value.toString().padStart(2, '0');
-        for (let i = 0; i < 2; i++) {
-            const element = document.getElementById(unit + (i + 1));
-            if (element && element.innerText !== strValue[i]) {
-                element.innerText = strValue[i];
-                element.classList.remove('slide-digit');
-                void element.offsetWidth; 
-                element.classList.add('slide-digit');
-            }
-        }
-    }
 }
 
 /* ==========================================================
