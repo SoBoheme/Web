@@ -32,25 +32,25 @@ function toggleTheme() {
 }
 
 /* ==========================================================
-   3. NAVIGATION & INTERFACE UTILISATEUR
+   3. NAVIGATION (CACHE AU SCROLL)
    ========================================================== */
 
 function handleSmartNav() {
-    const nav = document.querySelector('.nav-container');
+    // On cible le bon conteneur : .nav-container
+    const nav = document.querySelector('.nav-container'); 
     if (!nav) return;
     
     const currentScrollY = window.scrollY;
 
-    if (currentScrollY <= 50) {
-        nav.classList.remove('hidden');
-        nav.classList.add('visible');
-    } else if (currentScrollY > lastScrollY && currentScrollY > 150) {
-        nav.classList.remove('visible');
-        nav.classList.add('hidden');
-    } else if (currentScrollY < lastScrollY) {
-        nav.classList.remove('hidden');
-        nav.classList.add('visible');
+    // Si on descend de plus de 100px : on cache la pillule
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        nav.classList.add('nav-hidden');
+    } 
+    // Si on remonte : on la réaffiche
+    else if (currentScrollY < lastScrollY) {
+        nav.classList.remove('nav-hidden');
     }
+
     lastScrollY = currentScrollY;
 }
 
@@ -199,7 +199,7 @@ function initVisualEffects() {
    ========================================================== */
 
 async function downloadVCard() {
-    const imageUrl = "logo.png";
+    const imageUrl = "images/logo.png";
     let base64Photo = "";
     try {
         const response = await fetch(imageUrl);
@@ -215,10 +215,14 @@ async function downloadVCard() {
         "BEGIN:VCARD",
         "VERSION:3.0",
         "FN:SO'BÔHÈME",
-        "TEL;TYPE=WORK,VOICE:+33622411978",
+        "ORG:SO'BÔHÈME;Boutique de mode & accessoires",
+        "TITLE:Boutique de mode féminine",
+        "TEL;TYPE=CELL,VOICE:+33622411978",
+        "TEL;TYPE=WORK,VOICE:+33956918541",
         "EMAIL:boutique.soboheme@gmail.com",
         "ADR;TYPE=WORK:;;56 RUE DE LA REPUBLIQUE;Guebwiller;68500;France",
         "URL:https://soboheme.github.io/Web/",
+        "NOTE:Boutique de mode féminine & accessoires uniques à Guebwiller. Style bohème chic et relooking personnalisé.",
         base64Photo ? `PHOTO;ENCODING=b;TYPE=PNG:${base64Photo}` : "",
         "END:VCARD"
     ].filter(Boolean).join("\n");
@@ -233,7 +237,7 @@ async function downloadVCard() {
 }
 
 /* ==========================================================
-   9. INITIALISATION GÉNÉRALE (DOM CONTENT LOADED)
+   8. INITIALISATION GÉNÉRALE (DOM CONTENT LOADED)
    ========================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -270,20 +274,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Manually loop the video for broader compatibility
         video.addEventListener('ended', () => {
             video.currentTime = 0;
             video.play();
         });
 
-        video.play().catch(() => {
-            // Autoplay was prevented. The user can click the video to play it.
-        });
+        video.play().catch(() => {});
     }
-
-    // --- INITIALISATION DU COMPTE À REBOURS ---
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
 
     // --- ÉVÉNEMENTS GLOBAUX ---
     window.addEventListener('scroll', () => window.requestAnimationFrame(handleSmartNav));

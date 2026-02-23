@@ -9,6 +9,7 @@ Ce site est une vitrine numérique conçue pour refléter notre univers et facil
 ## ✨ L'Univers SO'BÔHÈME
 
 * **Mode & Accessoires** : Une sélection rigoureuse de pièces fluides, de matières naturelles et d'accessoires uniques.
+* **Conseil & Style** : Une approche personnalisée pour révéler votre beauté à travers des looks bohèmes chic.
 
 ---
 
@@ -16,7 +17,7 @@ Ce site est une vitrine numérique conçue pour refléter notre univers et facil
 
 Le site **SO'BÔHÈME** est une **vitrine**. Aucune transaction ne s'effectue en ligne.
 
-* **Achat & Paiement** : Les ventes se font exclusivement en boutique à Guebwiller. Nous acceptons les cartes bancaires (Visa, Mastercard) et les espèces.
+* **Achat & Paiement** : Les ventes se font exclusivement en boutique à Guebwiller. Nous acceptons les cartes bancaires (Visa, Mastercard), les espèces aisni que les chèques. 
 * **Prix** : Les tarifs sont affichés en Euros (€) toutes taxes comprises (TTC).
 * **Logistique** : Nous n'assurons aucune livraison. Le retrait des articles s'effectue uniquement sur place.
 
@@ -36,9 +37,11 @@ Une interface moderne, fluide et optimisée pour tous les écrans :
 
 ### 1. Édition & Hébergement
 * **Dénomination sociale** : Solange Bohème (Nom commercial : **SO'BÔHÈME**).
-* **Responsable de publication** : Solange BOULAHDID.
+* **Responsable de publication** : Solange SERRANO.
 * **Siège social** : 56 rue de la République, 68500 Guebwiller, France.
-* **Contact** : `boutique.soboheme@gmail.com` | 09 56 91 85 41
+* **Contact** : `boutique.soboheme@gmail.com`
+* **Téléphones** : 06 22 41 19 78 (Mobile) | 09 56 91 85 41 (Boutique)
+* **Description** : Boutique de mode féminine & accessoires uniques à Guebwiller. Style bohème chic et relooking personnalisé.
 * **SIRET** : 999 536 295 00010
 * **Hébergement** : GitHub Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA.
 
