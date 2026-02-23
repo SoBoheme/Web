@@ -212,21 +212,34 @@ async function downloadVCard() {
     } catch (e) { console.error("Erreur chargement logo VCard", e); }
 
     const vcard = [
-        "BEGIN:VCARD",
-        "VERSION:3.0",
-        "FN:SO'BÔHÈME",
-        "ORG:SO'BÔHÈME;Boutique de mode & accessoires",
-        "TITLE:Boutique de mode féminine",
-        "TEL;TYPE=CELL,VOICE:+33622411978",
-        "TEL;TYPE=WORK,VOICE:+33956918541",
-        "EMAIL:boutique.soboheme@gmail.com",
-        "ADR;TYPE=WORK:;;56 RUE DE LA REPUBLIQUE;Guebwiller;68500;France",
-        "URL:https://soboheme.github.io/Web/",
-        "NOTE:Boutique de mode féminine & accessoires uniques à Guebwiller. Style bohème chic et relooking personnalisé.",
-        base64Photo ? `PHOTO;ENCODING=b;TYPE=PNG:${base64Photo}` : "",
-        "END:VCARD"
-    ].filter(Boolean).join("\n");
-
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "FN:SO'BÔHÈME",
+    "ORG:SO'BÔHÈME;Boutique de mode & accessoires",
+    "TITLE:Boutique de mode féminine",
+    "TEL;TYPE=CELL,VOICE:+33622411978",
+    "TEL;TYPE=WORK,VOICE:+33956918541",
+    "EMAIL:boutique.soboheme@gmail.com",
+    "ADR;TYPE=WORK:;;56 RUE DE LA REPUBLIQUE;Guebwiller;68500;France",
+    
+    // Liens Web
+    "URL:https://soboheme.github.io/Web/",
+    "URL:https://linktr.ee/SoBoheme",
+    
+    // Notes avec Horaires
+    "NOTE:Boutique de mode féminine & accessoires uniques à Guebwiller. ✨\\n\\n" +
+    "HORAIRES D'OUVERTURE :\\n" +
+    "Lundi : Fermé / 14h00 - 19h00\\n" +
+    "Mardi : 09h00 - 12h00 / 14h00 - 19h00\\n" +
+    "Mercredi : 09h00 - 12h00 / 14h00 - 19h00\\n" +
+    "Jeudi : 09h00 - 12h00 / 14h00 - 19h00\\n" +
+    "Vendredi : 09h00 - 12h00 / 14h00 - 19h00\\n" +
+    "Samedi : 09h00 - 12h00 / 14h00 - 18h00\\n" +
+    "Dimanche : Fermé",
+    
+    base64Photo ? `PHOTO;ENCODING=b;TYPE=PNG:${base64Photo}` : "",
+    "END:VCARD"
+].filter(Boolean).join("\n");
     const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
