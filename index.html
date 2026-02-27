@@ -3,225 +3,413 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SO'BÔHÈME | Boutique & Accessoires</title>
-    
-    <meta name="description" content="Découvrez SO'BÔHÈME à Guebwiller : boutique de mode féminine & accessoires uniques">
-    
+    <title>SO'BÔHÈME | Boutique & Accessoires — Guebwiller</title>
+    <meta name="description" content="SO'BÔHÈME — Boutique de mode féminine & accessoires uniques à Guebwiller. Style bohème chic et relooking personnalisé.">
+
     <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
+
     <script defer src="https://cloud.umami.is/script.js" data-website-id="b15c0f27-dac1-4c95-8fd6-ea56c27eb049"></script>
     <meta name="google-site-verification" content="hI20K7t6AEgA0LttGf3nZ2HNfAhfEIwBBQHkCGrkGzQ" />
-    
-    <script defer src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script defer src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
 </head>
 <body>
 
-    <nav class="nav-container">
-        <div class="pill-nav">
-            <a href="#SO'BÔHÈME">SO'BÔHÈME</a>
-            <a href="#univers">Univers</a>
-            <a href="#reseaux">Réseaux</a>
-            <a href="#contact">Contact</a>
-            <a href="#infos">Infos</a>
+    <!-- ===================================================
+         NAVIGATION
+    ==================================================== -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-inner">
+            <a href="#hero" class="header-logo">SO'BÔHÈME</a>
+
+            <nav class="header-nav" aria-label="Navigation principale">
+                <a href="#galerie" class="nav-link">Galerie</a>
+                <a href="#esprit" class="nav-link">L'Esprit</a>
+                <a href="#reseaux" class="nav-link">Réseaux</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#infos" class="nav-link">Infos</a>
+            </nav>
+
+            <div class="header-actions">
+                <button id="theme-btn" onclick="toggleTheme()" aria-label="Basculer le thème">
+                    <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+                </button>
+                <button class="burger-btn" id="burgerBtn" aria-label="Ouvrir le menu" aria-expanded="false" onclick="toggleMobileMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </div>
-        <button id="theme-btn" onclick="toggleTheme()">
-            <svg id="theme-icon" viewBox="0 0 24 24"></svg>
-        </button>
-    </nav>
+    </header>
 
-    <div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" src=""></div>
-
-    <div class="hero">
-        <h1 id="SO'BÔHÈME">SO'BÔHÈME</h1>
+    <!-- Menu mobile plein écran -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+        <a href="#galerie"  onclick="toggleMobileMenu()">Galerie</a>
+        <a href="#esprit"   onclick="toggleMobileMenu()">L'Esprit</a>
+        <a href="#reseaux"  onclick="toggleMobileMenu()">Réseaux</a>
+        <a href="#contact"  onclick="toggleMobileMenu()">Contact</a>
+        <a href="#infos"    onclick="toggleMobileMenu()">Infos</a>
     </div>
 
-    <div class="container">
-        <p class="desc reveal">Boutique femme & accessoires.<br>✨ Mode Bohème & pièces uniques, relooking personnalisé ✨</p>
 
-
-        <div class="showcase-grid reveal" id="univers">
-    <div class="showcase-column">
-        <h2>La Boutique en mouvement</h2>
-        
-        <div class="media-unified video-container skeleton" onclick="toggleVideoControl()">
-            <video id="hero-video" playsinline loop autoplay muted poster="images/photo1.webp">
+    <!-- ===================================================
+         HERO — PLEIN ÉCRAN
+    ==================================================== -->
+    <section class="hero" id="hero">
+        <!-- Fond vidéo / image de secours -->
+        <div class="hero-bg">
+            <video id="hero-video" autoplay muted loop playsinline poster="images/photo1.webp">
                 <source src="images/presentation.mp4" type="video/mp4">
             </video>
-            <div id="video-status-icon"></div>
+            <div class="hero-overlay" aria-hidden="true"></div>
         </div>
 
-        <div class="progress-track-container">
-            <div class="progress-bar" id="video-progress"></div>
-        </div>
-        
-        <p class="media-description">
-            Plongez dans l'ambiance de notre boutique. 
-            Découvrez nos nouveaux arrivages et l'agencement soigné de notre espace.
-        </p>
-    </div>
-
-    <div class="showcase-column">
-        <h2>L'univers SO'BÔHÈME</h2>
-        <div class="media-unified slider-container-fade">
-            <button class="slider-arrow prev" onclick="moveSlide(-1)">❮</button>
-            <button class="slider-arrow next" onclick="moveSlide(1)">❯</button>
-            
-            <img src="images/photo1.webp" class="fade-slide active viewable">
-            <img src="images/photo2.webp" class="fade-slide viewable" loading="lazy">
-            <img src="images/photo3.webp" class="fade-slide viewable" loading="lazy">
-            <img src="images/photo4.webp" class="fade-slide viewable" loading="lazy">
-            <img src="images/photo5.webp" class="fade-slide viewable" loading="lazy">
-            <img src="images/photo6.webp" class="fade-slide viewable" loading="lazy">
-            <img src="images/photo7.webp" class="fade-slide viewable" loading="lazy">
-            <img src="images/photo8.webp" class="fade-slide viewable" loading="lazy">
-        </div>
-        
-        <div class="slider-nav" id="sliderNav"></div>
-        
-        <p class="media-description">
-            Une sélection de nos plus belles pièces : matières naturelles, coupes fluides 
-            et accessoires uniques pour affirmer votre style bohème chic.
-        </p>
-    </div>
-</div>
-
-    <div id="imagePreview" class="modal" onclick="this.style.display='none'">
-        <img class="modal-content" id="fullImg">
-    </div>
-
-    <div class="container">
-        <h2 id="reseaux">Réseaux</h2>
-        <div class="links-grid reveal">
-            <a href="https://instagram.com/boutique_so_boheme" class="link-card" target="_blank">Instagram 📸<span>Looks Inspi & Nouveautés</span></a>
-            <a href="https://tiktok.com/@boutique_so.boheme" class="link-card" target="_blank">TikTok 🎬<span>Le style Bohème s'anime</span></a>
-            <a href="https://www.facebook.com/profile.php?id=61584699270783" class="link-card" target="_blank">Facebook 📰<span>Toute l'actu de la boutique</span></a>
-        </div>
-
-        <h2 id="contact">Contact</h2>
-        <div class="links-grid reveal">
-            <div class="link-card" style="cursor:pointer" onclick="downloadVCard()">
-                Enregistrer le contact 👤 
-                <span>Retrouvez tous nos horaires, réseaux et liens directement dans votre répertoire</span>
-            </div>
-            
-            <a href="mailto:boutique.soboheme@gmail.com" class="link-card">
-                Nous écrire par E-mail ✉️ 
-                <span>boutique.soboheme@gmail.com</span>
+        <!-- Contenu centré -->
+        <div class="hero-content">
+            <p class="hero-eyebrow fade-up" style="--delay:.2s">Boutique &amp; Accessoires — Guebwiller</p>
+            <h1 class="hero-title fade-up" style="--delay:.45s">SO'BÔHÈME</h1>
+            <p class="hero-rule fade-up" style="--delay:.65s" aria-hidden="true">◆</p>
+            <p class="hero-tagline fade-up" style="--delay:.8s">Mode féminine &nbsp;·&nbsp; Pièces uniques &nbsp;·&nbsp; Relooking personnalisé</p>
+            <a href="#galerie" class="hero-cta fade-up" style="--delay:1s" aria-label="Découvrir la galerie">
+                <span>Découvrir</span>
+                <span class="hero-cta-arrow" aria-hidden="true">↓</span>
             </a>
-
-            <a href="tel:+33956918541" class="link-card">
-                Téléphone Boutique ☎️ 
-                <span>09 56 91 85 41</span>
-            </a>
-            
-            
-            <a href="tel:+33622411978" class="link-card">
-                Téléphone Mobile 📞 
-                <span>06 22 41 19 78</span>
-            </a>
-            
-            
         </div>
 
-        <h2 id="infos">Information</h2>
-        <div class="reveal">
-            <div class="info-grid">
-                
-                <div class="info-box">
-                    <strong>Heures d'ouverture</strong>
-                    <div class="schedule">
-                        <div class="day-row" id="day-1">
-                            <span class="day-name">Lundi</span>
-                            <span class="day-hours">Fermé / 14h00 - 19h00</span>
+        <!-- Indicateur de défilement -->
+        <div class="scroll-indicator" aria-hidden="true">
+            <div class="scroll-track"><div class="scroll-thumb"></div></div>
+        </div>
+    </section>
+
+
+    <!-- ===================================================
+         GALERIE IMMERSIVE — FORMAT MAGAZINE
+    ==================================================== -->
+    <section class="section-galerie" id="galerie">
+        <div class="section-wrap">
+            <header class="section-header reveal">
+                <p class="section-label">L'Univers</p>
+                <h2 class="section-title">La Boutique en Images</h2>
+                <p class="section-sub">Ambiances, matières et instants de vie au cœur de notre espace.</p>
+            </header>
+
+            <!-- Grille magazine : mélange portrait + paysage -->
+            <div class="mag-grid">
+
+                <!-- Rangée 1 : 1 grand portrait + 2 petits empilés -->
+                <div class="mag-row mag-row--featured reveal">
+                    <div class="mag-item mag-item--portrait" onclick="openLightbox('images/photo1.webp', 'Ambiance boutique')">
+                        <div class="mag-img-wrap">
+                            <img src="images/photo1.webp" alt="Ambiance boutique SO'BÔHÈME" loading="lazy">
+                            <div class="mag-overlay"><span>↗</span></div>
                         </div>
-                        <div class="day-row" id="day-2">
-                            <span class="day-name">Mardi</span>
-                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
+                    </div>
+                    <div class="mag-col-stack">
+                        <div class="mag-item" onclick="openLightbox('images/photo2.webp', 'Accessoires &amp; bijoux')">
+                            <div class="mag-img-wrap">
+                                <img src="images/photo2.webp" alt="Accessoires &amp; bijoux" loading="lazy">
+                                <div class="mag-overlay"><span>↗</span></div>
+                            </div>
                         </div>
-                        <div class="day-row" id="day-3">
-                            <span class="day-name">Mercredi</span>
-                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                        </div>
-                        <div class="day-row" id="day-4">
-                            <span class="day-name">Jeudi</span>
-                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                        </div>
-                        <div class="day-row" id="day-5">
-                            <span class="day-name">Vendredi</span>
-                            <span class="day-hours">09h00 - 12h00 / 14h00 - 19h00</span>
-                        </div>
-                        <div class="day-row" id="day-6">
-                            <span class="day-name">Samedi</span>
-                            <span class="day-hours">09h00 - 12h00 / 14h00 - 18h00</span>
-                        </div>
-                        <div class="day-row highlight-closed" id="day-0">
-                            <span class="day-name">Dimanche</span>
-                            <span class="day-hours">Fermé</span>
+                        <div class="mag-item" onclick="openLightbox('images/photo3.webp', 'Matières naturelles')">
+                            <div class="mag-img-wrap">
+                                <img src="images/photo3.webp" alt="Matières naturelles" loading="lazy">
+                                <div class="mag-overlay"><span>↗</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                
-                <div class="info-box reveal" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 350px;">
-    <strong>Votre avis compte !</strong>
-    
-    <div class="info-content" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 15px; padding: 20px 0;">
-        <div class="stars-animate" style="color: #fbbc05; font-size: 1.5rem; letter-spacing: 5px; cursor: default; transition: all 0.4s ease;">
-            ⭐⭐⭐⭐⭐
-        </div>
-        
-        <div style="text-align: center; line-height: 1.6;">
-            <p>Vous avez aimé votre passage dans notre univers ?</p>
-            <p>Partagez votre expérience avec nous sur Google pour aider la boutique à rayonner davantage. ✨</p>
-        </div>
+                <!-- Citation éditoriale -->
+                <blockquote class="mag-quote reveal">
+                    <p>"Une sélection de pièces fluides, de matières naturelles<br>et d'accessoires uniques pour affirmer votre style."</p>
+                    <cite>— SO'BÔHÈME</cite>
+                </blockquote>
 
-        <div style="font-size: 0.85rem; opacity: 0.8; font-style: italic; color: var(--txt); border-top: 1px solid var(--acc); padding-top: 15px; margin-top: 10px;">
-            "Révéler votre beauté, un doux souhait devenu une belle réalité."
+                <!-- Rangée 2 : 3 images paysage de même taille -->
+                <div class="mag-row mag-row--trio reveal">
+                    <div class="mag-item" onclick="openLightbox('images/photo4.webp', 'Look du moment')">
+                        <div class="mag-img-wrap">
+                            <img src="images/photo4.webp" alt="Look du moment" loading="lazy">
+                            <div class="mag-overlay"><span>↗</span></div>
+                        </div>
+                    </div>
+                    <div class="mag-item" onclick="openLightbox('images/photo5.webp', 'Pièce intemporelle')">
+                        <div class="mag-img-wrap">
+                            <img src="images/photo5.webp" alt="Pièce intemporelle" loading="lazy">
+                            <div class="mag-overlay"><span>↗</span></div>
+                        </div>
+                    </div>
+                    <div class="mag-item" onclick="openLightbox('images/photo6.webp', 'Élégance naturelle')">
+                        <div class="mag-img-wrap">
+                            <img src="images/photo6.webp" alt="Élégance naturelle" loading="lazy">
+                            <div class="mag-overlay"><span>↗</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rangée 3 : 2 petits + 1 grand portrait (ordre inversé) -->
+                <div class="mag-row mag-row--featured mag-row--reverse reveal">
+                    <div class="mag-col-stack">
+                        <div class="mag-item" onclick="openLightbox('images/photo7.webp', 'Détails floraux')">
+                            <div class="mag-img-wrap">
+                                <img src="images/photo7.webp" alt="Détails floraux" loading="lazy">
+                                <div class="mag-overlay"><span>↗</span></div>
+                            </div>
+                        </div>
+                        <div class="mag-item" onclick="openLightbox('images/photo8.webp', 'Silhouette bohème')">
+                            <div class="mag-img-wrap">
+                                <img src="images/photo8.webp" alt="Silhouette bohème" loading="lazy">
+                                <div class="mag-overlay"><span>↗</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mag-item mag-item--portrait" onclick="openLightbox('images/photo1.webp', 'L\'intérieur de la boutique')">
+                        <div class="mag-img-wrap">
+                            <img src="images/photo1.webp" alt="Intérieur boutique" loading="lazy">
+                            <div class="mag-overlay"><span>↗</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /mag-grid -->
         </div>
+    </section>
+
+
+    <!-- ===================================================
+         L'ESPRIT SO'BÔHÈME — STORYTELLING
+    ==================================================== -->
+    <section class="section-esprit" id="esprit">
+        <div class="section-wrap">
+
+            <div class="esprit-block reveal">
+                <div class="esprit-text">
+                    <p class="section-label">Notre Histoire</p>
+                    <h2 class="esprit-heading">L'art de révéler<br><em>votre beauté.</em></h2>
+                    <p class="esprit-body">Nichée au cœur de Guebwiller, SO'BÔHÈME est née d'une passion profonde : celle de révéler la beauté naturelle et singulière de chaque femme. Notre boutique n'est pas seulement un lieu de vente — c'est un espace de transformation, de bienveillance et de style.</p>
+                </div>
+                <div class="esprit-img-wrap">
+                    <img src="images/photo3.webp" alt="L'esprit SO'BÔHÈME" loading="lazy">
+                </div>
+            </div>
+
+            <div class="esprit-block esprit-block--reverse reveal">
+                <div class="esprit-img-wrap">
+                    <img src="images/photo9.webp" alt="Conseil personnalisé" loading="lazy">
+                </div>
+                <div class="esprit-text">
+                    <p class="section-label">Notre Approche</p>
+                    <h2 class="esprit-heading">Un conseil<br><em>sur mesure.</em></h2>
+                    <p class="esprit-body">Chaque visite est une rencontre unique. Solange vous accueille avec bienveillance pour vous guider vers des pièces qui vous ressemblent vraiment — des matières naturelles, des coupes fluides, une élégance authentique.</p>
+                    <p class="esprit-signature">— Solange, fondatrice</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ===================================================
+         RÉSEAUX SOCIAUX
+    ==================================================== -->
+    <section class="section-links" id="reseaux">
+        <div class="section-wrap">
+            <header class="section-header reveal">
+                <p class="section-label">Suivez-nous</p>
+                <h2 class="section-title">Nos Réseaux</h2>
+            </header>
+
+            <div class="links-grid reveal">
+                <a href="https://instagram.com/boutique_so_boheme" class="link-row" target="_blank" rel="noopener">
+                    <span class="link-row-name">Instagram</span>
+                    <span class="link-row-desc">Looks Inspi &amp; Nouveautés</span>
+                    <span class="link-row-arrow">→</span>
+                </a>
+                <a href="https://tiktok.com/@boutique_so.boheme" class="link-row" target="_blank" rel="noopener">
+                    <span class="link-row-name">TikTok</span>
+                    <span class="link-row-desc">Le style Bohème s'anime</span>
+                    <span class="link-row-arrow">→</span>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61584699270783" class="link-row" target="_blank" rel="noopener">
+                    <span class="link-row-name">Facebook</span>
+                    <span class="link-row-desc">Toute l'actu de la boutique</span>
+                    <span class="link-row-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================================================
+         CONTACT
+    ==================================================== -->
+    <section class="section-contact" id="contact">
+        <div class="section-wrap">
+            <header class="section-header reveal">
+                <p class="section-label">Écrivez-nous</p>
+                <h2 class="section-title">Contact</h2>
+            </header>
+
+            <div class="links-grid reveal">
+                <div class="link-row link-row--cta" onclick="downloadVCard()" role="button" tabindex="0">
+                    <span class="link-row-name">Enregistrer le contact</span>
+                    <span class="link-row-desc">Horaires, réseaux &amp; coordonnées dans votre répertoire</span>
+                    <span class="link-row-arrow">↓</span>
+                </div>
+                <a href="mailto:boutique.soboheme@gmail.com" class="link-row">
+                    <span class="link-row-name">E-mail</span>
+                    <span class="link-row-desc">boutique.soboheme@gmail.com</span>
+                    <span class="link-row-arrow">→</span>
+                </a>
+                <a href="tel:+33956918541" class="link-row">
+                    <span class="link-row-name">Boutique</span>
+                    <span class="link-row-desc">09 56 91 85 41</span>
+                    <span class="link-row-arrow">→</span>
+                </a>
+                <a href="tel:+33622411978" class="link-row">
+                    <span class="link-row-name">Mobile</span>
+                    <span class="link-row-desc">06 22 41 19 78</span>
+                    <span class="link-row-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===================================================
+         INFORMATIONS — HORAIRES, AVIS, CARTE
+    ==================================================== -->
+    <section class="section-infos" id="infos">
+        <div class="section-wrap">
+            <header class="section-header reveal">
+                <p class="section-label">Nous Trouver</p>
+                <h2 class="section-title">Informations</h2>
+            </header>
+
+            <div class="infos-grid reveal">
+
+                <!-- Horaires -->
+                <div class="info-card">
+                    <div class="info-card-header">
+                        <h3 class="info-card-title">Horaires d'ouverture</h3>
+                        <div class="status-pill" id="statusBadge">
+                            <span class="status-dot" aria-hidden="true"></span>
+                            <span id="statusText">…</span>
+                        </div>
+                    </div>
+                    <table class="schedule-table" aria-label="Horaires hebdomadaires">
+                        <tbody>
+                            <tr id="day-1"><td class="day-name">Lundi</td><td class="day-hours">Fermé / 14h00 – 19h00</td></tr>
+                            <tr id="day-2"><td class="day-name">Mardi</td><td class="day-hours">09h00 – 12h00 / 14h00 – 19h00</td></tr>
+                            <tr id="day-3"><td class="day-name">Mercredi</td><td class="day-hours">09h00 – 12h00 / 14h00 – 19h00</td></tr>
+                            <tr id="day-4"><td class="day-name">Jeudi</td><td class="day-hours">09h00 – 12h00 / 14h00 – 19h00</td></tr>
+                            <tr id="day-5"><td class="day-name">Vendredi</td><td class="day-hours">09h00 – 12h00 / 14h00 – 19h00</td></tr>
+                            <tr id="day-6"><td class="day-name">Samedi</td><td class="day-hours">09h00 – 12h00 / 14h00 – 18h00</td></tr>
+                            <tr id="day-0" class="row-closed"><td class="day-name">Dimanche</td><td class="day-hours">Fermé</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="next-opening" id="nextOpening"></p>
+                </div>
+
+                <!-- Avis Google — carte luxe -->
+                <div class="info-card avis-card">
+                    <div class="avis-stars" aria-label="5 étoiles sur 5">
+                        <span aria-hidden="true">★★★★★</span>
+                    </div>
+                    <p class="avis-heading">Votre avis compte.</p>
+                    <p class="avis-body">Vous avez aimé votre passage chez nous ? Partagez votre expérience et aidez d'autres femmes à nous trouver.</p>
+                    <blockquote class="avis-quote">
+                        « Révéler votre beauté,<br>un doux souhait devenu réalité. »
+                    </blockquote>
+                    <a href="https://g.page/r/CVimaS5EkmSpEAE/review" class="btn-solid" target="_blank" rel="noopener">
+                        Écrire un avis Google
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Carte Google Maps -->
+            <div class="map-wrap reveal">
+                <p class="map-address">56 rue de la République, 68500 Guebwiller</p>
+                <div class="map-frame">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.5300663212092!2d7.206812574984141!3d47.9067802672026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47917ee98bafe583%3A0xa96492442e69a658!2zU08nQsOUSMOITUU!5e0!3m2!1sfr!2sfr!4v1769370691475!5m2!1sfr!2sfr"
+                        height="380"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localisation SO'BÔHÈME, Guebwiller">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ===================================================
+         FOOTER
+    ==================================================== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <p class="footer-logo">SO'BÔHÈME</p>
+                <p class="footer-sub">Mode féminine &amp; accessoires uniques<br>Guebwiller, Alsace</p>
+                <nav class="footer-social" aria-label="Réseaux sociaux">
+                    <a href="https://instagram.com/boutique_so_boheme" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+                    </a>
+                    <a href="https://tiktok.com/@boutique_so.boheme" target="_blank" rel="noopener" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61584699270783" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="footer-col">
+                <p class="footer-col-title">La Boutique</p>
+                <a href="#galerie">Galerie</a>
+                <a href="#esprit">Notre Esprit</a>
+                <a href="#contact">Contact</a>
+                <a href="#infos">Horaires &amp; Accès</a>
+            </div>
+
+            <div class="footer-col">
+    <p class="footer-col-title">Restez en contact</p>
+    <p class="footer-col-text">Une question ? Écrivez-nous ou appelez-nous directement.</p>
+    <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a href="mailto:boutique.soboheme@gmail.com" class="btn-ghost">Nous écrire</a>
+        <a href="tel:+33956918541" class="btn-ghost">Nous appeler</a>
     </div>
-
-    <a href="https://g.page/r/CVimaS5EkmSpEAE/review" class="link-card" target="_blank" style="margin-top: auto;">
-        Écrire un avis sur Google
-        <span>Partagez votre douceur avec nous</span>
-    </a>
 </div>
-                
-                <div class="info-box content-centered reveal" style="grid-column: 1 / -1;">
-        <strong>La boutique vous accueille !</strong>
-        <div class="info-content">
-            <p>Envie d'une pause shopping ?</p>
-            <p>Passez nous voir pour découvrir les nouveautés de la semaine et profiter d'un conseil personnalisé.</p>
-            <br>
-            <p><b>Laissez parler votre côté bôhème !</b></p>
         </div>
-    </div>
 
-            </div>
-
-            <div class="map-wrapper">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2674.5300663212092!2d7.206812574984141!3d47.9067802672026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47917ee98bafe583%3A0xa96492442e69a658!2zU08nQsOUSMOITUU!5e0!3m2!1sfr!2sfr!4v1769370691475!5m2!1sfr!2sfr"
-                    height="450" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+        <div class="footer-bottom">
+            <p>© 2026 SO'BÔHÈME — Solange Bohème · SIRET 999 536 295 00010</p>
+            <div>
+                <a href="legalnotice.html">Mentions légales &amp; CGV</a>
+                <span aria-hidden="true"> · </span>
+                <a href="https://sanobld.github.io/Web/" target="_blank" rel="noopener">Design : Sano Bld</a>
             </div>
         </div>
+    </footer>
 
-        <div class="legal-notice-wrapper" style="margin-top: 30px;">
-            <a href="legalnotice.html" class="link-card">
-                Informations Légales & CGV 
-                <span>Éditeur, Hébergement & Conditions de vente</span>
-            </a>
-        </div>
+
+    <!-- ===================================================
+         LIGHTBOX
+    ==================================================== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Aperçu de la photo" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightbox(null, true)" aria-label="Fermer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <img id="lightboxImg" src="" alt="" loading="lazy">
     </div>
-    </div>
-        
-    <footer><p>© SOLANGE BOHEME</p></footer>
+
 
     <script src="script.js"></script>
 </body>
