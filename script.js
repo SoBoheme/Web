@@ -1,26 +1,42 @@
-/* ==========================================================
-   1. CONSTANTES & CONFIGURATION GLOBALE
-   ========================================================== */
-const sunPath = '<circle cx="12" cy="12" r="6"></circle>';
-const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+/* ============================================================
+   SO'BÔHÈME — Script V2
+   Vanilla JS · Pas de librairie externe
+   ============================================================ */
 
-let currentSlideIndex = 0;
-let slideInterval;
-let allSlides;
-let sliderDots;
-let lastScrollY = window.scrollY;
+'use strict';
 
-/* ==========================================================
-   2. GESTION DU THÈME (CLAIR / SOMBRE)
-   ========================================================== */
+/* ------------------------------------------------------------
+   1. ICÔNES THÈME
+   ------------------------------------------------------------ */
+const ICONS = {
+    sun:  `<circle cx="12" cy="12" r="5"/>
+           <line x1="12" y1="1"  x2="12" y2="3"/>
+           <line x1="12" y1="21" x2="12" y2="23"/>
+           <line x1="4.22" y1="4.22"  x2="5.64" y2="5.64"/>
+           <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+           <line x1="1"  y1="12" x2="3"  y2="12"/>
+           <line x1="21" y1="12" x2="23" y2="12"/>
+           <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
+           <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>`,
+    moon: `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`
+};
 
-function updateIcon() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' || 
-                   (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-    const themeIcon = document.getElementById('theme-icon');
-    if (themeIcon) themeIcon.innerHTML = isDark ? moonPath : sunPath;
+
+/* ------------------------------------------------------------
+   2. THÈME CLAIR / SOMBRE
+   ------------------------------------------------------------ */
+
+/** Met à jour l'icône du bouton selon le thème actif */
+function updateThemeIcon() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+        || (!document.documentElement.getAttribute('data-theme')
+            && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    const icon = document.getElementById('theme-icon');
+    if (icon) icon.innerHTML = isDark ? ICONS.moon : ICONS.sun;
 }
 
+/** Bascule entre le mode clair et sombre */
 function toggleTheme() {
     let current = document.documentElement.getAttribute('data-theme');
     if (!current) {
@@ -28,274 +44,281 @@ function toggleTheme() {
     }
     const target = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', target);
-    updateIcon();
+    updateThemeIcon();
 }
 
-/* ==========================================================
-   3. NAVIGATION (CACHE AU SCROLL)
-   ========================================================== */
 
-function handleSmartNav() {
-    // On cible le bon conteneur : .nav-container
-    const nav = document.querySelector('.nav-container'); 
-    if (!nav) return;
-    
-    const currentScrollY = window.scrollY;
+/* ------------------------------------------------------------
+   3. HEADER — STICKY + MASQUAGE AU SCROLL
+   ------------------------------------------------------------ */
+function initHeader() {
+    const header = document.getElementById('siteHeader');
+    if (!header) return;
 
-    // Si on descend de plus de 100px : on cache la pillule
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        nav.classList.add('nav-hidden');
-    } 
-    // Si on remonte : on la réaffiche
-    else if (currentScrollY < lastScrollY) {
-        nav.classList.remove('nav-hidden');
-    }
+    let lastY   = 0;
+    let ticking = false;
 
-    lastScrollY = currentScrollY;
-}
+    function handleScroll() {
+        const y = window.scrollY;
 
-function markCurrentDay() {
-    const today = new Date().getDay(); 
-    const activeRow = document.getElementById(`day-${today}`);
-    if (activeRow) activeRow.classList.add('is-today');
-}
+        // Fond glassmorphism après 80 px
+        header.classList.toggle('scrolled', y > 80);
 
-/* ==========================================================
-   4. GESTION MÉDIA (VIDÉO & MODALE)
-   ========================================================== */
-
-function toggleVideoControl() {
-    const video = document.getElementById('hero-video');
-    if (!video) return;
-    video.paused ? video.play() : video.pause();
-}
-
-window.closeModal = function() {
-    const modal = document.getElementById('imagePreview');
-    if (modal) modal.style.display = 'none';
-};
-
-/* ==========================================================
-   5. LOGIQUE DU SLIDER (MODE FADE)
-   ========================================================== */
-
-function initSlider() {
-    allSlides = document.querySelectorAll('.fade-slide');
-    const nav = document.getElementById('sliderNav');
-    if (!allSlides || !allSlides.length) return;
-
-    if (nav) {
-        nav.innerHTML = ''; 
-        allSlides.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.classList.add('nav-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.onclick = () => manualSlide(i);
-            nav.appendChild(dot);
-        });
-        sliderDots = document.querySelectorAll('.nav-dot');
-    }
-
-    allSlides.forEach(img => {
-        img.onclick = () => {
-            const modal = document.getElementById('imagePreview');
-            const fullImg = document.getElementById('fullImg');
-            if (modal && fullImg) {
-                modal.style.display = 'flex';
-                fullImg.src = img.src;
-            }
-        };
-    });
-    startAutoPlay();
-}
-
-function updateSliderFade() {
-    if (!allSlides) return;
-    allSlides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === currentSlideIndex);
-    });
-    if (sliderDots) {
-        sliderDots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlideIndex);
-        });
-    }
-}
-
-window.moveSlide = function(direction) {
-    clearInterval(slideInterval);
-    currentSlideIndex = (currentSlideIndex + direction + allSlides.length) % allSlides.length;
-    updateSliderFade();
-    startAutoPlay();
-};
-
-function manualSlide(index) {
-    clearInterval(slideInterval);
-    currentSlideIndex = index;
-    updateSliderFade();
-    startAutoPlay();
-}
-
-function startAutoPlay() {
-    clearInterval(slideInterval);
-    slideInterval = setInterval(() => {
-        if (allSlides && allSlides.length) {
-            currentSlideIndex = (currentSlideIndex + 1) % allSlides.length;
-            updateSliderFade();
+        // Masquer en descente, réafficher en remontée
+        if (y > lastY && y > 220) {
+            header.classList.add('hidden');
+        } else if (y < lastY - 8) {
+            header.classList.remove('hidden');
         }
-    }, 4000);
+
+        lastY   = y;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(handleScroll);
+            ticking = true;
+        }
+    }, { passive: true });
 }
 
-/* ==========================================================
-   6. EFFETS VISUELS (3D, REVEAL, CURSEUR)
-   ========================================================== */
 
-function initVisualEffects() {
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                revealObserver.unobserve(entry.target);
-            }
+/* ------------------------------------------------------------
+   4. MENU MOBILE
+   ------------------------------------------------------------ */
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn  = document.getElementById('burgerBtn');
+    if (!menu) return;
+
+    const isOpen = menu.classList.toggle('open');
+    btn?.classList.toggle('active', isOpen);
+    btn?.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+
+/* ------------------------------------------------------------
+   5. SCROLL REVEAL — INTERSECTION OBSERVER
+   ------------------------------------------------------------ */
+function initReveal() {
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -36px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+
+/* ------------------------------------------------------------
+   6. PARALLAX LÉGER SUR LES IMAGES ESPRIT
+   ------------------------------------------------------------ */
+function initParallax() {
+    const imgs = document.querySelectorAll('.esprit-img-wrap');
+    if (!imgs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    function applyParallax() {
+        imgs.forEach(el => {
+            const rect  = el.getBoundingClientRect();
+            const viewH = window.innerHeight;
+            const pct   = (viewH - rect.top) / (viewH + rect.height);
+            const offset = (pct - 0.5) * 50; // amplitude douce
+            el.style.transform = `translateY(${offset.toFixed(1)}px)`;
         });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    }
 
-    document.querySelectorAll('.link-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transition = "transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)";
+    window.addEventListener('scroll', () => requestAnimationFrame(applyParallax), { passive: true });
+    applyParallax();
+}
+
+
+/* ------------------------------------------------------------
+   7. LIGHTBOX (remplace la modale produit)
+   ------------------------------------------------------------ */
+
+/** Ouvre la lightbox avec l'image et l'alt voulus */
+function openLightbox(src, alt) {
+    const lb  = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImg');
+    if (!lb || !img) return;
+
+    img.src = src;
+    img.alt = alt || '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+/** Ferme la lightbox — force=true pour fermer sans vérification de cible */
+function closeLightbox(event, force = false) {
+    const lb = document.getElementById('lightbox');
+    if (!lb) return;
+
+    if (force || (event && event.target === lb)) {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+}
+
+
+/* ------------------------------------------------------------
+   8. HORAIRES DYNAMIQUES
+   ------------------------------------------------------------ */
+
+/** Table des plages d'ouverture (heure décimale) */
+const SCHEDULE = {
+    0: { name: 'Dimanche',  slots: [] },
+    1: { name: 'Lundi',     slots: [{ o: 14, c: 19 }] },
+    2: { name: 'Mardi',     slots: [{ o: 9, c: 12 }, { o: 14, c: 19 }] },
+    3: { name: 'Mercredi',  slots: [{ o: 9, c: 12 }, { o: 14, c: 19 }] },
+    4: { name: 'Jeudi',     slots: [{ o: 9, c: 12 }, { o: 14, c: 19 }] },
+    5: { name: 'Vendredi',  slots: [{ o: 9, c: 12 }, { o: 14, c: 19 }] },
+    6: { name: 'Samedi',    slots: [{ o: 9, c: 12 }, { o: 14, c: 18 }] },
+};
+
+/** Formate un nombre décimal en "HHhMM" */
+function fmtH(decimal) {
+    const hh = Math.floor(decimal);
+    const mm = Math.round((decimal - hh) * 60);
+    return `${String(hh).padStart(2, '0')}h${mm > 0 ? String(mm).padStart(2, '0') : '00'}`;
+}
+
+function isOpenNow() {
+    const now  = new Date();
+    const day  = now.getDay();
+    const h    = now.getHours() + now.getMinutes() / 60;
+    return (SCHEDULE[day]?.slots || []).some(s => h >= s.o && h < s.c);
+}
+
+function getNextOpen() {
+    const now = new Date();
+    const day = now.getDay();
+    const h   = now.getHours() + now.getMinutes() / 60;
+
+    // Prochain créneau aujourd'hui ?
+    for (const s of (SCHEDULE[day]?.slots || [])) {
+        if (h < s.o) return `Ouvre aujourd'hui à ${fmtH(s.o)}`;
+    }
+
+    // Prochain jour ouvré
+    for (let d = 1; d <= 7; d++) {
+        const nd    = (day + d) % 7;
+        const slots = SCHEDULE[nd]?.slots || [];
+        if (slots.length) {
+            const label = d === 1 ? 'demain' : SCHEDULE[nd].name.toLowerCase();
+            return `Ouvre ${label} à ${fmtH(slots[0].o)}`;
+        }
+    }
+    return '';
+}
+
+function updateHoursUI() {
+    const badge    = document.getElementById('statusBadge');
+    const statusTx = document.getElementById('statusText');
+    const nextEl   = document.getElementById('nextOpening');
+    if (!badge || !statusTx) return;
+
+    const open = isOpenNow();
+    badge.className   = `status-pill ${open ? 'open' : 'closed'}`;
+    statusTx.textContent = open ? 'Ouvert maintenant' : 'Fermé';
+
+    if (nextEl) nextEl.textContent = open ? '' : getNextOpen();
+
+    // Jour courant mis en valeur
+    const today = new Date().getDay();
+    document.querySelectorAll('.schedule-table tr').forEach(r => r.classList.remove('is-today'));
+    document.getElementById(`day-${today}`)?.classList.add('is-today');
+}
+
+
+/* ------------------------------------------------------------
+   9. GÉNÉRATION VCARD
+   ------------------------------------------------------------ */
+async function downloadVCard() {
+    let photo = '';
+    try {
+        const res  = await fetch('images/logo.png');
+        const blob = await res.blob();
+        photo = await new Promise(resolve => {
+            const r = new FileReader();
+            r.onloadend = () => resolve(r.result.split(',')[1]);
+            r.readAsDataURL(blob);
         });
+    } catch (e) {
+        console.warn('Logo VCard non chargé :', e);
+    }
 
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const xRotation = -((y / rect.height) - 0.5) * 15;
-            const yRotation = ((x / rect.width) - 0.5) * 15;
-            card.style.transition = "transform 0.1s ease-out";
-            card.style.transform = `perspective(1000px) scale(1.05) rotateX(${xRotation}deg) rotateY(${yRotation}deg)`;
-        });
+    const lines = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "FN:SO'BÔHÈME",
+        "ORG:SO'BÔHÈME;Boutique de mode & accessoires",
+        "TITLE:Boutique de mode féminine",
+        "TEL;TYPE=CELL,VOICE:+33622411978",
+        "TEL;TYPE=WORK,VOICE:+33956918541",
+        "EMAIL:boutique.soboheme@gmail.com",
+        "ADR;TYPE=WORK:;;56 RUE DE LA REPUBLIQUE;Guebwiller;68500;France",
+        "URL:https://soboheme.github.io/Web/",
+        "NOTE:Boutique de mode féminine & accessoires uniques à Guebwiller.\\n" +
+        "HORAIRES : Lun Fermé/14h-19h · Mar-Ven 9h-12h/14h-19h · Sam 9h-12h/14h-18h · Dim Fermé",
+        photo ? `PHOTO;ENCODING=b;TYPE=PNG:${photo}` : null,
+        "END:VCARD"
+    ].filter(Boolean).join('\n');
 
-        card.addEventListener('mouseleave', () => {
-            card.style.transition = "transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)";
-            card.style.transform = `perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)`;
+    const url = URL.createObjectURL(new Blob([lines], { type: 'text/vcard;charset=utf-8' }));
+    Object.assign(document.createElement('a'), { href: url, download: 'SoBoheme.vcf' }).click();
+    URL.revokeObjectURL(url);
+}
+
+
+/* ------------------------------------------------------------
+   10. INITIALISATION GLOBALE
+   ------------------------------------------------------------ */
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Thème
+    updateThemeIcon();
+    window.matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', updateThemeIcon);
+
+    // Navigation
+    initHeader();
+
+    // Animations
+    initReveal();
+    initParallax();
+
+    // Horaires (init + rafraîchissement toutes les 60 s)
+    updateHoursUI();
+    setInterval(updateHoursUI, 60_000);
+
+    // Fermeture menu mobile au clic sur un lien
+    document.querySelectorAll('.mobile-menu a').forEach(a => {
+        a.addEventListener('click', () => { document.body.style.overflow = ''; });
+    });
+
+    // Fermeture lightbox & menus avec Échap
+    document.addEventListener('keydown', e => {
+        if (e.key !== 'Escape') return;
+        closeLightbox(null, true);
+        if (document.getElementById('mobileMenu')?.classList.contains('open')) {
+            toggleMobileMenu();
+        }
+    });
+
+    // Accessibilité : lien-row cliquable via clavier
+    document.querySelectorAll('.link-row[role="button"]').forEach(el => {
+        el.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
         });
     });
 
-    const cursor = document.querySelector('.custom-cursor');
-    if (cursor && window.matchMedia("(pointer: fine)").matches) {
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-        document.querySelectorAll('a, button, .fade-slide, .link-card, .video-container').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-        });
-    }
-}
-
-/* ==========================================================
-   7. GÉNÉRATION DE LA VCARD
-   ========================================================== */
-
-async function downloadVCard() {
-    const imageUrl = "images/logo.png";
-    let base64Photo = "";
-    try {
-        const response = await fetch(imageUrl);
-        const blobImg = await response.blob();
-        base64Photo = await new Promise(resolve => {
-            const reader = new FileReader();
-            reader.onloadend = () => resolve(reader.result.split(',')[1]);
-            reader.readAsDataURL(blobImg);
-        });
-    } catch (e) { console.error("Erreur chargement logo VCard", e); }
-
-    const vcard = [
-    "BEGIN:VCARD",
-    "VERSION:3.0",
-    "FN:SO'BÔHÈME",
-    "ORG:SO'BÔHÈME;Boutique de mode & accessoires",
-    "TITLE:Boutique de mode féminine",
-    "TEL;TYPE=CELL,VOICE:+33622411978",
-    "TEL;TYPE=WORK,VOICE:+33956918541",
-    "EMAIL:boutique.soboheme@gmail.com",
-    "ADR;TYPE=WORK:;;56 RUE DE LA REPUBLIQUE;Guebwiller;68500;France",
-    
-    // Liens Web
-    "URL:https://soboheme.github.io/Web/",
-    "URL:https://linktr.ee/SoBoheme",
-    
-    // Notes avec Horaires
-    "NOTE:Boutique de mode féminine & accessoires uniques à Guebwiller. ✨\\n\\n" +
-    "HORAIRES D'OUVERTURE :\\n" +
-    "Lundi : Fermé / 14h00 - 19h00\\n" +
-    "Mardi : 09h00 - 12h00 / 14h00 - 19h00\\n" +
-    "Mercredi : 09h00 - 12h00 / 14h00 - 19h00\\n" +
-    "Jeudi : 09h00 - 12h00 / 14h00 - 19h00\\n" +
-    "Vendredi : 09h00 - 12h00 / 14h00 - 19h00\\n" +
-    "Samedi : 09h00 - 12h00 / 14h00 - 18h00\\n" +
-    "Dimanche : Fermé",
-    
-    base64Photo ? `PHOTO;ENCODING=b;TYPE=PNG:${base64Photo}` : "",
-    "END:VCARD"
-].filter(Boolean).join("\n");
-    const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "So_Boheme.vcf";
-    a.click();
-    window.URL.revokeObjectURL(url);
-}
-
-/* ==========================================================
-   8. INITIALISATION GÉNÉRALE (DOM CONTENT LOADED)
-   ========================================================== */
-
-document.addEventListener('DOMContentLoaded', () => {
-    updateIcon();
-    markCurrentDay();
-    initSlider();
-    initVisualEffects();
-    
-    // --- GESTION VIDÉO ---
-    const video = document.getElementById('hero-video');
-    const progressBar = document.getElementById('video-progress');
-    const videoContainer = document.querySelector('.video-container');
-
-    if (video) {
-        const removeSkeleton = () => {
-            if (videoContainer) videoContainer.classList.remove('skeleton');
-        };
-
-        video.addEventListener('loadeddata', removeSkeleton);
-        video.addEventListener('playing', removeSkeleton);
-        video.addEventListener('canplay', removeSkeleton);
-        setTimeout(removeSkeleton, 2000);
-
-        video.addEventListener('timeupdate', () => {
-            if (progressBar && video.duration) {
-                const percentage = (video.currentTime / video.duration) * 100;
-                if (video.currentTime < 0.2) { 
-                    progressBar.style.transition = "width 0.5s ease-in-out";
-                    progressBar.style.width = '0%';
-                } else {
-                    progressBar.style.transition = "none";
-                    progressBar.style.width = percentage + '%';
-                }
-            }
-        });
-
-        video.addEventListener('ended', () => {
-            video.currentTime = 0;
-            video.play();
-        });
-
-        video.play().catch(() => {});
-    }
-
-    // --- ÉVÉNEMENTS GLOBAUX ---
-    window.addEventListener('scroll', () => window.requestAnimationFrame(handleSmartNav));
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateIcon);
 });
