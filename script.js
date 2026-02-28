@@ -284,6 +284,9 @@ async function downloadVCard() {
    ------------------------------------------------------------ */
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- FIX MOBILE : Verrouillage de la hauteur du Hero ---
+    fixHero(); 
+
     // Thème
     updateThemeIcon();
     window.matchMedia('(prefers-color-scheme: dark)')
@@ -321,4 +324,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+});
+
+/* ------------------------------------------------------------
+   11. FONCTIONS UTILES (Mobile Fix, etc.)
+   ------------------------------------------------------------ */
+function fixHero() {
+    // On calcule la hauteur réelle en pixels et on l'applique
+    const vh = window.innerHeight;
+    document.documentElement.style.setProperty('--hero-height', `${vh}px`);
+}
+
+// On recalcule UNIQUEMENT si on tourne le téléphone (pas au scroll)
+window.addEventListener('orientationchange', () => {
+    setTimeout(fixHero, 200);
 });
