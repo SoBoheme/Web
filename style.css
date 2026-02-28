@@ -945,7 +945,7 @@ button {
     color: var(--txt);
 }
 
-/* Badge statut ouvert/fermé */
+/* Badge statut ouvert/fermé — Vert Sauge */
 .status-pill {
     display: inline-flex;
     align-items: center;
@@ -960,15 +960,19 @@ button {
     letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--txt-muted);
-    transition: border-color 0.3s ease, color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .status-pill.open {
-    border-color: rgba(120,190,110,0.45);
-    color: #4a8a3c;
+    border-color: rgba(135, 169, 107, 0.4);
+    background: rgba(135, 169, 107, 0.08);
+    color: #6b8e51;
 }
 
-[data-theme="dark"] .status-pill.open { color: #82d069; }
+[data-theme="dark"] .status-pill.open { 
+    color: #a3c58b; 
+    border-color: rgba(163, 197, 139, 0.3);
+}
 
 .status-dot {
     width: 7px;
@@ -980,17 +984,17 @@ button {
 }
 
 .status-pill.open .status-dot {
-    background: #5abf4a;
-    box-shadow: 0 0 0 3px rgba(90,191,74,0.18);
+    background: #87a96b;
+    box-shadow: 0 0 0 3px rgba(135, 169, 107, 0.2);
     animation: dotPulse 2.2s infinite;
 }
 
 @keyframes dotPulse {
-    0%, 100% { box-shadow: 0 0 0 3px rgba(90,191,74,0.18); }
-    50%       { box-shadow: 0 0 0 6px rgba(90,191,74,0.06); }
+    0%, 100% { box-shadow: 0 0 0 3px rgba(135, 169, 107, 0.2); }
+    50%       { box-shadow: 0 0 0 6px rgba(135, 169, 107, 0.1); }
 }
 
-/* Tableau des horaires */
+/* Tableau des horaires  */
 .schedule-table {
     width: 100%;
     border-collapse: collapse;
@@ -998,14 +1002,15 @@ button {
 
 .schedule-table tr {
     border-bottom: 1px solid var(--border);
-    transition: background 0.18s ease;
+    transition: all 0.2s ease;
 }
 
-.schedule-table tr:last-child { border-bottom: none; }
-.schedule-table tr:hover      { background: var(--taupe-xlt); }
+.schedule-table tr:hover { 
+    background: var(--taupe-xlt); 
+}
 
 .schedule-table td {
-    padding: 11px 8px;
+    padding: 16px 8px; /* Espacement vertical augmenté et constant */
     font-family: 'Inter', sans-serif;
 }
 
@@ -1013,7 +1018,7 @@ button {
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--txt);
-    width: 45%;
+    width: 110px; /* Fixe l'alignement des horaires */
 }
 
 .day-hours {
@@ -1021,20 +1026,30 @@ button {
     color: var(--txt-muted);
     font-style: italic;
     text-align: right;
+    white-space: nowrap; /* Pas de retour à la ligne */
 }
 
-/* Jour actif */
-.schedule-table tr.is-today .day-name {
-    font-weight: 700;
-    color: var(--taupe);
-}
-
+/* --- MISE EN AVANT DU JOUR ACTUEL --- */
 .schedule-table tr.is-today {
-    background: rgba(142,125,109,0.07);
+    background: rgba(142, 125, 109, 0.08); /* Fond léger taupe */
+    border-left: 3px solid var(--taupe); /* Barre sur le côté */
+}
+
+.schedule-table tr.is-today .day-name {
+    font-weight: 800; /* Texte bien gras */
+    color: var(--taupe);
+    padding-left: 12px; /* Petit décalage pour la barre */
+}
+
+.schedule-table tr.is-today .day-hours {
+    font-weight: 600;
+    color: var(--txt);
 }
 
 /* Dimanche fermé */
-.schedule-table tr.row-closed { opacity: 0.42; }
+.schedule-table tr.row-closed { 
+    opacity: 0.45; 
+}
 
 /* Prochaine ouverture */
 .next-opening {
@@ -1044,11 +1059,10 @@ button {
     font-style: italic;
     margin-top: 16px;
     padding-top: 16px;
-    border-top: 1px solid var(--border);
     min-height: 20px;
 }
 
-/* ---- Carte Avis — Luxe ---- */
+/* ---- Carte Avis ---- */
 .avis-card {
     display: flex;
     flex-direction: column;
@@ -1059,26 +1073,25 @@ button {
     overflow: hidden;
 }
 
-/* Filet doré supérieur discret */
+/* Suppression du filet doré */
 .avis-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 32px; right: 32px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--taupe), transparent);
-    opacity: 0.55;
+    display: none;
 }
 
+/* ÉTOILES AU MILIEU  */
 .avis-stars {
-    font-size: 1.25rem;
-    letter-spacing: 5px;
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 1.6rem; 
+    letter-spacing: 6px;
+    margin-right: -6px; 
     color: #C9A44A;
-    transition: letter-spacing 0.35s ease, transform 0.35s ease;
+    transition: opacity 0.3s ease;
 }
 
 .avis-stars:hover {
-    letter-spacing: 9px;
-    transform: scale(1.05);
+    opacity: 0.7;
 }
 
 .avis-heading {
@@ -1088,6 +1101,7 @@ button {
     letter-spacing: 1px;
     color: var(--txt);
     margin-bottom: -8px;
+    text-align: left;
 }
 
 .avis-body {
@@ -1095,6 +1109,7 @@ button {
     font-size: 0.88rem;
     line-height: 1.72;
     color: var(--txt-muted);
+    text-align: left;
 }
 
 .avis-quote {
@@ -1107,10 +1122,10 @@ button {
     border-left: 2px solid var(--taupe);
     padding-left: 18px;
     margin: 4px 0;
+    text-align: left;
 }
 
-
-/* ---- Boutons ---- */
+/* ---- Boutons (Avis Google & Autres) ---- */
 .btn-solid {
     display: inline-flex;
     align-items: center;
@@ -1128,6 +1143,7 @@ button {
     cursor: pointer;
     transition: background 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
     align-self: flex-start;
+    text-decoration: none;
 }
 
 .btn-solid:hover {
@@ -1136,24 +1152,15 @@ button {
     box-shadow: 0 8px 20px rgba(74,63,53,0.22);
 }
 
-[data-theme="dark"] .btn-solid { background: var(--beige); color: var(--noir); }
-[data-theme="dark"] .btn-solid:hover { background: var(--taupe-light); color: var(--noir); }
-
-.btn-ghost {
-    display: inline-block;
-    padding: 11px 22px;
-    border: 1px solid rgba(253,250,247,0.3);
-    border-radius: var(--r-xl);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.76rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(253,250,247,0.8);
-    transition: border-color 0.25s ease, color 0.25s ease;
+[data-theme="dark"] .btn-solid { 
+    background: var(--beige); 
+    color: var(--noir); 
 }
 
-.btn-ghost:hover { border-color: rgba(253,250,247,0.75); color: #fff; }
+[data-theme="dark"] .btn-solid:hover { 
+    background: var(--taupe-light); 
+    color: var(--noir); 
+}
 
 
 /* ---- Google Maps ---- */
