@@ -288,13 +288,27 @@ button {
 }
 
 .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 66px;
+    max-width: 100%;       
+    padding: 10px 50px;    /* 10px en haut/bas (plus épais) et 50px sur les côtés */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 24px;
+    position: relative;   
+}
+
+@media (min-width: 861px) {
+    .header-nav {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 30px;         
+    }
+}
+
+.header-logo img {
+    height: 50px; 
+    width: auto;
 }
 
 /* Logo */
