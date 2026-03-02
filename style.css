@@ -289,7 +289,7 @@ button {
 
 .header-inner {
     max-width: 100%;       
-    padding: 10px 50px;    /* 10px en haut/bas (plus épais) et 50px sur les côtés */
+    padding: 10px 0px;    /* 10px en haut/bas (plus épais) et 50px sur les côtés */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1408,7 +1408,7 @@ button {
    ------------------------------------------------------------ */
 
 /* Tablette */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .section-galerie,
     .section-esprit,
     .section-links,
