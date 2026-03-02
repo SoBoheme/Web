@@ -296,6 +296,10 @@ button {
     position: relative;   
 }
 
+.nav-link {
+    white-space: nowrap; /* Empêche le mot de passer à la ligne */
+}
+
 @media (min-width: 861px) {
     .header-nav {
         position: absolute;
@@ -1408,7 +1412,7 @@ button {
    ------------------------------------------------------------ */
 
 /* Tablette */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .section-galerie,
     .section-esprit,
     .section-links,
