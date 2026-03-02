@@ -296,10 +296,6 @@ button {
     position: relative;   
 }
 
-.nav-link {
-    white-space: nowrap; /* Empêche le mot de passer à la ligne */
-}
-
 @media (min-width: 861px) {
     .header-nav {
         position: absolute;
