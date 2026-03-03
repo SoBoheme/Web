@@ -15,165 +15,447 @@
     <script defer src="https://cloud.umami.is/script.js" data-website-id="b15c0f27-dac1-4c95-8fd6-ea56c27eb049"></script>
 
     <style>
-        /* ---- Styles spécifiques à la page légale ---- */
+        /* ================================================================
+           MENTIONS LÉGALES — Styles spécifiques
+           ================================================================ */
 
-        /* Mini hero de section (sans vidéo) */
+        /* ---- Hero minimaliste ---- */
         .legal-hero {
             width: 100%;
-            padding: 140px 24px 80px;
+            padding: 148px 24px 88px;
             text-align: center;
-            background: var(--bg-alt);
-            border-bottom: 1px solid var(--border);
+            background: var(--bg);
+            position: relative;
+            overflow: hidden;
         }
 
-        .legal-hero .section-label  { margin-bottom: 10px; }
-        .legal-hero .section-title  { margin-bottom: 0; }
-
-        /* Conteneur article */
-        .legal-body {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 72px 24px 100px;
+        /* Filet décoratif central */
+        .legal-hero::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--taupe);
+            margin: 32px auto 0;
+            opacity: 0.5;
         }
 
-        /* Bloc de chaque article légal */
-        .legal-block {
-            margin-bottom: 48px;
-            padding-bottom: 48px;
-            border-bottom: 1px solid var(--border);
-        }
+        .legal-hero .section-label { margin-bottom: 14px; }
 
-        .legal-block:last-of-type {
-            border-bottom: none;
+        .legal-hero .section-title {
+            font-size: clamp(2.4rem, 6vw, 4rem);
             margin-bottom: 0;
         }
 
-        /* Numéro + titre */
-        .legal-block-header {
-            display: flex;
-            align-items: baseline;
-            gap: 14px;
-            margin-bottom: 22px;
-        }
-
-        .legal-num {
+        .legal-hero-sub {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--taupe);
-            line-height: 1;
-            flex-shrink: 0;
-            opacity: 0.45;
-        }
-
-        .legal-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.15rem, 3vw, 1.45rem);
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: var(--txt);
-        }
-
-        /* Corps du texte légal */
-        .legal-content {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .legal-content p {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
-            line-height: 1.85;
+            font-size: clamp(0.85rem, 1.8vw, 0.98rem);
+            font-style: italic;
             color: var(--txt-muted);
+            margin-top: 18px;
+            letter-spacing: 0.5px;
         }
 
-        /* Lignes données clés : label + valeur */
-        .legal-row {
+        /* Barre de séparation ornementale */
+        .legal-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            max-width: 860px;
+            margin: 0 auto 56px;
+            padding: 0 24px;
+        }
+
+        .legal-divider::before,
+        .legal-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .legal-divider-ornament {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--taupe);
+            opacity: 0.5;
+            letter-spacing: 8px;
+        }
+
+        /* ---- Layout principal ---- */
+        .legal-layout {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 64px 24px 120px;
+        }
+
+        /* ---- Bouton retour btn-ghost ---- */
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--txt-muted);
+            padding: 11px 22px;
+            border: 1px solid var(--border);
+            border-radius: 40px;
+            background: transparent;
+            cursor: pointer;
+            transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+            text-decoration: none;
+        }
+
+        .btn-ghost:hover {
+            color: var(--txt);
+            border-color: var(--taupe);
+            background: var(--taupe-xlt);
+            transform: translateY(-1px);
+        }
+
+        .btn-ghost svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+        }
+
+        .btn-ghost:hover svg { transform: translateX(-3px); }
+
+        .legal-nav-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 56px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Index de navigation rapide */
+        .legal-toc {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px 16px;
-            padding: 10px 0;
+            gap: 8px;
+        }
+
+        .legal-toc a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--txt-muted);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: color 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+        }
+
+        .legal-toc a:hover {
+            color: var(--txt);
+            border-color: var(--taupe);
+            background: var(--taupe-xlt);
+        }
+
+        /* ---- Cards légales ---- */
+        .legal-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 40px 44px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-xs);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .legal-card:hover { box-shadow: var(--shadow-sm); }
+
+        @media (max-width: 600px) {
+            .legal-card { padding: 28px 22px; }
+        }
+
+        /* En-tête de carte : icône + titre */
+        .legal-card-header {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 30px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .legal-icon-wrap {
+            width: 46px;
+            height: 46px;
+            border-radius: var(--r);
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.3s ease;
+        }
+
+        .legal-card:hover .legal-icon-wrap {
+            background: var(--taupe-xlt);
+        }
+
+        .legal-icon-wrap svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--taupe);
+            stroke-width: 1.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .legal-card-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .legal-card-num {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--taupe);
+            opacity: 0.7;
+        }
+
+        .legal-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+            font-weight: 700;
+            color: var(--txt);
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+        }
+
+        /* ---- Tableau données (clé / valeur) ---- */
+        .legal-data-table {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .legal-data-row {
+            display: grid;
+            grid-template-columns: 170px 1fr;
+            gap: 12px 20px;
+            padding: 13px 0;
             border-bottom: 1px solid var(--border);
             align-items: baseline;
         }
 
-        .legal-row:last-child { border-bottom: none; }
+        .legal-data-row:last-child { border-bottom: none; }
 
-        .legal-key {
+        .legal-data-key {
             font-family: 'Inter', sans-serif;
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: var(--taupe);
-            flex-shrink: 0;
-            min-width: 175px;
+            padding-top: 1px;
         }
 
-        .legal-val {
+        .legal-data-val {
             font-family: 'Inter', sans-serif;
-            font-size: 0.88rem;
+            font-size: 0.875rem;
             color: var(--txt);
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
-        .legal-val a {
+        .legal-data-val a {
             color: var(--taupe);
             text-decoration: underline;
             text-underline-offset: 3px;
             transition: opacity 0.2s ease;
         }
 
-        .legal-val a:hover { opacity: 0.7; }
+        .legal-data-val a:hover { opacity: 0.7; }
 
-        /* Encart RGPD / note importante */
+        @media (max-width: 520px) {
+            .legal-data-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+                padding: 14px 0;
+            }
+        }
+
+        /* ---- Paragraphes de contenu ---- */
+        .legal-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            line-height: 1.9;
+            color: var(--txt-muted);
+            margin-bottom: 20px;
+        }
+
+        .legal-text:last-child { margin-bottom: 0; }
+
+        .legal-text strong {
+            font-weight: 600;
+            color: var(--txt);
+        }
+
+        /* ---- Chips "moyens de paiement" ---- */
+        .legal-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .legal-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--txt);
+            padding: 7px 14px;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+        }
+
+        .legal-chip svg {
+            width: 13px;
+            height: 13px;
+            stroke: var(--taupe);
+            flex-shrink: 0;
+        }
+
+        /* ---- Encart RGPD / note ---- */
         .legal-note {
             background: var(--bg-alt);
             border: 1px solid var(--border);
             border-left: 3px solid var(--taupe);
+            border-radius: 0 var(--r) var(--r) 0;
+            padding: 20px 24px;
+            margin-top: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .legal-note-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--r-sm);
+            background: var(--taupe-xlt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .legal-note-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--taupe);
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .legal-note-body {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
+            line-height: 1.78;
+            color: var(--txt-muted);
+        }
+
+        .legal-note-body strong {
+            font-weight: 600;
+            color: var(--txt);
+        }
+
+        /* ---- Mini-grille 2 colonnes (infos boutique) ---- */
+        .legal-mini-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 520px) {
+            .legal-mini-grid { grid-template-columns: 1fr; }
+        }
+
+        .legal-mini-card {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
             border-radius: var(--r);
             padding: 18px 20px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            line-height: 1.75;
-            color: var(--txt-muted);
-            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        /* Lien retour boutique */
-        .legal-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+        .legal-mini-label {
             font-family: 'Inter', sans-serif;
-            font-size: 0.76rem;
+            font-size: 0.62rem;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--txt-muted);
-            padding: 14px 0;
-            border-bottom: 1px solid transparent;
-            transition: color 0.22s ease, border-color 0.22s ease;
+            color: var(--taupe);
         }
 
-        .legal-back:hover {
+        .legal-mini-val {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
             color: var(--txt);
-            border-color: var(--border);
+            line-height: 1.55;
+            font-weight: 400;
         }
 
-        .legal-back-wrap {
-            margin-bottom: 48px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 4px;
+        .legal-mini-val a {
+            color: var(--taupe);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        /* ---- Pied de page légal ---- */
+        .legal-footer-note {
+            text-align: center;
+            padding: 40px 0 0;
+            border-top: 1px solid var(--border);
+            margin-top: 48px;
+        }
+
+        .legal-footer-note p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            color: var(--txt-muted);
+            opacity: 0.65;
+            letter-spacing: 0.5px;
+        }
+
+        .legal-footer-note .legal-date {
+            font-style: italic;
+            margin-top: 6px;
         }
     </style>
 </head>
 <body>
 
-    <!-- ===================================================
-         NAVIGATION (identique au site principal)
-    ==================================================== -->
+    <!-- ================================================================
+         HEADER — identique au site principal
+    ================================================================ -->
     <header class="site-header scrolled" id="siteHeader">
         <div class="header-inner">
             <a href="index.html#hero" class="header-logo">SO'BÔHÈME</a>
@@ -188,137 +470,303 @@
                 <button id="theme-btn" onclick="toggleTheme()" aria-label="Basculer le thème">
                     <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
                 </button>
+                <!-- Burger mobile -->
+                <button class="burger-btn" id="burgerBtn" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </header>
 
+    <!-- Menu mobile -->
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Navigation mobile">
+        <a href="index.html#galerie"  onclick="toggleMobileMenu()">Galerie</a>
+        <a href="index.html#esprit"   onclick="toggleMobileMenu()">L'Esprit</a>
+        <a href="index.html#reseaux"  onclick="toggleMobileMenu()">Réseaux</a>
+        <a href="index.html#contact"  onclick="toggleMobileMenu()">Contact</a>
+        <a href="index.html#infos"    onclick="toggleMobileMenu()">Infos</a>
+    </nav>
 
-    <!-- ===================================================
-         MINI HERO
-    ==================================================== -->
-    <div class="legal-hero">
-        <p class="section-label">Documents officiels</p>
-        <h1 class="section-title">Mentions Légales &amp; CGV</h1>
-    </div>
+
+    <!-- ================================================================
+         HERO MINIMALISTE
+    ================================================================ -->
+    <section class="legal-hero" aria-label="En-tête de page">
+        <p class="section-label fade-up" style="--delay:.1s">Documents</p>
+        <h1 class="section-title fade-up" style="--delay:.22s">Mentions Légales &amp; CGV</h1>
+        <p class="legal-hero-sub fade-up" style="--delay:.34s">Boutique SO'BÔHÈME · Guebwiller, Alsace</p>
+    </section>
 
 
-    <!-- ===================================================
-         CORPS LÉGAL
-    ==================================================== -->
-    <main class="legal-body">
+    <!-- ================================================================
+         CONTENU PRINCIPAL
+    ================================================================ -->
+    <main class="legal-layout" id="main">
 
-        <!-- Retour boutique -->
-        <div class="legal-back-wrap reveal">
-            <a href="index.html" class="legal-back">← Retour à la boutique</a>
+        <!-- Barre de navigation interne -->
+        <div class="legal-nav-row reveal">
+            <a href="index.html" class="btn-ghost">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="19 12 5 12"/><polyline points="12 5 5 12 12 19"/></svg>
+                Retour à la boutique
+            </a>
+            <nav class="legal-toc" aria-label="Sections">
+                <a href="#editeur">Éditeur</a>
+                <a href="#vente">Vente</a>
+                <a href="#retours">Retours</a>
+                <a href="#propriete">PI & RGPD</a>
+                <a href="#credits">Crédits</a>
+            </nav>
         </div>
 
-        <!-- 1. Éditeur & Hébergement -->
-        <article class="legal-block reveal">
-            <div class="legal-block-header">
-                <span class="legal-num">01</span>
-                <h2 class="legal-title">Éditeur &amp; Hébergement</h2>
+
+        <!-- ————————————————————————————————————————
+             01 · Éditeur & Hébergement
+        ———————————————————————————————————————— -->
+        <article class="legal-card reveal" id="editeur">
+            <div class="legal-card-header">
+                <div class="legal-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="2" y="3" width="20" height="14" rx="2"/>
+                        <path d="M8 21h8M12 17v4"/>
+                    </svg>
+                </div>
+                <div class="legal-card-meta">
+                    <span class="legal-card-num">Article 01</span>
+                    <h2 class="legal-card-title">Éditeur &amp; Hébergement</h2>
+                </div>
             </div>
 
-            <div class="legal-rows">
-                <div class="legal-row">
-                    <span class="legal-key">Dénomination</span>
-                    <span class="legal-val">SOLANGE BOHEME (Nom commercial : SO'BÔHÈME)</span>
+            <div class="legal-data-table">
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Dénomination</span>
+                    <span class="legal-data-val">SOLANGE BOHEME — Nom commercial : <strong>SO'BÔHÈME</strong></span>
                 </div>
-                <div class="legal-row">
-                    <span class="legal-key">Responsable</span>
-                    <span class="legal-val">Solange SERRANO</span>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Responsable</span>
+                    <span class="legal-data-val">Solange SERRANO</span>
                 </div>
-                <div class="legal-row">
-                    <span class="legal-key">Siège social</span>
-                    <span class="legal-val">56 rue de la République, 68500 Guebwiller, France</span>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">SIRET</span>
+                    <span class="legal-data-val">999 536 295 00010</span>
                 </div>
-                <div class="legal-row">
-                    <span class="legal-key">E-mail</span>
-                    <span class="legal-val">
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Siège social</span>
+                    <span class="legal-data-val">56 rue de la République, 68500 Guebwiller, France</span>
+                </div>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Contact</span>
+                    <span class="legal-data-val">
                         <a href="mailto:boutique.soboheme@gmail.com">boutique.soboheme@gmail.com</a>
                     </span>
                 </div>
-                <div class="legal-row">
-                    <span class="legal-key">SIRET</span>
-                    <span class="legal-val">999 536 295 00010</span>
-                </div>
-                <div class="legal-row">
-                    <span class="legal-key">Hébergement</span>
-                    <span class="legal-val">
-                        GitHub Inc., 88 Colin P. Kelly Jr. St., San Francisco, CA 94107, USA —
+            </div>
+
+            <!-- Mini-grille infos hébergement -->
+            <div class="legal-mini-grid">
+                <div class="legal-mini-card">
+                    <span class="legal-mini-label">Hébergement</span>
+                    <span class="legal-mini-val">
+                        GitHub Inc.<br>
+                        88 Colin P. Kelly Jr. St.<br>
+                        San Francisco, CA 94107, USA<br>
                         <a href="https://www.github.com" target="_blank" rel="noopener">www.github.com</a>
                     </span>
                 </div>
-                <div class="legal-row">
-                    <span class="legal-key">Développement</span>
-                    <span class="legal-val">
-                        <a href="https://sanobld.github.io/Web/" target="_blank" rel="noopener">Sano Bld</a>
+                <div class="legal-mini-card">
+                    <span class="legal-mini-label">Développement &amp; Design</span>
+                    <span class="legal-mini-val">
+                        <a href="https://sanobld.github.io/Web/" target="_blank" rel="noopener">Sano Bld</a><br>
+                        <br>
+                        Conception et intégration<br>
+                        du site vitrine SO'BÔHÈME
                     </span>
                 </div>
             </div>
         </article>
 
-        <!-- 2. Conditions de Vente & Paiement -->
-        <article class="legal-block reveal">
-            <div class="legal-block-header">
-                <span class="legal-num">02</span>
-                <h2 class="legal-title">Conditions de Vente &amp; Paiement</h2>
+
+        <!-- ————————————————————————————————————————
+             02 · Conditions de Vente & Paiement
+        ———————————————————————————————————————— -->
+        <article class="legal-card reveal" id="vente">
+            <div class="legal-card-header">
+                <div class="legal-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                </div>
+                <div class="legal-card-meta">
+                    <span class="legal-card-num">Article 02</span>
+                    <h2 class="legal-card-title">Conditions de Vente &amp; Paiement</h2>
+                </div>
             </div>
 
-            <div class="legal-content">
-                <p>Ce site est une <strong>vitrine en ligne</strong>. Aucune transaction ne s'effectue via ce site internet. Les achats s'effectuent exclusivement au point de vente physique situé au 56 rue de la République, 68500 Guebwiller.</p>
+            <p class="legal-text">
+                Ce site est une <strong>vitrine en ligne</strong>. Aucune transaction ne s'effectue via internet. Les achats s'effectuent exclusivement au point de vente physique situé au 56 rue de la République, 68500 Guebwiller.
+            </p>
 
-                <div class="legal-row">
-                    <span class="legal-key">Moyens de paiement</span>
-                    <span class="legal-val">Cartes bancaires (Visa, Mastercard), espèces, chèques</span>
+            <div class="legal-data-table">
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Moyens acceptés</span>
+                    <span class="legal-data-val">
+                        <div class="legal-chips">
+                            <span class="legal-chip">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                                Carte bancaire (Visa, Mastercard)
+                            </span>
+                            <span class="legal-chip">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M14.8 9.2A3.2 3.2 0 0 0 9 11.5c0 3 3 4.5 3 4.5s3-1.5 3-4.5c0-.4 0-.8-.2-1.1"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                Espèces
+                            </span>
+                            <span class="legal-chip">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1z"/><path d="M7 15v2m10-2v2M7 8V6m10 2V6"/></svg>
+                                Chèques
+                            </span>
+                        </div>
+                    </span>
                 </div>
-                <div class="legal-row">
-                    <span class="legal-key">Prix</span>
-                    <span class="legal-val">Exprimés en Euros (€), toutes taxes comprises (TTC)</span>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Prix affichés</span>
+                    <span class="legal-data-val">En Euros (€), toutes taxes comprises (TTC)</span>
                 </div>
-                <div class="legal-row">
-                    <span class="legal-key">Livraison</span>
-                    <span class="legal-val">Aucune expédition — retrait uniquement en boutique</span>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Livraison</span>
+                    <span class="legal-data-val">Aucune expédition — retrait <strong>uniquement en boutique</strong></span>
+                </div>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Commande en ligne</span>
+                    <span class="legal-data-val">Non disponible — vente en boutique exclusivement</span>
                 </div>
             </div>
         </article>
 
-        <!-- 3. Retraits, Retours & Litiges -->
-        <article class="legal-block reveal">
-            <div class="legal-block-header">
-                <span class="legal-num">03</span>
-                <h2 class="legal-title">Retraits, Retours &amp; Litiges</h2>
+
+        <!-- ————————————————————————————————————————
+             03 · Retraits, Retours & Litiges
+        ———————————————————————————————————————— -->
+        <article class="legal-card reveal" id="retours">
+            <div class="legal-card-header">
+                <div class="legal-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="1 4 1 10 7 10"/>
+                        <path d="M3.51 15a9 9 0 1 0 .49-3.14"/>
+                    </svg>
+                </div>
+                <div class="legal-card-meta">
+                    <span class="legal-card-num">Article 03</span>
+                    <h2 class="legal-card-title">Retraits, Retours &amp; Litiges</h2>
+                </div>
             </div>
 
-            <div class="legal-content">
-                <p>Les échanges ou remboursements sont soumis aux conditions affichées en caisse au moment de l'achat. Le droit de rétractation légal de 14 jours <strong>ne s'applique pas</strong> aux achats effectués directement en magasin physique (art. L.221-18 du Code de la consommation).</p>
+            <p class="legal-text">
+                Les échanges ou remboursements sont soumis aux conditions affichées en caisse au moment de l'achat. Le droit de rétractation légal de 14 jours <strong>ne s'applique pas</strong> aux achats effectués directement en magasin physique (art. L.221-18 du Code de la consommation).
+            </p>
 
-                <p>En cas de litige non résolu à l'amiable, le client peut recourir à une <strong>médiation conventionnelle</strong>, conformément aux articles L.616-1 et R.616-1 du Code de la consommation, via la plateforme européenne de règlement des litiges.</p>
-            </div>
-        </article>
+            <p class="legal-text">
+                En cas de litige non résolu à l'amiable, le client peut recourir à une <strong>médiation conventionnelle</strong>, conformément aux articles L.616-1 et R.616-1 du Code de la consommation, via la plateforme européenne de règlement des litiges.
+            </p>
 
-        <!-- 4. Propriété Intellectuelle & Données -->
-        <article class="legal-block reveal">
-            <div class="legal-block-header">
-                <span class="legal-num">04</span>
-                <h2 class="legal-title">Propriété Intellectuelle &amp; Données Personnelles</h2>
-            </div>
-
-            <div class="legal-content">
-                <p>L'ensemble du contenu de ce site — textes, logos, photographies, vidéos et structure — est la propriété exclusive de <strong>SOLANGE BOHEME</strong>. Toute reproduction ou utilisation, même partielle, sans accord écrit préalable est strictement interdite.</p>
-
-                <div class="legal-note">
-                    <strong>Confidentialité &amp; RGPD.</strong> Ce site ne collecte aucune donnée personnelle identifiable et n'utilise aucun cookie de traçage publicitaire. Les mesures d'audience sont réalisées de façon anonyme via <strong>Umami Analytics</strong>, hébergé dans le respect total du Règlement Général sur la Protection des Données (RGPD).
+            <div class="legal-note">
+                <div class="legal-note-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <div class="legal-note-body">
+                    <strong>Médiation en ligne.</strong> La plateforme européenne de règlement en ligne des litiges est accessible à l'adresse :
+                    <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener" style="color:var(--taupe);text-decoration:underline;text-underline-offset:3px;">ec.europa.eu/consumers/odr</a>
                 </div>
             </div>
         </article>
+
+
+        <!-- ————————————————————————————————————————
+             04 · Propriété Intellectuelle & RGPD
+        ———————————————————————————————————————— -->
+        <article class="legal-card reveal" id="propriete">
+            <div class="legal-card-header">
+                <div class="legal-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                </div>
+                <div class="legal-card-meta">
+                    <span class="legal-card-num">Article 04</span>
+                    <h2 class="legal-card-title">Propriété Intellectuelle &amp; Données Personnelles</h2>
+                </div>
+            </div>
+
+            <p class="legal-text">
+                L'ensemble du contenu de ce site — textes, logos, photographies, vidéos et structure — est la propriété exclusive de <strong>SOLANGE BOHEME</strong>. Toute reproduction ou utilisation, même partielle, sans accord écrit préalable est strictement interdite.
+            </p>
+
+            <div class="legal-note">
+                <div class="legal-note-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="legal-note-body">
+                    <strong>Confidentialité &amp; RGPD.</strong> Ce site ne collecte aucune donnée personnelle identifiable et n'utilise aucun cookie de traçage publicitaire. Les mesures d'audience sont réalisées de façon entièrement anonyme via <strong>Umami Analytics</strong>, hébergé dans le respect total du Règlement Général sur la Protection des Données (RGPD). Aucune donnée n'est transmise à des tiers.
+                </div>
+            </div>
+        </article>
+
+
+        <!-- ————————————————————————————————————————
+             05 · Crédits
+        ———————————————————————————————————————— -->
+        <article class="legal-card reveal" id="credits">
+            <div class="legal-card-header">
+                <div class="legal-icon-wrap" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    </svg>
+                </div>
+                <div class="legal-card-meta">
+                    <span class="legal-card-num">Article 05</span>
+                    <h2 class="legal-card-title">Crédits &amp; Technologies</h2>
+                </div>
+            </div>
+
+            <div class="legal-data-table">
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Développement</span>
+                    <span class="legal-data-val">
+                        <a href="https://sanobld.github.io/Web/" target="_blank" rel="noopener">Sano Bld</a> — Conception &amp; intégration front-end
+                    </span>
+                </div>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Technologies</span>
+                    <span class="legal-data-val">HTML5, CSS3 (Playfair Display · Inter), JavaScript vanilla</span>
+                </div>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Typographies</span>
+                    <span class="legal-data-val">Playfair Display &amp; Inter — Google Fonts (SIL Open Font Licence)</span>
+                </div>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Audience</span>
+                    <span class="legal-data-val">Umami Analytics — mesure anonyme, sans cookies</span>
+                </div>
+                <div class="legal-data-row">
+                    <span class="legal-data-key">Mise à jour</span>
+                    <span class="legal-data-val">2026 — © SO'BÔHÈME, tous droits réservés</span>
+                </div>
+            </div>
+        </article>
+
+
+        <!-- Pied de page légal -->
+        <div class="legal-footer-note reveal">
+            <p>© 2026 SO'BÔHÈME — Solange Bohème · SIRET 999 536 295 00010</p>
+            <p class="legal-date">Dernière mise à jour : 2026 &nbsp;·&nbsp; Guebwiller, France</p>
+        </div>
 
     </main>
 
 
-    <!-- ===================================================
-         FOOTER (identique au site principal)
-    ==================================================== -->
+    <!-- ================================================================
+         FOOTER — identique au site principal
+    ================================================================ -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col footer-brand">
@@ -355,10 +803,19 @@
             <div>
                 <a href="index.html">Retour à la boutique</a>
                 <span aria-hidden="true"> · </span>
-                <a href="https://sanobld.github.io/Web/" target="_blank" rel="noopener">Design : Sano Bld</a>
+                <a href="https://sanobld.github.io/Web/" target="_blank" rel="noopener">Développé par Sano Bld</a>
             </div>
         </div>
     </footer>
+
+
+    <!-- Lightbox (requis par script.js) -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Image agrandie">
+        <button class="lightbox-close" onclick="closeLightbox(null, true)" aria-label="Fermer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <img id="lightboxImg" src="" alt="">
+    </div>
 
     <script src="script.js"></script>
 </body>
