@@ -867,16 +867,6 @@ button {
     padding-left: 20px;
 }
 
-.link-row--cta {
-    border: 1px solid var(--taupe-light);
-    border-radius: var(--r);
-    padding: 22px 18px;
-    margin-bottom: 2px;
-    transition: background 0.22s ease, border-color 0.22s ease, padding-left 0.25s ease;
-}
-
-.link-row--cta:hover { border-color: var(--taupe); }
-
 .link-row-name {
     font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
