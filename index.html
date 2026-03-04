@@ -331,24 +331,24 @@
             </div>
 
     <!-- Carte Cadeau -->
+
+        <div class="info-card reveal" style="display: flex; flex-direction: row; padding: 0; overflow: hidden; align-items: stretch;">
     
-            <div class="info-card reveal" style="display: flex; flex-direction: row; padding: 0; overflow: hidden; align-items: stretch;">
+    <div style="flex: 1.4; padding: 25px; text-align: left; display: flex; flex-direction: column; justify-content: center;">
+        <p class="section-label" style="font-size: 0.6rem; margin-bottom: 8px;">Cœur de Ville</p>
         
-        <div style="flex: 1.4; padding: 25px; text-align: left; display: flex; flex-direction: column; justify-content: center;">
-            <p class="section-label" style="font-size: 0.6rem; margin-bottom: 8px;">Cœur de Ville</p>
-            
-            <h3 class="info-card-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; font-style: italic; color: var(--text-main);">
-                Carte Cadeau <span style="font-size: 0.9rem; font-style: normal; display: block; margin-top: 5px; color: var(--taupe);">Région de Guebwiller</span>
-            </h3>
-            
-            <p class="avis-body" style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
-                Parce que faire vivre nos rues est essentiel, SO'BÔHÈME accepte les cartes <strong>Petitscommerces</strong> pour sublimer votre style au quotidien.
-            </p>
-            
-            <a href="https://www.petitscommerces.fr/regiondeguebwiller/" target="_blank" rel="noopener" class="btn-solid" style="font-size: 0.8rem; padding: 12px 20px; align-self: flex-start; text-align: center; width: fit-content;">
-                Découvrir la carte cadeau
-            </a>
-        </div>
+        <h3 class="info-card-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; font-style: italic; color: var(--text-main);">
+            Carte Cadeau <span style="font-size: 0.9rem; font-style: normal; display: block; margin-top: 5px; color: var(--taupe);">Région de Guebwiller</span>
+        </h3>
+        
+        <p class="avis-body" style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
+            Parce que faire vivre nos rues est essentiel, SO'BÔHÈME accepte les cartes <strong>Petitscommerces</strong> pour sublimer votre style au quotidien.
+        </p>
+        
+        <a href="https://www.petitscommerces.fr/regiondeguebwiller/" target="_blank" rel="noopener" class="btn-solid" style="font-size: 0.8rem; padding: 12px 20px; align-self: flex-start; text-align: center; width: fit-content;">
+            Découvrir la carte cadeau
+        </a>
+    </div>
 
     <div class="logo-partenaire-container" style="flex: 0.8; background: var(--beige-alt); display: flex; align-items: center; justify-content: center; padding: 20px; border-left: 1px solid rgba(142, 125, 109, 0.1); transition: background 0.3s ease;">
         <img src="images/Logo_Petitscommerces.png" 
@@ -359,11 +359,13 @@
 </div>
 
 <style>
-    [data-theme="dark"] .logo-partenaire {
+    [data-theme="dark"] .logo-partenaire,
+    body.dark-mode .logo-partenaire {
         filter: invert(1) brightness(2) !important;
     }
 
-    [data-theme="dark"] .logo-partenaire-container {
+    [data-theme="dark"] .logo-partenaire-container,
+    body.dark-mode .logo-partenaire-container {
         background: var(--bg-card) !important;
     }
 </style>
