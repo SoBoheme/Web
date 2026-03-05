@@ -1923,3 +1923,15 @@ button {
     margin-top: 8px;
     opacity: 0.5;
 }
+
+/* Inversion du logo Petitscommerces en mode sombre (bouton manuel) */
+[data-theme="dark"] .logo-partenaire {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* Inversion du logo en mode sombre automatique (préférence du système) */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .logo-partenaire {
+        filter: invert(1) hue-rotate(180deg);
+    }
+}

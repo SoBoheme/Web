@@ -338,3 +338,5 @@ function fixHero() {
 window.addEventListener('orientationchange', () => {
     setTimeout(fixHero, 200);
 });
+
+
