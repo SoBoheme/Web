@@ -122,57 +122,25 @@
                     </div>
                 </div>
 
-                <!-- Citation éditoriale -->
+                <!-- Citation -->
                 <blockquote class="mag-quote reveal">
                     <p>"L'harmonie des matières nobles et le souffle de la liberté<br>pour une allure qui célèbre votre beauté singulière."</p>
                     <cite>— SO'BÔHÈME</cite>
                 </blockquote>
 
-                <!-- Rangée 2 : 3 images paysage de même taille -->
-                <div class="mag-row mag-row--trio reveal">
-                    <div class="mag-item" onclick="openLightbox('images/photo4.webp', 'Look du moment')">
-                        <div class="mag-img-wrap">
-                            <img src="images/photo4.webp" alt="Look du moment" loading="lazy">
-                            <div class="mag-overlay"><span>↗</span></div>
-                        </div>
-                    </div>
-                    <div class="mag-item" onclick="openLightbox('images/photo5.webp', 'Pièce intemporelle')">
-                        <div class="mag-img-wrap">
-                            <img src="images/photo5.webp" alt="Pièce intemporelle" loading="lazy">
-                            <div class="mag-overlay"><span>↗</span></div>
-                        </div>
-                    </div>
-                    <div class="mag-item" onclick="openLightbox('images/photo6.webp', 'Élégance naturelle')">
-                        <div class="mag-img-wrap">
-                            <img src="images/photo6.webp" alt="Élégance naturelle" loading="lazy">
-                            <div class="mag-overlay"><span>↗</span></div>
-                        </div>
-                    </div>
-                </div>
+                <section class="section-instagram" id="reseaux-insta">
+        <div class="section-wrap">
+            <header class="section-header reveal">
+                <p class="section-label">Inspirations</p>
+                <h2 class="section-title">La Vie de la Boutique</h2>
+                <p class="section-sub">Nos derniers looks et coups de cœur capturés pour vous.</p>
+            </header>
 
-                <!-- Rangée 3 : 2 petits + 1 grand portrait (ordre inversé) -->
-                <div class="mag-row mag-row--featured mag-row--reverse reveal">
-                    <div class="mag-col-stack">
-                        <div class="mag-item" onclick="openLightbox('images/photo7.webp', 'Détails floraux')">
-                            <div class="mag-img-wrap">
-                                <img src="images/photo7.webp" alt="Détails floraux" loading="lazy">
-                                <div class="mag-overlay"><span>↗</span></div>
-                            </div>
-                        </div>
-                        <div class="mag-item" onclick="openLightbox('images/photo8.webp', 'Silhouette bohème')">
-                            <div class="mag-img-wrap">
-                                <img src="images/photo8.webp" alt="Silhouette bohème" loading="lazy">
-                                <div class="mag-overlay"><span>↗</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mag-item mag-item--portrait" onclick="openLightbox('images/photo1.webp', 'L\'intérieur de la boutique')">
-                        <div class="mag-img-wrap">
-                            <img src="images/photo1.webp" alt="Intérieur boutique" loading="lazy">
-                            <div class="mag-overlay"><span>↗</span></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="reveal" style="margin-top: 40px;">
+                <behold-widget feed-id="vTmQl4f7QjFtAb9nt582"></behold-widget>
+            </div>
+        </div>
+    </section>
 
             </div><!-- /mag-grid -->
         </div>
@@ -438,7 +406,12 @@
         <img id="lightboxImg" src="" alt="" loading="lazy">
     </div>
 
-
     <script src="script.js"></script>
+    <script>
+      (() => {
+        const d=document,s=d.createElement("script");s.type="module";
+        s.src="https://w.behold.so/widget.js";d.head.append(s);
+      })();
+    </script>
 </body>
 </html>
