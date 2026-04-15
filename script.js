@@ -339,4 +339,42 @@ window.addEventListener('orientationchange', () => {
     setTimeout(fixHero, 200);
 });
 
+/* ============================================================
+   🥚🥚🥚   
+   ============================================================ */
 
+// 1. GESTION DU TITRE D'ONGLET
+const originalTitle = document.title;
+
+const phrasesBoheme = [
+    "SO'BÔHÈME | Revenez nous voir... 🌸",
+    "SO'BÔHÈME | Révélez votre éclat. ✨",
+    "SO'BÔHÈME | À tout de suite... 🌸",
+    "SO'BÔHÈME | Restez inspirée. 🌿",
+    "SO'BÔHÈME | Une petite pause douceur ? ☕",
+    "SO'BÔHÈME | L'élégance à votre image. ✨",
+    "SO'BÔHÈME | Osez être vous-même. 🌸",
+    "SO'BÔHÈME | Un monde de douceur. ☁️",
+    "SO'BÔHÈME | Rayonnez de l'intérieur. ✨",
+    "SO'BÔHÈME | Votre instant beauté. 🌿",
+    "SO'BÔHÈME | La vie vous va si bien. 🌸",
+    "SO'BÔHÈME | Écoutez vos envies. ✨",
+    "SO'BÔHÈME | Le style est une émotion. 🐚",
+    "SO'BÔHÈME | Libérez votre élégance. 🍃"
+];
+
+window.addEventListener('blur', () => {
+    const randomPhrase = phrasesBoheme[Math.floor(Math.random() * phrasesBoheme.length)];
+    document.title = randomPhrase;
+});
+
+window.addEventListener('focus', () => {
+    document.title = originalTitle;
+});
+
+// 2. SIGNATURE CONSOLE
+console.log(
+    "%cSO'BÔHÈME %c\nDe Sano Bld", 
+    "color: #8E7D6D; font-size: 20px; font-weight: bold; font-family: 'Playfair Display', serif;",
+    "color: #4A3F35; font-size: 14px; font-style: italic;"
+);
