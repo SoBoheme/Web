@@ -126,22 +126,44 @@ function initParallax() {
 function openLightbox(src, alt) {
     const lb  = document.getElementById('lightbox');
     const img = document.getElementById('lightboxImg');
+    const vid = document.getElementById('lightboxVideo');
     if (!lb || !img) return;
 
+    if (vid) { vid.pause(); vid.style.display = 'none'; }
+    img.style.display = '';
     img.src = src;
     img.alt = alt || '';
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
 }
 
+/** Same as openLightbox but plays a video instead of showing an image */
+function openLightboxVideo(src) {
+    const lb  = document.getElementById('lightbox');
+    const img = document.getElementById('lightboxImg');
+    const vid = document.getElementById('lightboxVideo');
+    if (!lb || !vid) return;
+
+    img.style.display = 'none';
+    vid.src = src;
+    vid.style.display = '';
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    vid.currentTime = 0;
+    vid.muted = true;
+    vid.play().catch(() => {});
+}
+
 /** Closes the lightbox — force=true skips the click-target check */
 function closeLightbox(event, force = false) {
-    const lb = document.getElementById('lightbox');
+    const lb  = document.getElementById('lightbox');
+    const vid = document.getElementById('lightboxVideo');
     if (!lb) return;
 
     if (force || (event && event.target === lb)) {
         lb.classList.remove('open');
         document.body.style.overflow = '';
+        if (vid) vid.pause();
     }
 }
 

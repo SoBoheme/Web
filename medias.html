@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Médias | SO'BÔHÈME</title>
+    <meta name="description" content="Toutes les photos et vidéos de la boutique SO'BÔHÈME à Guebwiller.">
+
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="b15c0f27-dac1-4c95-8fd6-ea56c27eb049"></script>
+</head>
+<body>
+
+    <!-- HEADER — same as the main site -->
+    <header class="site-header scrolled" id="siteHeader">
+        <div class="header-inner">
+            <a href="index.html" class="header-logo">SO'BÔHÈME</a>
+            <nav class="header-nav" aria-label="Navigation principale">
+                <a href="index.html#galerie"  class="nav-link">Galerie</a>
+                <a href="index.html#esprit"   class="nav-link">L'Esprit</a>
+                <a href="index.html#reseaux"  class="nav-link">Réseaux</a>
+                <a href="index.html#contact"  class="nav-link">Contact</a>
+                <a href="index.html#infos"    class="nav-link">Infos</a>
+                <a href="medias.html" class="nav-link" aria-current="page">Médias</a>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-btn" onclick="toggleTheme()" aria-label="Basculer le thème">
+                    <svg id="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+                </button>
+                <button class="burger-btn" id="burgerBtn" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Full-screen mobile menu -->
+    <nav class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation mobile">
+        <a href="index.html#galerie"  onclick="toggleMobileMenu()">Galerie</a>
+        <a href="index.html#esprit"   onclick="toggleMobileMenu()">L'Esprit</a>
+        <a href="index.html#reseaux"  onclick="toggleMobileMenu()">Réseaux</a>
+        <a href="index.html#contact"  onclick="toggleMobileMenu()">Contact</a>
+        <a href="index.html#infos"    onclick="toggleMobileMenu()">Infos</a>
+        <a href="medias.html" onclick="toggleMobileMenu()">Médias</a>
+    </nav>
+
+
+    <!-- Page header, same spirit as the other section headers -->
+    <header class="legal-page-header" aria-label="En-tête de page">
+        <p class="section-label fade-up" style="--delay:.1s">La boutique en images</p>
+        <h1 class="section-title fade-up" style="--delay:.25s">Médias</h1>
+        <p class="legal-page-sub fade-up" style="--delay:.4s">Photos &amp; vidéos &nbsp;·&nbsp; Guebwiller, Alsace</p>
+    </header>
+
+
+    <!-- Photo & video grid -->
+    <main class="legal-layout" id="main" style="max-width: 1200px;">
+
+        <div class="media-grid reveal">
+
+            <div class="media-item" onclick="openLightboxVideo('videos/photo-tech-1.mp4')">
+                <video src="videos/photo-tech-1.mp4" autoplay muted loop playsinline></video>
+                <span class="media-tag">Vidéo</span>
+                <div class="media-item-overlay">
+                    <span class="media-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="media-item" onclick="openLightbox('images/photo1.webp', 'Ambiance boutique')">
+                <img src="images/photo1.webp" alt="Ambiance boutique SO'BÔHÈME" loading="lazy">
+                <div class="media-item-overlay"></div>
+            </div>
+
+            <div class="media-item" onclick="openLightbox('images/photo2.webp', 'Accessoires &amp; bijoux')">
+                <img src="images/photo2.webp" alt="Accessoires &amp; bijoux" loading="lazy">
+                <div class="media-item-overlay"></div>
+            </div>
+
+            <div class="media-item" onclick="openLightboxVideo('videos/photo-tech-2.mp4')">
+                <video src="videos/photo-tech-2.mp4" autoplay muted loop playsinline></video>
+                <span class="media-tag">Vidéo</span>
+                <div class="media-item-overlay">
+                    <span class="media-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="media-item" onclick="openLightbox('images/photo3.webp', 'Matières naturelles')">
+                <img src="images/photo3.webp" alt="Matières naturelles" loading="lazy">
+                <div class="media-item-overlay"></div>
+            </div>
+
+            <div class="media-item" onclick="openLightbox('images/photo4.webp', 'Look du moment')">
+                <img src="images/photo4.webp" alt="Look du moment" loading="lazy">
+                <div class="media-item-overlay"></div>
+            </div>
+
+            <div class="media-item" onclick="openLightboxVideo('videos/photo-tech-3.mp4')">
+                <video src="videos/photo-tech-3.mp4" autoplay muted loop playsinline></video>
+                <span class="media-tag">Vidéo</span>
+                <div class="media-item-overlay">
+                    <span class="media-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="media-item" onclick="openLightbox('images/photo5.webp', 'Pièce intemporelle')">
+                <img src="images/photo5.webp" alt="Pièce intemporelle" loading="lazy">
+                <div class="media-item-overlay"></div>
+            </div>
+
+            <div class="media-item" onclick="openLightbox('images/photo6.webp', 'Élégance naturelle')">
+                <img src="images/photo6.webp" alt="Élégance naturelle" loading="lazy">
+                <div class="media-item-overlay"></div>
+            </div>
+
+            <div class="media-item" onclick="openLightboxVideo('videos/photo-tech-4.mp4')">
+                <video src="videos/photo-tech-4.mp4" autoplay muted loop playsinline></video>
+                <span class="media-tag">Vidéo</span>
+                <div class="media-item-overlay">
+                    <span class="media-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                    </span>
+                </div>
+            </div>
+
+            <div class="media-item" onclick="openLightbox('images/photo7.webp', 'Détails floraux')">
+                <img src="images/photo7.webp" alt="Détails floraux" loading="lazy">
+                <div class="media-item-overlay"></div>
+            </div>
+
+            <div class="media-item" onclick="openLightbox('images/photo8.webp', 'Silhouette bohème')">
+                <img src="images/photo8.webp" alt="Silhouette bohème" loading="lazy">
+                <div class="media-item-overlay"></div>
+            </div>
+
+            <div class="media-item" onclick="openLightbox('images/photo9.webp', 'Conseil personnalisé')">
+                <img src="images/photo9.webp" alt="Conseil personnalisé" loading="lazy">
+                <div class="media-item-overlay"></div>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER — same as the main site -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-col footer-brand">
+                <p class="footer-logo">SO'BÔHÈME</p>
+                <p class="footer-sub">Mode féminine &amp; accessoires uniques<br>Guebwiller, Alsace</p>
+                <nav class="footer-social" aria-label="Réseaux sociaux">
+                    <a href="https://instagram.com/boutique_so_boheme" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+                    </a>
+                    <a href="https://tiktok.com/@boutique_so.boheme" target="_blank" rel="noopener" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61584699270783" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="footer-col">
+                <p class="footer-col-title">La Boutique</p>
+                <a href="index.html#galerie">Galerie</a>
+                <a href="index.html#esprit">Notre Esprit</a>
+                <a href="index.html#contact">Contact</a>
+                <a href="index.html#infos">Horaires &amp; Accès</a>
+                <a href="medias.html">Médias</a>
+            </div>
+
+            <div class="footer-col">
+                <p class="footer-col-title">Informations</p>
+                <a href="legalnotice.html" aria-current="page">Mentions légales</a>
+                <a href="legalnotice.html#vente">CGV</a>
+                <a href="legalnotice.html#propriete">RGPD</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 SO'BÔHÈME, Solange Bohème · SIRET 999 536 295 00010</p>
+            <div>
+                <a href="index.html">Retour à la boutique</a>
+                <span aria-hidden="true"> · </span>
+                <a href="legalnotice.html">Mentions légales</a>
+                <span aria-hidden="true"> · </span>
+                <a href="https://sanobld.github.io/Web/" target="_blank" rel="noopener">Design : Sano Bld</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Lightbox (needed by script.js) -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Aperçu du média">
+        <button class="lightbox-close" onclick="closeLightbox(null, true)" aria-label="Fermer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+        <img id="lightboxImg" src="" alt="">
+        <video id="lightboxVideo" src="" loop muted playsinline style="display:none" onclick="event.stopPropagation(); this.paused ? this.play() : this.pause();"></video>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
