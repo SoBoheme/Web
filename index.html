@@ -17,9 +17,7 @@
 </head>
 <body>
 
-    <!-- ===================================================
-         NAVIGATION
-    ==================================================== -->
+    <!-- NAVIGATION -->
     <header class="site-header" id="siteHeader">
         <div class="header-inner">
             <a href="#hero" class="header-logo">SO'BÔHÈME</a>
@@ -43,7 +41,7 @@
         </div>
     </header>
 
-    <!-- Menu mobile plein écran -->
+    <!-- Full-screen mobile menu -->
     <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
         <a href="#galerie"  onclick="toggleMobileMenu()">Galerie</a>
         <a href="#esprit"   onclick="toggleMobileMenu()">L'Esprit</a>
@@ -53,11 +51,9 @@
     </div>
 
 
-    <!-- ===================================================
-         HERO — PLEIN ÉCRAN
-    ==================================================== -->
+    <!-- Hero, full screen -->
     <section class="hero" id="hero">
-        <!-- Fond vidéo / image de secours -->
+        <!-- Background video / fallback image -->
         <div class="hero-bg">
             <video id="hero-video" autoplay muted loop playsinline webkit-playsinline poster="images/photo1.webp">
                 <source src="images/presentation.mp4" type="video/mp4">
@@ -65,7 +61,7 @@
             <div class="hero-overlay" aria-hidden="true"></div>
         </div>
 
-        <!-- Contenu centré -->
+        <!-- Centered content -->
         <div class="hero-content">
             <p class="hero-eyebrow fade-up" style="--delay:.2s">Boutique &amp; Accessoires — Guebwiller</p>
             <h1 class="hero-title fade-up" style="--delay:.45s">SO'BÔHÈME</h1>
@@ -77,16 +73,14 @@
             </a>
         </div>
 
-        <!-- Indicateur de défilement -->
+        <!-- Scroll indicator -->
         <div class="scroll-indicator" aria-hidden="true">
             <div class="scroll-track"><div class="scroll-thumb"></div></div>
         </div>
     </section>
 
 
-    <!-- ===================================================
-         GALERIE IMMERSIVE — FORMAT MAGAZINE
-    ==================================================== -->
+    <!-- Immersive gallery, magazine layout -->
     <section class="section-galerie" id="galerie">
         <div class="section-wrap">
             <header class="section-header reveal">
@@ -95,10 +89,10 @@
                 <p class="section-sub">Ambiances, matières et instants de vie au cœur de notre espace.</p>
             </header>
 
-            <!-- Grille magazine : mélange portrait + paysage -->
+            <!-- Magazine-style grid: mix of portrait + landscape -->
             <div class="mag-grid">
 
-                <!-- Rangée 1 : 1 grand portrait + 2 petits empilés -->
+                <!-- Row 1: one big portrait + 2 small stacked -->
                 <div class="mag-row mag-row--featured reveal">
                     <div class="mag-item mag-item--portrait" onclick="openLightbox('images/photo1.webp', 'Ambiance boutique')">
                         <div class="mag-img-wrap">
@@ -122,13 +116,13 @@
                     </div>
                 </div>
 
-                <!-- Citation éditoriale -->
+                <!-- Editorial quote -->
                 <blockquote class="mag-quote reveal">
-                    <p>"L'harmonie des matières nobles et le souffle de la liberté<br>pour une allure qui célèbre votre beauté singulière."</p>
-                    <cite>— SO'BÔHÈME</cite>
+                    <p>"Des matières nobles, un style libre,<br>pour une allure qui vous ressemble."</p>
+                    <cite>SO'BÔHÈME</cite>
                 </blockquote>
 
-                <!-- Rangée 2 : 3 images paysage de même taille -->
+                <!-- Row 2: 3 same-size landscape images -->
                 <div class="mag-row mag-row--trio reveal">
                     <div class="mag-item" onclick="openLightbox('images/photo4.webp', 'Look du moment')">
                         <div class="mag-img-wrap">
@@ -150,7 +144,7 @@
                     </div>
                 </div>
 
-                <!-- Rangée 3 : 2 petits + 1 grand portrait (ordre inversé) -->
+                <!-- Row 3: 2 small + 1 big portrait (reversed order) -->
                 <div class="mag-row mag-row--featured mag-row--reverse reveal">
                     <div class="mag-col-stack">
                         <div class="mag-item" onclick="openLightbox('images/photo7.webp', 'Détails floraux')">
@@ -179,9 +173,7 @@
     </section>
 
 
-    <!-- ===================================================
-         L'ESPRIT SO'BÔHÈME — STORYTELLING
-    ==================================================== -->
+    <!-- Brand story section -->
     <section class="section-esprit" id="esprit">
         <div class="section-wrap">
 
@@ -189,7 +181,7 @@
                 <div class="esprit-text">
                     <p class="section-label">Notre Histoire</p>
                     <h2 class="esprit-heading">L'art de révéler<br><em>votre beauté.</em></h2>
-                    <p class="esprit-body">Nichée dans les rues de Guebwiller, SO'BÔHÈME est le fruit d’une passion pour l’élégance authentique. Ici, nous ne vendons pas seulement des vêtements — nous façonnons avec vous un style qui honore votre beauté et votre liberté.</p>
+                    <p class="esprit-body">Installée dans les rues de Guebwiller, SO'BÔHÈME est née d'une passion pour l'élégance simple et vraie. Ici, on ne se contente pas de vendre des vêtements, on prend le temps de trouver avec vous ce qui vous va vraiment.</p>
                 </div>
                 <div class="esprit-img-wrap">
                     <img src="images/photo3.webp" alt="L'esprit SO'BÔHÈME" loading="lazy">
@@ -203,8 +195,8 @@
                 <div class="esprit-text">
                     <p class="section-label">Notre Approche</p>
                     <h2 class="esprit-heading">Un conseil<br><em>sur mesure.</em></h2>
-                    <p class="esprit-body">Chaque visite est une rencontre unique. Solange vous accueille avec bienveillance pour vous guider vers des pièces qui vous ressemblent vraiment — des matières naturelles, des coupes fluides, une élégance authentique.</p>
-                    <p class="esprit-signature">— Solange, fondatrice</p>
+                    <p class="esprit-body">Chaque visite est différente. On prend le temps de vous écouter et de vous conseiller, avec des matières naturelles, pour trouver les pièces qui vous correspondent vraiment.</p>
+                    <p class="esprit-signature">Solange, fondatrice</p>
                 </div>
             </div>
 
@@ -212,9 +204,7 @@
     </section>
 
 
-    <!-- ===================================================
-         RÉSEAUX SOCIAUX
-    ==================================================== -->
+    <!-- Social links -->
     <section class="section-links" id="reseaux">
         <div class="section-wrap">
             <header class="section-header reveal">
@@ -243,9 +233,7 @@
     </section>
 
 
-    <!-- ===================================================
-         CONTACT
-    ==================================================== -->
+    <!-- Contact -->
     <section class="section-contact" id="contact">
         <div class="section-wrap">
             <header class="section-header reveal">
@@ -279,9 +267,7 @@
     </section>
 
 
-    <!-- ===================================================
-         INFORMATIONS — HORAIRES, AVIS, CARTE
-    ==================================================== -->
+    <!-- Info: hours, reviews, map -->
     <section class="section-infos" id="infos">
         <div class="section-wrap">
             <header class="section-header reveal">
@@ -291,7 +277,7 @@
 
             <div class="infos-grid reveal">
 
-                <!-- Horaires -->
+                <!-- Opening hours -->
                 <div class="info-card">
                     <div class="info-card-header">
                         <h3 class="info-card-title">Horaires d'ouverture</h3>
@@ -307,22 +293,22 @@
                             <tr id="day-3"><td class="day-name">Mercredi</td><td class="day-hours">09h00 – 12h00 / 14h00 – 19h00</td></tr>
                             <tr id="day-4"><td class="day-name">Jeudi</td><td class="day-hours">09h00 – 12h00 / 14h00 – 19h00</td></tr>
                             <tr id="day-5"><td class="day-name">Vendredi</td><td class="day-hours">09h00 – 12h00 / 14h00 – 19h00</td></tr>
-                            <tr id="day-6"><td class="day-name">Samedi</td><td class="day-hours">09h00 – 12h00 / 14h00 – 18h00</td></tr>
+                            <tr id="day-6"><td class="day-name">Samedi</td><td class="day-hours">08h00 – 18h00</td></tr>
                             <tr id="day-0" class="row-closed"><td class="day-name">Dimanche</td><td class="day-hours">Fermé</td></tr>
                         </tbody>
                     </table>
                     <p class="next-opening" id="nextOpening"></p>
                 </div>
 
-                <!-- Avis Google — carte luxe -->
+                <!-- Google reviews — premium card -->
                 <div class="info-card avis-card">
                     <div class="avis-stars" aria-label="5 étoiles sur 5">
                         <span aria-hidden="true">★★★★★</span>
                     </div>
-                    <p class="avis-heading">Votre retour nous est précieux.</p>
+                    <p class="avis-heading">Votre avis compte pour nous.</p>
                     <p class="avis-body">Heureuse de votre nouveau style ? Témoignez de votre passage et faites découvrir l'univers SO'BÔHÈME autour de vous.</p>
                     <blockquote class="avis-quote">
-                        « Révéler votre beauté,<br>un doux souhait devenu réalité. »
+                        « Trouver la pièce qui vous va,<br>tout simplement. »
                     </blockquote>
                     <a href="https://g.page/r/CVimaS5EkmSpEAE/review" class="btn-solid" target="_blank" rel="noopener">
                         Écrire un avis Google
@@ -331,15 +317,15 @@
             </div>
 
             
-    <!-- Carte Cadeau -->
+    <!-- Gift card -->
 
         <div class="info-card reveal" style="display: flex; flex-direction: row; padding: 0; overflow: hidden; align-items: stretch;">
     
     <div style="flex: 1.4; padding: 25px; text-align: left; display: flex; flex-direction: column; justify-content: center;">
         <p class="section-label" style="font-size: 0.6rem; margin-bottom: 8px;">Cœur de Ville</p>
         
-        <h3 class="info-card-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; font-style: italic; color: var(--text-main);">
-            Carte Cadeau <span style="font-size: 0.9rem; font-style: normal; display: block; margin-top: 5px; color: var(--taupe);">Région de Guebwiller</span>
+        <h3 class="info-card-title" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 10px; font-style: italic; color: var(--txt);">
+            Carte cadeau <span style="font-size: 0.9rem; font-style: normal; display: block; margin-top: 5px; color: var(--taupe);">Région de Guebwiller</span>
         </h3>
         
         <p class="avis-body" style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
@@ -351,7 +337,7 @@
         </a>
     </div>
 
-    <div class="logo-partenaire-container" style="flex: 0.8; background: var(--beige-alt); display: flex; align-items: center; justify-content: center; padding: 20px; border-left: 1px solid rgba(142, 125, 109, 0.1); transition: background 0.3s ease;">
+    <div class="logo-partenaire-container" style="flex: 0.8; background: var(--bg-alt); display: flex; align-items: center; justify-content: center; padding: 20px; border-left: 1px solid rgba(142, 125, 109, 0.1); transition: background 0.3s ease;">
         <img src="images/Logo_Petitscommerces.png" 
              alt="Partenaire Petitscommerces" 
              class="logo-partenaire"
@@ -359,7 +345,7 @@
     </div>
 </div>
             
-            <!-- Carte Google Maps -->
+            <!-- Google Maps embed -->
             <div class="map-wrap reveal">
                 <p class="map-address"><strong>Nous trouver :</strong> 56 rue de la République, 68500 Guebwiller</p>
                 <div class="map-frame">
@@ -378,9 +364,7 @@
     </section>
 
 
-    <!-- ===================================================
-         FOOTER
-    ==================================================== -->
+    <!-- FOOTER -->
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-col footer-brand">
@@ -428,9 +412,7 @@
     </footer>
 
 
-    <!-- ===================================================
-         LIGHTBOX
-    ==================================================== -->
+    <!-- LIGHTBOX -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Aperçu de la photo" onclick="closeLightbox(event)">
         <button class="lightbox-close" onclick="closeLightbox(null, true)" aria-label="Fermer">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>

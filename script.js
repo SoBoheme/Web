@@ -1,12 +1,8 @@
-/* ============================================================
-   SO'BÔHÈME — Script
-   ============================================================ */
+// SO'BÔHÈME — main script
 
 'use strict';
 
-/* ------------------------------------------------------------
-   1. ICÔNES THÈME
-   ------------------------------------------------------------ */
+// Theme icons (sun/moon SVGs)
 const ICONS = {
     sun:  `<circle cx="12" cy="12" r="5"/>
            <line x1="12" y1="1"  x2="12" y2="3"/>
@@ -20,12 +16,9 @@ const ICONS = {
     moon: `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`
 };
 
+// Light / dark theme
 
-/* ------------------------------------------------------------
-   2. THÈME CLAIR / SOMBRE
-   ------------------------------------------------------------ */
-
-/** Met à jour l'icône du bouton selon le thème actif */
+/** Updates the button icon based on the current theme */
 function updateThemeIcon() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark'
         || (!document.documentElement.getAttribute('data-theme')
@@ -35,7 +28,7 @@ function updateThemeIcon() {
     if (icon) icon.innerHTML = isDark ? ICONS.moon : ICONS.sun;
 }
 
-/** Bascule entre le mode clair et sombre */
+/** Switches between light and dark mode */
 function toggleTheme() {
     let current = document.documentElement.getAttribute('data-theme');
     if (!current) {
@@ -46,10 +39,7 @@ function toggleTheme() {
     updateThemeIcon();
 }
 
-
-/* ------------------------------------------------------------
-   3. HEADER — STICKY + MASQUAGE AU SCROLL
-   ------------------------------------------------------------ */
+// Sticky header, hides on scroll down
 function initHeader() {
     const header = document.getElementById('siteHeader');
     if (!header) return;
@@ -60,10 +50,10 @@ function initHeader() {
     function handleScroll() {
         const y = window.scrollY;
 
-        // Fond glassmorphism après 80 px
+        // Glass background after 80px
         header.classList.toggle('scrolled', y > 80);
 
-        // Masquer en descente, réafficher en remontée
+        // Hide when scrolling down, show again when scrolling up
         if (y > lastY && y > 220) {
             header.classList.add('hidden');
         } else if (y < lastY - 8) {
@@ -82,10 +72,7 @@ function initHeader() {
     }, { passive: true });
 }
 
-
-/* ------------------------------------------------------------
-   4. MENU MOBILE
-   ------------------------------------------------------------ */
+// Mobile menu
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     const btn  = document.getElementById('burgerBtn');
@@ -97,10 +84,7 @@ function toggleMobileMenu() {
     document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
-
-/* ------------------------------------------------------------
-   5. SCROLL REVEAL — INTERSECTION OBSERVER
-   ------------------------------------------------------------ */
+// Scroll reveal (Intersection Observer)
 function initReveal() {
     const observer = new IntersectionObserver(
         (entries) => {
@@ -116,10 +100,7 @@ function initReveal() {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-
-/* ------------------------------------------------------------
-   6. PARALLAX LÉGER SUR LES IMAGES ESPRIT
-   ------------------------------------------------------------ */
+// Soft parallax on the "esprit" images
 function initParallax() {
     const imgs = document.querySelectorAll('.esprit-img-wrap');
     if (!imgs.length) return;
@@ -130,7 +111,7 @@ function initParallax() {
             const rect  = el.getBoundingClientRect();
             const viewH = window.innerHeight;
             const pct   = (viewH - rect.top) / (viewH + rect.height);
-            const offset = (pct - 0.5) * 50; // amplitude douce
+            const offset = (pct - 0.5) * 50; // keep the movement subtle
             el.style.transform = `translateY(${offset.toFixed(1)}px)`;
         });
     }
@@ -139,12 +120,9 @@ function initParallax() {
     applyParallax();
 }
 
+// Lightbox (replaces the old product modal)
 
-/* ------------------------------------------------------------
-   7. LIGHTBOX (remplace la modale produit)
-   ------------------------------------------------------------ */
-
-/** Ouvre la lightbox avec l'image et l'alt voulus */
+/** Opens the lightbox with the given image and alt text */
 function openLightbox(src, alt) {
     const lb  = document.getElementById('lightbox');
     const img = document.getElementById('lightboxImg');
@@ -156,7 +134,7 @@ function openLightbox(src, alt) {
     document.body.style.overflow = 'hidden';
 }
 
-/** Ferme la lightbox — force=true pour fermer sans vérification de cible */
+/** Closes the lightbox — force=true skips the click-target check */
 function closeLightbox(event, force = false) {
     const lb = document.getElementById('lightbox');
     if (!lb) return;
@@ -167,12 +145,9 @@ function closeLightbox(event, force = false) {
     }
 }
 
+// Opening hours
 
-/* ------------------------------------------------------------
-   8. HORAIRES DYNAMIQUES
-   ------------------------------------------------------------ */
-
-/** Table des plages d'ouverture (heure décimale) */
+/** Opening hours table (decimal hours) */
 const SCHEDULE = {
     0: { name: 'Dimanche',  slots: [] },
     1: { name: 'Lundi',     slots: [{ o: 14, c: 19 }] },
@@ -180,10 +155,10 @@ const SCHEDULE = {
     3: { name: 'Mercredi',  slots: [{ o: 9, c: 12 }, { o: 14, c: 19 }] },
     4: { name: 'Jeudi',     slots: [{ o: 9, c: 12 }, { o: 14, c: 19 }] },
     5: { name: 'Vendredi',  slots: [{ o: 9, c: 12 }, { o: 14, c: 19 }] },
-    6: { name: 'Samedi',    slots: [{ o: 9, c: 12 }, { o: 14, c: 18 }] },
+    6: { name: 'Samedi',    slots: [{ o: 8, c: 18 }] },
 };
 
-/** Formate un nombre décimal en "HHhMM" */
+/** Formats a decimal number as "HHhMM" */
 function fmtH(decimal) {
     const hh = Math.floor(decimal);
     const mm = Math.round((decimal - hh) * 60);
@@ -202,12 +177,12 @@ function getNextOpen() {
     const day = now.getDay();
     const h   = now.getHours() + now.getMinutes() / 60;
 
-    // Prochain créneau aujourd'hui ?
+    // Is there another slot today?
     for (const s of (SCHEDULE[day]?.slots || [])) {
         if (h < s.o) return `Ouvre aujourd'hui à ${fmtH(s.o)}`;
     }
 
-    // Prochain jour ouvré
+    // Otherwise, look for the next open day
     for (let d = 1; d <= 7; d++) {
         const nd    = (day + d) % 7;
         const slots = SCHEDULE[nd]?.slots || [];
@@ -231,16 +206,13 @@ function updateHoursUI() {
 
     if (nextEl) nextEl.textContent = open ? '' : getNextOpen();
 
-    // Jour courant mis en valeur
+    // Highlight today's row
     const today = new Date().getDay();
     document.querySelectorAll('.schedule-table tr').forEach(r => r.classList.remove('is-today'));
     document.getElementById(`day-${today}`)?.classList.add('is-today');
 }
 
-
-/* ------------------------------------------------------------
-   9. GÉNÉRATION VCARD
-   ------------------------------------------------------------ */
+// vCard generation
 async function downloadVCard() {
     let photo = '';
     try {
@@ -252,7 +224,7 @@ async function downloadVCard() {
             r.readAsDataURL(blob);
         });
     } catch (e) {
-        console.warn('Logo VCard non chargé :', e);
+        console.warn('Could not load the VCard logo:', e);
     }
 
     const lines = [
@@ -267,7 +239,7 @@ async function downloadVCard() {
         "ADR;TYPE=WORK:;;56 RUE DE LA REPUBLIQUE;Guebwiller;68500;France",
         "URL:https://soboheme.github.io/Web/",
         "NOTE:Boutique de mode féminine & accessoires uniques à Guebwiller.\\n" +
-        "HORAIRES : Lun Fermé/14h-19h · Mar-Ven 9h-12h/14h-19h · Sam 9h-12h/14h-18h · Dim Fermé",
+        "HORAIRES : Lun Fermé/14h-19h · Mar-Ven 9h-12h/14h-19h · Sam 8h-18h Non-Stop · Dim Fermé",
         photo ? `PHOTO;ENCODING=b;TYPE=PNG:${photo}` : null,
         "END:VCARD"
     ].filter(Boolean).join('\n');
@@ -277,16 +249,13 @@ async function downloadVCard() {
     URL.revokeObjectURL(url);
 }
 
-
-/* ------------------------------------------------------------
-   10. INITIALISATION GLOBALE
-   ------------------------------------------------------------ */
+// Main init
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- FIX MOBILE : Verrouillage de la hauteur du Hero ---
+    // --- MOBILE FIX: lock the Hero height ---
     fixHero(); 
 
-    // Thème
+    // Theme
     updateThemeIcon();
     window.matchMedia('(prefers-color-scheme: dark)')
           .addEventListener('change', updateThemeIcon);
@@ -298,16 +267,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initReveal();
     initParallax();
 
-    // Horaires (init + rafraîchissement toutes les 60 s)
+    // Opening hours (init + refresh every 60s)
     updateHoursUI();
     setInterval(updateHoursUI, 60_000);
 
-    // Fermeture menu mobile au clic sur un lien
+    // Close mobile menu when a link is clicked
     document.querySelectorAll('.mobile-menu a').forEach(a => {
         a.addEventListener('click', () => { document.body.style.overflow = ''; });
     });
 
-    // Fermeture lightbox & menus avec Échap
+    // Close lightbox & menus with Escape
     document.addEventListener('keydown', e => {
         if (e.key !== 'Escape') return;
         closeLightbox(null, true);
@@ -316,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Accessibilité : lien-row cliquable via clavier
+    // Accessibility: make link-row clickable with the keyboard
     document.querySelectorAll('.link-row[role="button"]').forEach(el => {
         el.addEventListener('keydown', e => {
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.click(); }
@@ -325,25 +294,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-/* ------------------------------------------------------------
-   11. FONCTIONS UTILES (Mobile Fix, etc.)
-   ------------------------------------------------------------ */
+// Helper functions (mobile fix, etc.)
 function fixHero() {
-    // On calcule la hauteur réelle en pixels et on l'applique
+    // Grab the real pixel height and apply it
     const vh = window.innerHeight;
     document.documentElement.style.setProperty('--hero-height', `${vh}px`);
 }
 
-// On recalcule UNIQUEMENT si on tourne le téléphone (pas au scroll)
+// Only recompute on rotation, not on every scroll
 window.addEventListener('orientationchange', () => {
     setTimeout(fixHero, 200);
 });
 
-/* ============================================================
-   🥚🥚🥚   
-   ============================================================ */
+// Little easter eggs below
 
-// 1. GESTION DU TITRE D'ONGLET
+// 1. TAB TITLE SWAP
 const originalTitle = document.title;
 
 const phrasesBoheme = [
@@ -372,7 +337,7 @@ window.addEventListener('focus', () => {
     document.title = originalTitle;
 });
 
-// 2. SIGNATURE CONSOLE
+// 2. CONSOLE SIGNATURE
 console.log(
     "%cSO'BÔHÈME %c\nDe Sano Bld", 
     "color: #8E7D6D; font-size: 20px; font-weight: bold; font-family: 'Playfair Display', serif;",
