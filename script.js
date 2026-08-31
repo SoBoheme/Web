@@ -271,6 +271,68 @@ async function downloadVCard() {
     URL.revokeObjectURL(url);
 }
 
+// Random photo/video shuffle for the home gallery
+const GALERIE_MEDIA_POOL = [
+    { type: 'image', src: 'images/photo1.webp', alt: "Ambiance boutique SO'BÔHÈME" },
+    { type: 'image', src: 'images/photo2.webp', alt: 'Accessoires & bijoux' },
+    { type: 'image', src: 'images/photo3.webp', alt: 'Matières naturelles' },
+    { type: 'image', src: 'images/photo4.webp', alt: 'Look du moment' },
+    { type: 'image', src: 'images/photo5.webp', alt: 'Pièce intemporelle' },
+    { type: 'image', src: 'images/photo6.webp', alt: 'Élégance naturelle' },
+    { type: 'image', src: 'images/photo7.webp', alt: 'Détails floraux' },
+    { type: 'image', src: 'images/photo8.webp', alt: 'Silhouette bohème' },
+    { type: 'image', src: 'images/photo9.webp', alt: 'Conseil personnalisé' },
+    { type: 'video', src: 'videos/photo-tech-1.mp4', alt: 'Vidéo boutique' },
+    { type: 'video', src: 'videos/photo-tech-2.mp4', alt: 'Vidéo boutique' },
+    { type: 'video', src: 'videos/photo-tech-3.mp4', alt: 'Vidéo boutique' },
+    { type: 'video', src: 'videos/photo-tech-4.mp4', alt: 'Vidéo boutique' },
+];
+
+function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+/** Fills the home gallery slots with a random mix of photos & videos, picked fresh on every load */
+function initGalerieAleatoire() {
+    const slots = document.querySelectorAll('.mag-item[data-slot]');
+    if (!slots.length) return;
+
+    const picks = shuffleArray(GALERIE_MEDIA_POOL).slice(0, slots.length);
+
+    slots.forEach((item, i) => {
+        const media = picks[i];
+        const wrap  = item.querySelector('.mag-img-wrap');
+        const old   = wrap?.querySelector('img, video');
+        if (!media || !wrap || !old) return;
+
+        let el;
+        if (media.type === 'video') {
+            el = document.createElement('video');
+            el.src = media.src;
+            el.autoplay = true;
+            el.muted = true;
+            el.loop = true;
+            el.playsInline = true;
+        } else {
+            el = document.createElement('img');
+            el.src = media.src;
+            el.alt = media.alt;
+            el.loading = 'lazy';
+        }
+        wrap.replaceChild(el, old);
+
+        item.onclick = () => {
+            if (media.type === 'video') openLightboxVideo(media.src);
+            else openLightbox(media.src, media.alt);
+        };
+    });
+}
+
 // Main init
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -284,6 +346,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navigation
     initHeader();
+
+    // Random photo/video shuffle for the home gallery
+    initGalerieAleatoire();
 
     // Animations
     initReveal();

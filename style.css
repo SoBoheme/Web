@@ -670,7 +670,8 @@ button {
     overflow: hidden;
 }
 
-.mag-img-wrap img {
+.mag-img-wrap img,
+.mag-img-wrap video {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -685,7 +686,8 @@ button {
     
 }
 
-.mag-item:hover .mag-img-wrap img {
+.mag-item:hover .mag-img-wrap img,
+.mag-item:hover .mag-img-wrap video {
     transform: scale(1.06);
 }
 
