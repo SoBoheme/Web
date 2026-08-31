@@ -700,8 +700,22 @@ button {
     opacity: 0;
     transition: opacity 0.35s ease;
     color: #fff;
-    font-size: 1.5rem;
-    font-weight: 300;
+}
+
+.mag-overlay span {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.6);
+    background: rgba(18,16,14,0.25);
+}
+
+.mag-overlay span svg {
+    width: 18px;
+    height: 18px;
 }
 
 .mag-item:hover .mag-overlay { opacity: 1; }
@@ -889,11 +903,17 @@ button {
 }
 
 .link-row-arrow {
-    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
     color: var(--taupe);
     flex-shrink: 0;
     margin-left: auto;
     transition: transform 0.2s ease;
+}
+
+.link-row-arrow svg {
+    width: 16px;
+    height: 16px;
 }
 
 .link-row:hover .link-row-arrow { transform: translateX(4px); }
@@ -1203,6 +1223,9 @@ button {
 }
 
 .btn-ghost:hover svg { transform: translateX(-3px); }
+
+/* Forward-pointing ghost button (e.g. "see more" links) — icon nudges right instead of left */
+.btn-ghost.btn-ghost--next:hover svg { transform: translateX(3px); }
 
 
 /* Google Maps */
@@ -1904,4 +1927,11 @@ button {
 
 @media (max-width: 600px) {
     .media-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+}
+
+/* CTA button under the gallery grid, links to the full media page */
+.galerie-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
 }
